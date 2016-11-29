@@ -12,7 +12,7 @@ a.out
 *.a
 *.VC.*
 *.nfs.*
-minishell
-21sh
-42sh
+gomoku
 *.plist
+objs
+.vscode
