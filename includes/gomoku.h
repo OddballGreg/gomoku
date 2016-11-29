@@ -19,6 +19,11 @@
 ** ----------/
 */
 
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <libft.h>
+
 /*
 ** ----------\
 ** Defines    |
@@ -30,6 +35,20 @@
 ** Structures |
 ** ----------/
 */
+
+typedef struct		s_env
+{
+	int				gamemode;
+
+}					t_env;
+
+/*
+** ----------\
+** Globals    |
+** ----------/
+*/
+
+t_env				env;
 
 /*
 ** ----------\

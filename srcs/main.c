@@ -10,9 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/gomoku.h"
+#include "gomoku.h"
 
-int		main(int ac, char **av)
+void		getopts()
 {
-	//to be coded...
+	char 	*input;
+
+	input = NULL;
+	opt1:
+	printf("Select your gamemode:\n(1) Player vs Comp\n(2) Player vs Player\n");
+	input = get_line(&input);
+	if (atoi(input) == 1)
+		env.gamemode = 1;
+	else if (atoi(input) == 2)
+		env.gamemode = 2;
+	else
+		goto opt1;
+}
+
+int			main(int argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+	getopts();
+	//init();
 }

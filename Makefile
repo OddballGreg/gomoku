@@ -23,36 +23,7 @@ INCLUDES_PATH = includes/
 
 SRCS_PATH = srcs/
 
-SRCS_NAME = centerpoint.c				\
-			change_size.c 				\
-			count_elements.c			\
-			error_quit.c				\
-			exit_prog.c					\
-			free_lst.c					\
-			ft_atof.c					\
-			ft_print_memory.c			\
-			matrix_add.c				\
-			matrix_create.c				\
-			matrix_destroy.c			\
-			matrix_identity.c			\
-			matrix_multiply.c			\
-			matrix_sub.c				\
-			matrix_transpose.c			\
-			normalise.c					\
-			print_list.c				\
-			process_normal_keys.c 		\
-			process_special_keys.c 		\
-			read_obj.c					\
-			render_scene.c 				\
-			set_arrays.c				\
-			set_colour.c				\
-			scop.c 						\
-			store_face.c				\
-			store_obj.c					\
-			term.c						\
-			trim.c						\
-			vertex_create.c				\
-			mousehook.c					\
+SRCS_NAME = main.c				\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
@@ -63,7 +34,7 @@ OBJS_NAME = $(SRCS_NAME:.c=.o)
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
 #uncomment these to work on Mac and comment to work on Linux.
-LIBRARY = -lmlx -L libft/ -lft -L minilibx_macos/ -lft -framework OpenGL -framework AppKit
+LIBRARY = -lmlx -L libft/ -lft -framework OpenGL -framework AppKit
 
 INCLUDES = -I includes/ -I libft/includes
 
@@ -72,7 +43,7 @@ INCLUDES = -I includes/ -I libft/includes
  
 #INCLUDES = -I includes/ -I libft/includes -I /usr/X11/include
 
-HEADER = 	$(INCLUDES_PATH)scop.h		\
+HEADER = 	$(INCLUDES_PATH)gomoku.h		\
 
 all: qme odir $(NAME)
 
@@ -90,7 +61,6 @@ endef
 
 $(NAME): $(OBJS)
 	@Make -C libft
-	@Make -C minilibx_macos
 	@$(call colourecho, " - Making $(NAME)")
 	@clear
 	@$(CC) $(CFLAGS2) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
@@ -113,7 +83,6 @@ clean:
 
 fclean: clean
 	@Make fclean -C libft
-	@Make -C minilibx_macos
 	@$(call colourecho, "Clearing executable files")
 	@rm -f $(NAME)
 	@$(call colourecho, "fclean done")
