@@ -64,7 +64,13 @@ typedef struct		s_env
 ** ----------/
 */
 
-t_env				env;
+# ifdef MAIN_FILE
+
+	t_env			env;
+# else
+
+	extern t_env	env;
+# endif
 
 /*
 ** ----------\
