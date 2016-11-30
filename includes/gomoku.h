@@ -36,10 +36,24 @@
 ** ----------/
 */
 
+typedef struct		s_coord
+{
+	int				x;
+	int				y;
+}					t_coord;
+
+typedef struct		s_game
+{
+	t_coord			last_played;
+	int				turn;
+	char			board[15][15];
+}					t_game;
+
 typedef struct		s_env
 {
 	int				gamemode;
-
+	char			verbose;
+	t_game			game;
 }					t_env;
 
 /*
