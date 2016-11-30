@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gomoku.h"
+#define MAIN_FILE
+#include "../includes/gomoku.h"
 
 void		getopts()
 {
