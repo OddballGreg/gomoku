@@ -47,6 +47,8 @@ typedef struct		s_game
 	t_coord			last_played;
 	int				turn;
 	char			board[15][15];
+	char			p1_captures;
+	char			p2_captures;
 }					t_game;
 
 typedef struct		s_env
