@@ -31,6 +31,13 @@
 ** ----------/
 */
 
+#define WHITE 1
+#define BLACK 2
+
+#define AI1 env.ai1
+#define AI2 env.ai2
+#define GAMEMODE env.gamemode
+
 /*
 ** ----------\
 ** Structures |
@@ -43,10 +50,30 @@ typedef struct		s_coord
 	int				y;
 }					t_coord;
 
+typedef struct		s_node
+{
+	int				id;
+	int				depth;
+	int				minmax;
+	int				branchweight;
+	char			board[15][15];
+	t_coord			piece_played;
+	struct s_node	*parent;
+	struct s_node	*sibling;
+	struct s_node	*child;
+}					t_node;
+
+typedef struct		s_ai
+{
+	t_node			*head;
+	int				id_count; //debug metric
+	int				depth;
+}
+
 typedef struct		s_game
 {
 	t_coord			last_played;
-	int				turn;
+	int				depth;
 	char			board[15][15];
 	char			p1_captures;
 	char			p2_captures;
@@ -54,9 +81,11 @@ typedef struct		s_game
 
 typedef struct		s_env
 {
-	int				gamemode;
+	char			gamemode;
 	char			verbose;
 	t_game			game;
+	t_ai			ai1;
+	//t_ai			ai2;
 }					t_env;
 
 /*
