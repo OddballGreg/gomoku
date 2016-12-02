@@ -59,7 +59,7 @@ void	draw_grid(WINDOW *win, int columns, int rows)
 				mvwaddch(win, pos_y, pos_x, ACS_HLINE);
 		}
 	}
-	wmove(win, 1, 3);
+	wmove(win, 2, 5);
 }
 
 void	run_prog(WINDOW *win)
