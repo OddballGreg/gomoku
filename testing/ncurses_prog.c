@@ -59,7 +59,6 @@ void	draw_grid(WINDOW *win, int columns, int rows)
 				mvwaddch(win, pos_y, pos_x, ACS_HLINE);
 		}
 	}
-	wmove(win, 2, 5);
 }
 
 void	run_prog(WINDOW *win)
@@ -96,6 +95,27 @@ void	run_prog(WINDOW *win)
 	}
 }
 
+void	add_win_header(int y, int x, int x_len, char *header)
+{
+	int		k;
+
+	k = x;
+	mvaddch(y, x, ACS_LTEE);
+	mvaddch(y, x + --x_len, ACS_RTEE);
+	mvaddch(y - 1, x, ACS_VLINE);
+	mvaddch(y - 1, x + x_len, ACS_VLINE);
+	mvaddch(y - 2, x, ACS_ULCORNER);
+	mvaddch(y - 2, x + x_len, ACS_URCORNER);
+	while (++k < x_len + 8)
+	{
+		mvaddch(y - 2, k, ACS_HLINE);
+		mvaddch(y, k, ACS_HLINE);
+	}
+	attron(COLOR_PAIR(1));
+	mvprintw(y - 1, x + (x_len / 2) - (strlen(header)), "%s", header);
+	attroff(COLOR_PAIR(1));
+}
+
 int		main()
 {
 	WINDOW	*win;
@@ -118,6 +138,9 @@ int		main()
 	draw_grid(win, COLUMNS, ROWS);
 	update_panels();
 	doupdate();
+	add_win_header((LINES - y) / 2, (COLS - x) / 2, x, "Board");
+	//mvaddch(((LINES - y) / 2), ((COLS - x) / 2), ACS_LTEE);
+	wmove(win, 2, 5);
 	run_prog(win);
 
 	//getch();
