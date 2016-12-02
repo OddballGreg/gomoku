@@ -111,9 +111,7 @@ void	add_win_header(int y, int x, int x_len, char *header)
 		mvaddch(y - 2, k, ACS_HLINE);
 		mvaddch(y, k, ACS_HLINE);
 	}
-	attron(COLOR_PAIR(1));
 	mvprintw(y - 1, x + (x_len / 2) - (strlen(header)), "%s", header);
-	attroff(COLOR_PAIR(1));
 }
 
 int		main()
