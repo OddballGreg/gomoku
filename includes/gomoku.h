@@ -31,11 +31,13 @@
 ** ----------/
 */
 
+#define EMPTY 0
 #define WHITE 1
 #define BLACK 2
 
-#define AI1 env.ai1
-#define AI2 env.ai2
+
+#define AI env.ai
+#define GAME env.game
 #define GAMEMODE env.gamemode
 
 /*
@@ -68,7 +70,7 @@ typedef struct		s_ai
 	t_node			*head;
 	int				id_count; //debug metric
 	int				depth;
-}
+}					t_ai;
 
 typedef struct		s_game
 {
@@ -84,8 +86,7 @@ typedef struct		s_env
 	char			gamemode;
 	char			verbose;
 	t_game			game;
-	t_ai			ai1;
-	//t_ai			ai2;
+	t_ai			ai;
 }					t_env;
 
 /*
