@@ -52,7 +52,9 @@ t_node		*make_node(t_node *parent, t_coord piece_played, int depth)
 	save = 1;
 	new = malloc(sizeof(t_node));
 	new->depth = depth;
-	new->id = AI.id_count++;
+	new->parent = NULL;
+	new->child = NULL;
+	new->sibling = NULL;
 	if (parent)
 		copy_map(parent->board, new->board);
 	else
@@ -63,6 +65,7 @@ t_node		*make_node(t_node *parent, t_coord piece_played, int depth)
 	if (parent)
 	{
 		parent->branchweight += new->minmax;
+		new->parent = parent;
 		if (parent->child)
 		{
 			tmp = parent->child;
@@ -80,7 +83,7 @@ t_node		*make_node(t_node *parent, t_coord piece_played, int depth)
 		else
 			parent->child = new;
 	}
-	//Debug: Prints the node infor;
+	/* //Debug: Prints the node infor;
 	int x;
 	int y;
 	printf("\nID: %i\tDEPTH: %i\tMM: %i\tBW: %i\n", new->id, new->depth, new->minmax, new->branchweight);
@@ -93,7 +96,7 @@ t_node		*make_node(t_node *parent, t_coord piece_played, int depth)
 			ft_putnbr(new->board[x][y]);
 		ft_putendl("");
 	}
-	//End Debug
+	//End Debug */
 	return (new);
 }
 
@@ -111,23 +114,30 @@ void		init()
 		while(++y < 15)
 			GAME.board[x][y] = EMPTY;
 	}
+
+	// final code will not create ai nodes in init function
 	initial.x = 1;
 	initial.y = 1;
-
-	AI.head = make_node(NULL, initial, ++AI.depth);
+	
+	AI.nodes[AI.id_count] = make_node(NULL, initial, ++AI.depth);
+	AI.id_count++;
  // debug
 	initial.x = 3;
 	initial.y = 2;
-	make_node(AI.head, initial, ++AI.depth);
+	AI.nodes[AI.id_count] = make_node(AI.head, initial, ++AI.depth);
+	AI.id_count++;
 	initial.x = 5;
 	initial.y = 6;
-	make_node(AI.head, initial, AI.depth);
+	AI.nodes[AI.id_count] = make_node(AI.head, initial, AI.depth);
+	AI.id_count++;
 	initial.x = 6;
 	initial.y = 6;
-	make_node(AI.head->child, initial, ++AI.depth);
+	AI.nodes[AI.id_count] = make_node(AI.head->child, initial, ++AI.depth);
+	AI.id_count++;
 	initial.x = 8;
 	initial.y = 6;
-	make_node(AI.head->child->child, initial, ++AI.depth);
+	AI.nodes[AI.id_count] = make_node(AI.head->child->child, initial, ++AI.depth);
+	AI.id_count++;
 }
 
 void		getopts()
@@ -135,7 +145,7 @@ void		getopts()
 	char 	*input;
 
 	input = NULL;
-	printf("Select your gamemode:\n(1) Player vs Comp\n(2) Player vs Player\n");
+	ft_putendl("Select your gamemode:\n(1) Player vs Comp\n(2) Player vs Player");
 	while (GAMEMODE == 0)
 	{
 		if (!get_next_line(0, &input))
@@ -145,29 +155,8 @@ void		getopts()
 		else if (atoi(input) == 2)
 			GAMEMODE = 2;
 		else
-			printf("Please select a valid option.\n");
+			ft_putendl("Please select a valid option.");
 	}
-}
-
-void		printtree(t_node *head)
-{
-	if (head->parent)
-		printf("\n:PID: %i\n", head->parent->id);
-	printf("ID: %i\tDEPTH: %i\tMM: %i\tBW: %i\n", head->id, head->depth, head->minmax, head->branchweight);
-	t_node *tmp;
-	if (head->child)
-		printtree(head->child);
-	if (head->child->sibling)
-	{
-		tmp = head->child->sibling;
-		printtree(tmp);
-		while(tmp->sibling)
-		{
-			tmp = head->child->sibling;
-			printtree(tmp);
-		}
-	}
-
 }
 
 int			main(int argc, char **argv)
@@ -176,5 +165,4 @@ int			main(int argc, char **argv)
 	(void)argv;
 	getopts();
 	init();
-	printtree(AI.head);
 }

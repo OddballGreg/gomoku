@@ -60,14 +60,14 @@ typedef struct		s_node
 	int				branchweight;
 	char			board[15][15];
 	t_coord			piece_played;
-	struct s_node	*parent;
-	struct s_node	*sibling;
-	struct s_node	*child;
+	int				parent;
+	int				sibling[255];
+	int				child;
 }					t_node;
 
 typedef struct		s_ai
 {
-	t_node			*head;
+	t_node			nodes[2000];
 	int				id_count; //debug metric
 	int				depth;
 }					t_ai;
