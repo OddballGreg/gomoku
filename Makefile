@@ -12,12 +12,12 @@
 
 NAME = gomoku
 
-CFLAGS =	-Wall -Wextra -Werror -g -Ofast
+CFLAGS =	-Wall -Wextra -Werror -g -O3
 #Old:
 #-Wno-deprecated-declarations -Wall -Wextra -Werror -g -Ofast
 
 #Linux
-CFLAGS2 =	-g
+CFLAGS2 =	-g -lpanel -lcurses -O3
 
 #MAC
 #CFLAGS2 =	-framework OpenGL -framework GLUT -Wno-deprecated-declarations \
