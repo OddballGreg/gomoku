@@ -85,7 +85,7 @@ void	run_prog(WINDOW *win)
 			pos_y = (pos_y == 1) ? ROWS - 1: pos_y - 1;
 		else if (buff == 's' || buff == 'B')
 			pos_y = (pos_y == ROWS - 1) ? 1 : pos_y + 1;
-		else if ((buff == '\n' || buff == 32) && !board[x - 1][y - 1] && (board[x - 1][y - 1] = 1))
+		else if ((buff == '\n' || buff == 32) && !board[pos_x - 1][pos_y - 1] && (board[pos_x - 1][pos_y - 1] = 1))
 			mvwaddch(win, y, x, (move++ % 2) ? 'X' : 'O');
 		//printw("Key = %d; pos_x = %d; pos_y = %d\r", buff, pos_x, pos_y);
 		get_boardxy(pos_x, pos_y, &x, &y);
@@ -131,13 +131,16 @@ int		main()
 	//win = newwin(y, x, LINES/2 - 4, COLS/2 - 8);
 	win = newwin(y, x, (LINES - y) / 2, (COLS - x) / 2);
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
+	init_pair(2, COLOR_RED, COLOR_BLACK);
+	init_pair(3, COLOR_BLUE, COLOR_BLACK);
+	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
 	box(win, 0, 0);
 	panel = new_panel(win);
 
 	draw_grid(win, COLUMNS, ROWS);
 	update_panels();
 	doupdate();
-	add_win_header((LINES - y) / 2, (COLS - x) / 2, x, "Board");
+	//add_win_header((LINES - y) / 2, (COLS - x) / 2, x, "Board");
 	//mvaddch(((LINES - y) / 2), ((COLS - x) / 2), ACS_LTEE);
 	wmove(win, 2, 5);
 	run_prog(win);
