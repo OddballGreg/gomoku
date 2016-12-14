@@ -16,3 +16,6 @@ gomoku
 *.plist
 objs
 .vscode
+.vs
+Debug
+gomoku*
