@@ -32,6 +32,7 @@ SRCS_PATH = srcs/
 SRCS_NAME = main.c				\
 			hueristic.c				\
 			options.c				\
+			ai.c				\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
