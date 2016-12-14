@@ -12,9 +12,15 @@
 
 NAME = gomoku
 
-CFLAGS =	-Wno-deprecated-declarations -Wall -Wextra -Werror -g -Ofast
+CFLAGS =	-Wall -Wextra -Werror -g -Ofast
+#Old:
+#-Wno-deprecated-declarations -Wall -Wextra -Werror -g -Ofast
 
-CFLAGS2 =	-framework OpenGL -framework GLUT -Wno-deprecated-declarations \
+#Linux
+CFLAGS2 =	-g
+
+#MAC
+#CFLAGS2 =	-framework OpenGL -framework GLUT -Wno-deprecated-declarations \
 			-g -Ofast -ltermcap
 
 CC = gcc
