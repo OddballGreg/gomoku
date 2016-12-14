@@ -32,7 +32,6 @@ t_node		make_node(int parentid, t_coord piece_played)
 	int		c;
 
 	save = 1;
-	new = malloc(sizeof(t_node));
 	new.parentid = parentid;
 	c = -1;
 	while (++c <= 255)
@@ -47,9 +46,9 @@ t_node		make_node(int parentid, t_coord piece_played)
 		copy_map(GAME.board, new.board);
 		new.depth = 0;
 	}
-	place_piece(new, piece_played);
+	place_piece(&new, piece_played);
 
-	heuristic(new);
+	heuristic(&new);
 	c = -1;
 	if (parentid != -1) //Has parent
 	{
@@ -61,7 +60,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 			printf("\nNot Pruned"); // DEBUG
 			AI.nodes[parentid].child[c] = AI.id_count;
 			AI.nodes[parentid].branchweight += new.minmax;
-			AI.nodes[AI.id_count] = *new;
+			AI.nodes[AI.id_count] = new;
 			AI.id_count++;
 		}
 		else // DEBUG
@@ -69,7 +68,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 	}
 	else
 	{
-		AI.nodes[AI.id_count] = *new;
+		AI.nodes[AI.id_count] = new;
 		AI.id_count++;
 	}
 

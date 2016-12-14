@@ -34,6 +34,8 @@
 #define EMPTY 0
 #define WHITE 1
 #define BLACK 2
+#define WIN 1
+#define LOSE 2
 
 
 #define AI env.ai
@@ -57,6 +59,7 @@ typedef struct		s_node
 	int				depth;
 	int				minmax;
 	int				branchweight;
+	int				gameover;
 	char			board[15][15];
 	t_coord			piece_played;
 	int				parentid;
@@ -116,7 +119,7 @@ void		getopts();
 /* ai.c */
 void		copy_map(char source[15][15], char dest[15][15]);
 void		place_piece(t_node *node, t_coord piece_played);
-t_node		*make_node(int parentid, t_coord piece_played);
+t_node		make_node(int parentid, t_coord piece_played);
 
 /*
 **                                /----------\                                **
