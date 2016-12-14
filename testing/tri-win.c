@@ -44,7 +44,9 @@ void	manage_wins(WINDOW *win[3], PANEL *panel[3])
 	int		y;
 
 	get_boardcr(COLUMNS, ROWS, &x, &y);
-	if (x + 1 + STAT_X + INFO_X < COLS)
+	if (y + 3 > LINES)
+		printw("window is too small (min height = %d).", (y + 4));
+	else if (x + 5 + STAT_X + INFO_X < COLS)
 	{
 		win[WIN_BOARD] = newwin(y, x, (LINES - y) / 2, (COLS - x) / 2);
 		win[WIN_STATS] = newwin(y, STAT_X, (LINES - y) / 2, ((COLS + x) / 2) + 2);
@@ -56,8 +58,29 @@ void	manage_wins(WINDOW *win[3], PANEL *panel[3])
 		panel[WIN_INFO] = new_panel(win[WIN_INFO]);
 		panel[WIN_STATS] = new_panel(win[WIN_STATS]);
 	}
+	else if (x + 3 + STAT_X < COLS)
+	{
+		win[WIN_BOARD] = newwin(y, x, (LINES - y) / 2, (COLS - (x + STAT_X)) / 2 - 1);
+		win[WIN_STATS] = newwin(y, STAT_X, (LINES - y) / 2, ((COLS + x - STAT_X) / 2) + 1);
+		win[WIN_INFO] = NULL;
+		draw_win(x, 1, win[WIN_BOARD], "Board");
+		draw_win(STAT_X, 2, win[WIN_STATS], "Stats");
+		panel[WIN_BOARD] = new_panel(win[WIN_BOARD]);
+		panel[WIN_INFO] = NULL;
+		panel[WIN_STATS] = new_panel(win[WIN_STATS]);
+	}
+	else if (x + 2 < COLS)
+	{
+		win[WIN_BOARD] = newwin(y, x, (LINES - y) / 2, (COLS - x) / 2);
+		win[WIN_STATS] = NULL;
+		win[WIN_INFO] = NULL;
+		draw_win(x, 1, win[WIN_BOARD], "Board");
+		panel[WIN_BOARD] = new_panel(win[WIN_BOARD]);
+		panel[WIN_INFO] = NULL;
+		panel[WIN_STATS] =NULL;
+	}
 	else
-		printw("window is too small (min = %d).", (x + 1 + STAT_X + INFO_X));
+		printw("window is too small (min width = %d).", (x + 3));
 }
 
 int		main()
