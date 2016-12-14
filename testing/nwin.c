@@ -25,6 +25,11 @@ void    draw_win(int x, int colour, WINDOW *win, const char *title)
     wmove(win, 3, 1);
 }
 
+void    print_in_win(WINDOW *win, int x, int y, char *str)
+{
+    //
+}
+
 int     main()
 {
     WINDOW  *win;
@@ -42,6 +47,7 @@ int     main()
     panel = new_panel(win);
 
     draw_win(10, 1, win, "Hello!");
+ //   print_in_win(win, 10, 10, "abcdefghijklmnopqrstuvwxyz");
     update_panels();
 	doupdate();
 
