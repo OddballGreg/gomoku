@@ -17,7 +17,11 @@ void    draw_win(int x, int colour, WINDOW *win, const char *title)
     k = 0;
     while (++k < x - 1)
         mvwaddch(win, 2, k, ACS_HLINE);
+    if (colour)
+        attron(COLOR_PAIR(colour));
     mvwaddstr(win, 1, (x - strlen(title)) / 2, title);
+    if (colour)
+        attroff(COLOR_PAIR(colour));
 }
 
 int     main()
