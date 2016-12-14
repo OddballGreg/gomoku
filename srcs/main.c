@@ -15,7 +15,7 @@
 
 void		heuristic(t_node *node)
 {
-	node->minmax = rand();
+	node->minmax = rand() % 500;
 }
 
 void		copy_map(char source[15][15], char dest[15][15])
@@ -43,50 +43,57 @@ void		place_piece(t_node *node, t_coord piece_played)
 	}
 }
 
-t_node		*make_node(t_node *parent, t_coord piece_played, int depth)
+t_node		*make_node(int parentid, t_coord piece_played)
 {
 	t_node	*new;
-	t_node	*tmp;
 	char	save;
+	int		c;
 
 	save = 1;
 	new = malloc(sizeof(t_node));
-	new->depth = depth;
-	new->parent = NULL;
-	new->child = NULL;
-	new->sibling = NULL;
-	if (parent)
-		copy_map(parent->board, new->board);
+	new->parentid = parentid;
+	c = -1;
+	while (++c <= 255)
+		new->child[c] = -1;
+	if (parentid != -1)
+	{
+		copy_map(AI.nodes[parentid].board, new->board);
+		new->depth = AI.nodes[parentid].depth + 1;
+	}
 	else
+	{
 		copy_map(GAME.board, new->board);
+		new->depth = 0;
+	}
 	place_piece(new, piece_played);
 
 	heuristic(new);
-	if (parent)
+	c = -1;
+	if (parentid != -1) //Has parent
 	{
-		parent->branchweight += new->minmax;
-		new->parent = parent;
-		if (parent->child)
-		{
-			tmp = parent->child;
-			if (new->minmax > tmp->minmax) //Alpha beta pruning
+		while (++c <= 255 && AI.nodes[parentid].child[c] != -1 && save == 1) //Cycle parent children
+			if (AI.nodes[AI.nodes[parentid].child[c]].minmax > new->minmax) //Alpha Beta Pruning
 				save = 0;
-			while (tmp->sibling)
-			{
-				tmp = tmp->sibling;
-				if (new->minmax > tmp->minmax) //Alpha beta pruning
-					save = 0;
-			}
-			if (save == 1)
-				tmp->sibling = new;
+		if (save == 1) //If unpruned, save child to parent
+		{
+			printf("\nNot Pruned");
+			AI.nodes[parentid].child[c] = AI.id_count;
+			AI.nodes[parentid].branchweight += new->minmax;
+			AI.nodes[AI.id_count] = *new;
+			AI.id_count++;
+				 
 		}
-		else
-			parent->child = new;
 	}
-	/* //Debug: Prints the node infor;
+	else
+	{
+		AI.nodes[AI.id_count] = *new;
+		AI.id_count++;
+	}
+
+	//Debug: Prints the node infor;
 	int x;
 	int y;
-	printf("\nID: %i\tDEPTH: %i\tMM: %i\tBW: %i\n", new->id, new->depth, new->minmax, new->branchweight);
+	printf("\nID: %i\tPID: %i\tDEPTH: %i\tMM: %i\tBW: %i\n", AI.id_count, new->parentid,  new->depth, new->minmax, new->branchweight);
 	ft_putendl("Board:");
 	x = -1;
 	while(++x < 15)
@@ -96,7 +103,8 @@ t_node		*make_node(t_node *parent, t_coord piece_played, int depth)
 			ft_putnbr(new->board[x][y]);
 		ft_putendl("");
 	}
-	//End Debug */
+	//End Debug 
+
 	return (new);
 }
 
@@ -105,7 +113,6 @@ void		init()
 	t_coord initial;
 
 	AI.id_count = 0;
-	AI.depth = -1;
 	int x = -1;
 	int y;
 	while(++x < 15)
@@ -119,25 +126,23 @@ void		init()
 	initial.x = 1;
 	initial.y = 1;
 	
-	AI.nodes[AI.id_count] = make_node(NULL, initial, ++AI.depth);
-	AI.id_count++;
+	make_node(-1, initial);
  // debug
 	initial.x = 3;
 	initial.y = 2;
-	AI.nodes[AI.id_count] = make_node(AI.head, initial, ++AI.depth);
-	AI.id_count++;
+	make_node(0, initial);
+
 	initial.x = 5;
 	initial.y = 6;
-	AI.nodes[AI.id_count] = make_node(AI.head, initial, AI.depth);
-	AI.id_count++;
+	make_node(0, initial);
+
 	initial.x = 6;
 	initial.y = 6;
-	AI.nodes[AI.id_count] = make_node(AI.head->child, initial, ++AI.depth);
-	AI.id_count++;
+	make_node(1, initial);
+
 	initial.x = 8;
 	initial.y = 6;
-	AI.nodes[AI.id_count] = make_node(AI.head->child->child, initial, ++AI.depth);
-	AI.id_count++;
+	make_node(2, initial);
 }
 
 void		getopts()
@@ -159,10 +164,31 @@ void		getopts()
 	}
 }
 
+void		dump_mem()
+{
+	int		i;
+
+	i = -1;
+	ft_putstr("\n");
+	while (++i < AI.id_count)
+	{
+		ft_putstr("ID: ");
+		ft_putnbr(i);
+		ft_putstr(" PID: ");
+		ft_putnbr(AI.nodes[i].parentid);
+		ft_putstr(" MM: ");
+		ft_putnbr(AI.nodes[i].minmax);
+		ft_putstr(" BW: ");
+		ft_putnbr(AI.nodes[i].branchweight);
+		ft_putstr("\n");
+	}
+}
+
 int			main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
 	getopts();
 	init();
+	dump_mem();
 }
