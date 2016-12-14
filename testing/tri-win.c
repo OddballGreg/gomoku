@@ -3,6 +3,7 @@
 #include <strings.h>
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 
 # define ROWS    20
 # define COLUMNS 20
@@ -77,6 +78,7 @@ void	run_prog(WINDOW *win)
 	pos_x = 1;
 	move = 1;
 	pos_y = 1;
+	get_boardxy(pos_x, pos_y, &x, &y);
 	while ((buff = getch()) != 'e')
 	{
 		if (buff == 'd' || buff == 'C')
@@ -89,7 +91,7 @@ void	run_prog(WINDOW *win)
 			pos_y = (pos_y == ROWS - 1) ? 1 : pos_y + 1;
 		else if ((buff == '\n' || buff == 32) && !board[pos_x - 1][pos_y - 1] && (board[pos_x - 1][pos_y - 1] = 1))
 			mvwaddch(win, y, x, (move++ % 2) ? 'X' : 'O');
-		printw("Key = %d; pos_x = %d; pos_y = %d    \r", buff, pos_x, pos_y);
+		printw("Key = %d (%c); pos_x = %d; pos_y = %d    \r", buff, (isprint(buff)) ? buff : '?', pos_x, pos_y);
 		get_boardxy(pos_x, pos_y, &x, &y);
 		//mvwaddch(win, y, x, ACS_BULLET);
 		wmove(win, y, x);
