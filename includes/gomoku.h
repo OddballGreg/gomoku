@@ -106,6 +106,18 @@ typedef struct		s_env
 ** ----------/
 */
 
+/* heuristic.c */
+int			hpair(t_node *node, int x, int y);
+void		heuristic(t_node *node);
+
+/* options.c */
+void		getopts();
+
+/* ai.c */
+void		copy_map(char source[15][15], char dest[15][15]);
+void		place_piece(t_node *node, t_coord piece_played);
+t_node		*make_node(int parentid, t_coord piece_played);
+
 /*
 **                                /----------\                                **
 ** ----- ----- ----- ----- ----- |  The End   | ----- ----- ----- ----- ----- **
