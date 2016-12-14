@@ -30,6 +30,8 @@ INCLUDES_PATH = includes/
 SRCS_PATH = srcs/
 
 SRCS_NAME = main.c				\
+			hueristic.c				\
+			options.c				\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
