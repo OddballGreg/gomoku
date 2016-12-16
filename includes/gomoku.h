@@ -77,6 +77,9 @@
 # define E_WIN env.win.win
 # define E_PAN env.win.panel
 
+# define E_W_BPOS env.win.bpos
+# define E_W_SPOS env.win.spos
+
 /*
 ** ----------\
 ** Structures |
@@ -112,7 +115,6 @@ typedef struct	s_game
 	t_coord		last_played;
 	int			depth;
 	char		board[NTILES][NTILES];
-	t_coord		pos;
 	char		p1_captures;
 	char		p2_captures;
 }				t_game;
@@ -121,8 +123,8 @@ typedef struct	s_window
 {
 	WINDOW		*win[3];
 	PANEL		*panel[3];
-	int			board_x;
-	int			board_y;
+	t_coord		bpos;
+	t_coord		spos;
 }				t_window;
 
 typedef struct	s_env
