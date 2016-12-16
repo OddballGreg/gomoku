@@ -186,6 +186,16 @@ void		place_piece(t_node *node, t_coord piece_played);
 t_node		make_node(int parentid, t_coord piece_played);
 
 /*
+** draw_grid.c
+*/
+void		draw_grid(WINDOW *win, int columns, int rows);
+
+/*
+** draw_win.c
+*/
+void    draw_win(int x, int colour, WINDOW *win, const char *title);
+
+/*
 ** exit_prog.c
 */
 void		exit_prog(void);
