@@ -179,10 +179,31 @@ typedef struct		s_p_list
 */
 
 /*
+** ai.c
+*/
+void		copy_map(char source[NTILES][NTILES], char dest[NTILES][NTILES]);
+void		place_piece(t_node *node, t_coord piece_played);
+t_node		make_node(int parentid, t_coord piece_played);
+
+/*
+** exit_prog.c
+*/
+void		exit_prog(void);
+void		error_quit(char *message);
+
+/*
 ** heuristic.chars
 */
 int			hpair(t_node *node, int x, int y);
 void		heuristic(t_node *node);
+
+/*
+** init.c
+*/
+
+void		init_ai(void);
+void    	init_wins(void);
+void    	init_curses(void);
 
 /*
 ** options.chars
@@ -190,11 +211,12 @@ void		heuristic(t_node *node);
 void		getopts();
 
 /*
-** ai.c
+** win_checks.c
 */
-void		copy_map(char source[NTILES][NTILES], char dest[NTILES][NTILES]);
-void		place_piece(t_node *node, t_coord piece_played);
-t_node		make_node(int parentid, t_coord piece_played);
+int		is_vline(int pos_x);
+int		is_plus(int pos_x, int	pos_y);
+void	get_boardcr(int colums, int rows, int *x, int *y);
+void	get_boardxy(int pos_x, int pos_y, int *x, int *y);
 
 /*
 **                                /----------\                                **

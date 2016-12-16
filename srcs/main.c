@@ -13,43 +13,6 @@
 #define MAIN_FILE
 #include "../includes/gomoku.h"
 
-void		init()
-{
-	t_coord initial;
-
-	AI.id_count = 0;
-	int x = -1;
-	int y;
-	while(++x < NTILES)
-	{
-		y = -1;
-		while(++y < NTILES)
-			GAME.board[x][y] = EMPTY;
-	}
-
-	// final code will not create ai nodes in init function
-	initial.x = 7;
-	initial.y = 7;
-	
-	make_node(-1, initial);
- // debug
-	initial.x = 6;
-	initial.y = 7;
-	make_node(0, initial);
-
-	initial.x = 5;
-	initial.y = 6;
-	make_node(0, initial);
-
-	initial.x = 6;
-	initial.y = 6;
-	make_node(1, initial);
-
-	initial.x = 8;
-	initial.y = 7;
-	make_node(2, initial);
-}
-
 void		dump_mem()
 {
 	int		i;
@@ -75,6 +38,6 @@ int			main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	getopts();
-	init();
+	init_ai();
 	dump_mem();
 }
