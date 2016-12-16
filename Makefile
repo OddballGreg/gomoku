@@ -119,4 +119,12 @@ qme:
 me: qme
 	cat -e author
 
+submodule:
+	@$(call colourecho, "Checking Submodules...")
+	@if [ ! -d libft/includes ]; then \
+		git submodule init libft; \
+		git submodule update; \
+	fi;
+	@$(call colourecho, "done checking submodules")
+
 .PHONY: clean fclean re odir
