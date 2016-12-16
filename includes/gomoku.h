@@ -70,9 +70,12 @@
 /*
 ** Shorthand:
 */
-#define AI env.ai
-#define GAME env.game
-#define GAMEMODE env.gamemode
+# define AI env.ai
+# define GAME env.game
+# define GAMEMODE env.gamemode
+
+# define E_WIN env.win.win
+# define E_PAN env.win.panel
 
 /*
 ** ----------\
@@ -80,56 +83,56 @@
 ** ----------/
 */
 
-typedef struct		s_coord
+typedef struct	s_coord
 {
-	int				x;
-	int				y;
-}					t_coord;
+	int			x;
+	int			y;
+}				t_coord;
 
-typedef struct		s_node
+typedef struct	s_node
 {
-	int				depth;
-	int				minmax;
-	int				branchweight;
-	int				gameover;
-	char			board[NTILES][NTILES];
-	t_coord			piece_played;
-	int				parentid;
-	int				child[255];
-}					t_node;
+	int			depth;
+	int			minmax;
+	int			branchweight;
+	int			gameover;
+	char		board[NTILES][NTILES];
+	t_coord		piece_played;
+	int			parentid;
+	int			child[255];
+}				t_node;
 
-typedef struct		s_ai
+typedef struct	s_ai
 {
-	t_node			nodes[2000];
-	int				id_count;
-}					t_ai;
+	t_node		nodes[2000];
+	int			id_count;
+}				t_ai;
 
-typedef struct		s_game
+typedef struct	s_game
 {
-	t_coord			last_played;
-	int				depth;
-	char			board[NTILES][NTILES];
-	t_coord			pos;
-	char			p1_captures;
-	char			p2_captures;
-}					t_game;
+	t_coord		last_played;
+	int			depth;
+	char		board[NTILES][NTILES];
+	t_coord		pos;
+	char		p1_captures;
+	char		p2_captures;
+}				t_game;
 
-typedef struct		s_window
+typedef struct	s_window
 {
-	WINDOW			*win[3];
-	PANEL			*panel[3];
-	int				board_x;
-	int				board_y;
-}					t_window;
+	WINDOW		*win[3];
+	PANEL		*panel[3];
+	int			board_x;
+	int			board_y;
+}				t_window;
 
-typedef struct		s_env
+typedef struct	s_env
 {
-	char			gamemode;
-	char			verbose;
-	t_game			game;
-	t_ai			ai;
-	t_window		win;
-}					t_env;
+	char		gamemode;
+	char		verbose;
+	t_game		game;
+	t_ai		ai;
+	t_window	win;
+}				t_env;
 
 /*
 ** Proposed data structure:
@@ -211,10 +214,18 @@ void		heuristic(t_node *node);
 /*
 ** init.c
 */
-
 void		init_ai(void);
 void    	init_wins(void);
 void    	init_curses(void);
+
+/*
+** manage_wins.c
+*/
+void	set_3_win(int x, int y);
+void	set_2_win(int x, int y);
+void	set_1_win(int x, int y);
+void	set_0_win(void);
+void	manage_wins(void);
 
 /*
 ** options.chars
