@@ -40,17 +40,32 @@
 ** ----------/
 */
 
-#define EMPTY 0
-#define WHITE 1
-#define BLACK 2
-#define WIN 1
-#define LOSE 2
+/*
+** Board
+*/
+#define EMPTY       0
+#define WHITE       1
+#define BLACK       2
+
+#define WIN         1
+#define LOSE        2
 
 /*
 ** Gameplay
 */
-# define NTILES  19
+# define NTILES     19
+# define ROWS       20
+# define COLUMNS    20
 
+/*
+** Windows
+*/
+# define STAT_X     20
+# define INFO_X     20
+
+# define WIN_BOARD  0
+# define WIN_STATS  1
+# define WIN_INFO   2
 
 /*
 ** Shorthand:
@@ -112,6 +127,7 @@ typedef struct		s_env
 	char			verbose;
 	t_game			game;
 	t_ai			ai;
+	t_window		win;
 }					t_env;
 
 /*
