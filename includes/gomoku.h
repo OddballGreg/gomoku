@@ -109,6 +109,7 @@ typedef struct		s_game
 	t_coord			last_played;
 	int				depth;
 	char			board[NTILES][NTILES];
+	t_coord			pos;
 	char			p1_captures;
 	char			p2_captures;
 }					t_game;
