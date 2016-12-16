@@ -93,6 +93,34 @@ typedef struct		s_env
 }					t_env;
 
 /*
+** Proposed data structure:
+*/
+
+typedef struct		s_p_node
+{
+	int				depth; //total number of moves made to this point.
+	int				minmax; //Weighting of the current move;
+	int				max;//optional
+	int				min;//optional
+	int				child_weight;//Average/minmax weight of the branches children.
+	t_coord			move;//the coordinates of the played piece.
+	struct s_p_node	*child1;//Child with the best weight.
+	struct s_p_node	*child2;//Child with the second best weight.
+	struct s_p_node	*child3;//Child with the third best weight.
+	struct s_p_node	*child4;//Child with the fourth best weight.
+	struct s_p_node	*child5;//Child with the fith best weight.
+}					t_p_node;
+
+//Everytime a node gets created, it gets added to this list,
+//to simplify the process of deleting nodes.
+typedef struct		s_p_list
+{
+	t_p_node		*node;//pointer to the node.
+	int				node_depth;//speeds up cleaning process.
+	struct s_p_list	*next;
+}					t_p_list;
+
+/*
 ** ----------\
 ** Globals    |
 ** ----------/
