@@ -34,7 +34,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 	save = 1;
 	new.parentid = parentid;
 	c = -1;
-	while (++c <= 255)
+	while (++c < 255)
 		new.child[c] = -1;
 	if (parentid != -1)
 	{
@@ -52,7 +52,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 	c = -1;
 	if (parentid != -1) //Has parent
 	{
-		while (++c <= 255 && AI.nodes[parentid].child[c] != -1 && save == 1) //Cycle parent children
+		while (++c < 255 && AI.nodes[parentid].child[c] != -1 && save == 1) //Cycle parent children
 			if (AI.nodes[AI.nodes[parentid].child[c]].minmax > new.minmax) //Alpha Beta Pruning
 				save = 0;
 		if (save == 1) //If unpruned, save child to parent

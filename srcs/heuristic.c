@@ -53,10 +53,10 @@ void		heuristic(t_node *node)
 
 	value = 0;
 	y = -1;
-	while (++y <= 15)
+	while (++y < 15)
 	{
 		x = -1;
-		while (++x <= 15)
+		while (++x < 15)
 		{
 			value += hpair(node, x, y); // Add additional heuristic functions here
 		}
