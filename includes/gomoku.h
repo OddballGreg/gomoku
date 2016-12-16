@@ -38,6 +38,9 @@
 #define LOSE 2
 
 
+/*
+** Shorthand:
+*/
 #define AI env.ai
 #define GAME env.game
 #define GAMEMODE env.gamemode
@@ -109,14 +112,20 @@ typedef struct		s_env
 ** ----------/
 */
 
-/* heuristic.c */
+/*
+** heuristic.chars
+*/
 int			hpair(t_node *node, int x, int y);
 void		heuristic(t_node *node);
 
-/* options.c */
+/*
+** options.chars
+*/
 void		getopts();
 
-/* ai.c */
+/*
+** ai.c
+*/
 void		copy_map(char source[15][15], char dest[15][15]);
 void		place_piece(t_node *node, t_coord piece_played);
 t_node		make_node(int parentid, t_coord piece_played);
