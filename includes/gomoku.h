@@ -19,9 +19,18 @@
 ** ----------/
 */
 
+# ifdef __APPLE__
+#  include <strings.h>
+# else
+#  include <string.h>
+# endif
+
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
+#include <panel.h>
+#include <ncurses.h>
+#include <stdio.h>
+#include <ctype.h>
 
 #include "../libft/includes/libft.h"
 
@@ -88,6 +97,14 @@ typedef struct		s_game
 	char			p1_captures;
 	char			p2_captures;
 }					t_game;
+
+typedef struct		s_window
+{
+	WINDOW			*win[3];
+	PANEL			*panel[3];
+	int				board_x;
+	int				board_y;
+}					t_window;
 
 typedef struct		s_env
 {
@@ -159,7 +176,7 @@ void		getopts();
 /*
 ** ai.c
 */
-void		copy_map(char source[15][15], char dest[15][15]);
+void		copy_map(char source[NTILES][NTILES], char dest[NTILES][NTILES]);
 void		place_piece(t_node *node, t_coord piece_played);
 t_node		make_node(int parentid, t_coord piece_played);
 

@@ -20,10 +20,10 @@ void		init()
 	AI.id_count = 0;
 	int x = -1;
 	int y;
-	while(++x < 15)
+	while(++x < NTILES)
 	{
 		y = -1;
-		while(++y < 15)
+		while(++y < NTILES)
 			GAME.board[x][y] = EMPTY;
 	}
 

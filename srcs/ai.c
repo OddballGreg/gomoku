@@ -1,15 +1,15 @@
 #include "../includes/gomoku.h"
 
-void		copy_map(char source[15][15], char dest[15][15])
+void		copy_map(char source[NTILES][NTILES], char dest[NTILES][NTILES])
 {
 	int		x;
 	int		y;
 
 	x = -1;
-	while(++x < 15)
+	while(++x < NTILES)
 	{
 		y = -1;
-		while (++y < 15)
+		while (++y < NTILES)
 			dest[x][y] = source[x][y];
 	}
 }
@@ -78,10 +78,10 @@ t_node		make_node(int parentid, t_coord piece_played)
 	printf("\nID: %i\tPID: %i\tDEPTH: %i\tMM: %i\tBW: %i\n", AI.id_count, new.parentid,  new.depth, new.minmax, new.branchweight);
 	ft_putendl("Board:");
 	x = -1;
-	while(++x < 15)
+	while(++x < NTILES)
 	{
 		y = -1;
-		while(++y < 15)
+		while(++y < NTILES)
 			ft_putnbr(new.board[x][y]);
 		ft_putendl("");
 	}
