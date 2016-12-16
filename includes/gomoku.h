@@ -37,6 +37,11 @@
 #define WIN 1
 #define LOSE 2
 
+/*
+** Gameplay
+*/
+# define NTILES  19
+
 
 /*
 ** Shorthand:
@@ -63,7 +68,7 @@ typedef struct		s_node
 	int				minmax;
 	int				branchweight;
 	int				gameover;
-	char			board[15][15];
+	char			board[NTILES][NTILES];
 	t_coord			piece_played;
 	int				parentid;
 	int				child[255];
@@ -79,7 +84,7 @@ typedef struct		s_game
 {
 	t_coord			last_played;
 	int				depth;
-	char			board[15][15];
+	char			board[NTILES][NTILES];
 	char			p1_captures;
 	char			p2_captures;
 }					t_game;
