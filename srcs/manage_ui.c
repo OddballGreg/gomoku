@@ -26,11 +26,11 @@ void	manage_ui(void)
 		if (buff == 'd' || buff == 'C')
 			E_W_BPOS.x = (E_W_BPOS.x == COLUMNS - 1) ? 1 : E_W_BPOS.x + 1;
 		else if (buff == 'a' || buff == 'D')
-			E_W_BPOS.x == (E_W_BPOS.x == 1) ? COLUMNS - 1 : E_W_BPOS.x -1;
+			E_W_BPOS.x = (E_W_BPOS.x == 1) ? COLUMNS - 1 : E_W_BPOS.x -1;
 		else if (buff == 'w' || buff == 'A')
-			E_W_BPOS.y == (E_W_BPOS.y == 1) ? ROWS - 1 : E_W_BPOS.y - 1;
+			E_W_BPOS.y = (E_W_BPOS.y == 1) ? ROWS - 1 : E_W_BPOS.y - 1;
 		else if (buff == 's' || buff == 'B')
-			E_W_BPOS.y == (E_W_BPOS.y == ROWS - 1) ? 1 : E_W_BPOS.y + 1;
+			E_W_BPOS.y = (E_W_BPOS.y == ROWS - 1) ? 1 : E_W_BPOS.y + 1;
 		else if (buff == '\n' || buff == 32)
 			usermove();
 		get_boardxy(E_W_BPOS.x, E_W_BPOS.y, &E_W_SPOS.x, & E_W_SPOS.y);
