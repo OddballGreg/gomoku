@@ -57,6 +57,9 @@
 # define ROWS       20
 # define COLUMNS    20
 
+# define P1_PIECE   'O'
+# define P2_PIECE   'X'
+
 /*
 ** Windows
 */
@@ -86,6 +89,7 @@
 # define E_W_SPOS env.win.spos
 
 # define E_BOARD  env.game.board
+# define E_DEPTH  env.game.depth
 
 /*
 ** ----------\
@@ -226,6 +230,13 @@ void		heuristic(t_node *node);
 void		init_ai(void);
 void    	init_wins(void);
 void    	init_curses(void);
+
+/*
+** manage_ui.c
+*/
+void	draw_piece(t_coord move);
+void	usermove(void);
+void	manage_ui(void);
 
 /*
 ** manage_wins.c
