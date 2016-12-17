@@ -68,6 +68,11 @@
 # define WIN_INFO   2
 
 /*
+** Game Mode
+*/
+
+
+/*
 ** Shorthand:
 */
 # define AI env.ai
@@ -79,6 +84,8 @@
 
 # define E_W_BPOS env.win.bpos
 # define E_W_SPOS env.win.spos
+
+# define E_BOARD  env.game.board
 
 /*
 ** ----------\
@@ -233,6 +240,11 @@ void	manage_wins(void);
 ** options.chars
 */
 void		getopts();
+
+/*
+** validate_move.c
+*/
+int		valid_move(t_coord move);
 
 /*
 ** win_checks.c
