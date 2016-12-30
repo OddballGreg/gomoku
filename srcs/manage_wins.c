@@ -11,6 +11,7 @@ void	set_3_win(int x, int y)
 	E_PAN[WIN_INFO] = new_panel(E_WIN[WIN_INFO]);
 	E_PAN[WIN_STATS] = new_panel(E_WIN[WIN_STATS]);
 	E_PAN[WIN_BOARD] = new_panel(E_WIN[WIN_BOARD]);
+	draw_grid(E_WIN[WIN_BOARD], COLUMNS, ROWS);
 }
 
 void	set_2_win(int x, int y)
@@ -23,6 +24,7 @@ void	set_2_win(int x, int y)
 	E_PAN[WIN_INFO] = NULL;
 	E_PAN[WIN_STATS] = new_panel(E_WIN[WIN_STATS]);
 	E_PAN[WIN_BOARD] = new_panel(E_WIN[WIN_BOARD]);
+	draw_grid(E_WIN[WIN_BOARD], COLUMNS, ROWS);
 }
 
 void	set_1_win(int x, int y)
@@ -34,6 +36,7 @@ void	set_1_win(int x, int y)
 	E_PAN[WIN_INFO] = NULL;
 	E_PAN[WIN_STATS] =NULL;
 	E_PAN[WIN_BOARD] = new_panel(E_WIN[WIN_BOARD]);
+	draw_grid(E_WIN[WIN_BOARD], COLUMNS, ROWS);
 }
 
 void	set_0_win(void)
@@ -68,5 +71,7 @@ void	manage_wins(void)
 		set_0_win();
 		printw("window is too small (min width = %d).", (x + 3));
 	}
-	wmove(E_WIN[WIN_BOARD], 4, 1);
+	wmove(E_WIN[WIN_BOARD], 4, 5);
+	update_panels();
+	doupdate();
 }

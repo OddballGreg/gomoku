@@ -12,13 +12,13 @@
 
 NAME = gomoku
 
-CFLAGS =	-Wno-deprecated-declarations -Wall -Wextra -Werror -g -Ofast
+CFLAGS =	-Wno-deprecated-declarations -Wall -Wextra -Werror -g -g3 -O3
 
 #LINUX
-#CFLAGS2 = 	-g -g3 -lpanel -lcurses -O3
+CFLAGS2 = 	-g -g3 -lpanel -lcurses -O3
 
 #MAC
-CFLAGS2 =	-framework OpenGL -framework GLUT -Wno-deprecated-declarations \
+#CFLAGS2 =	-framework OpenGL -framework GLUT -Wno-deprecated-declarations \
 			-g -Ofast -ltpanel -lcurses
 
 CC = gcc
@@ -27,10 +27,18 @@ INCLUDES_PATH = includes/
 
 SRCS_PATH = srcs/
 
-SRCS_NAME = main.c				\
+SRCS_NAME = ai.c					\
+			draw_grid.c				\
+			draw_win.c				\
+			exit_prog.c				\
 			heuristic.c				\
+			init.c					\
+			main.c					\
+			manage_ui.c				\
+			manage_wins.c			\
 			options.c				\
-			ai.c				\
+			validate_move.c			\
+			win_checks.c			\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
@@ -41,16 +49,17 @@ OBJS_NAME = $(SRCS_NAME:.c=.o)
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
 #uncomment these to work on Mac and comment to work on Linux.
-LIBRARY = -lmlx -L libft/ -lft -framework OpenGL -framework AppKit
+#LIBRARY = -lmlx -L libft/ -lft -framework OpenGL -framework AppKit
 
-INCLUDES = -I includes/ -I libft/includes
+#INCLUDES = -I includes/ -I libft/includes
 
 #uncomment these to work on Linux and comment to work on Mac.
 #LIBRARY = -L /usr/X11/lib -lmlx -lX11 -lm -lXext -L libft/ -lft
- 
+LIBRARY = -L libft/ -lft
 #INCLUDES = -I includes/ -I libft/includes -I /usr/X11/include
+INCLUDES = -I includes -I libft/includes
 
-HEADER = 	$(INCLUDES_PATH)gomoku.h		\
+HEADER = 	$(INCLUDES_PATH)gomoku.h	\
 
 all: qme odir $(NAME)
 
@@ -67,7 +76,7 @@ define colourecho2
 endef
 
 $(NAME): $(OBJS)
-	@Make -C libft
+#	@Make -C libft
 	@$(call colourecho, " - Making $(NAME)")
 	@clear
 	@$(CC) $(CFLAGS2) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
@@ -83,13 +92,13 @@ odir:
 	@mkdir -p $(OBJS_PATH)
 
 clean:
-	@Make clean -C libft
+#	@Make clean -C libft
 	@$(call colourecho, " - Clearing object files")
 	@rm -f $(OBJS)
 	@$(call colourecho, "clean done!")
 
 fclean: clean
-	@Make fclean -C libft
+#	@Make fclean -C libft
 	@$(call colourecho, "Clearing executable files")
 	@rm -f $(NAME)
 	@$(call colourecho, "fclean done")

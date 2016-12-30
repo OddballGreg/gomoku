@@ -33,11 +33,20 @@ void		dump_mem()
 	}
 }
 
+void		run_ncurses()
+{
+	init_curses();
+	manage_wins();
+	manage_ui();
+}
+
 int			main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
 	getopts();
+	ft_bzero(&env, sizeof(t_env));
 	init_ai();
+	run_ncurses();
 	dump_mem();
 }

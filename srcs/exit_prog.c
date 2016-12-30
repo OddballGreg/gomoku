@@ -3,6 +3,8 @@
 void    exit_prog(void)
 {
     endwin();
+    ft_putstr("Goodbye!\n");
+    exit(0);
 }
 
 void    error_quit(char *message)

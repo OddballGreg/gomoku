@@ -57,4 +57,6 @@ void    init_curses(void)
 	init_pair(2, COLOR_RED, COLOR_BLACK);
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);
 	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
+	E_W_BPOS.x = 1;
+	E_W_BPOS.y = 1;
 }

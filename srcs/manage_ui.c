@@ -33,6 +33,8 @@ void	manage_ui(void)
 			E_W_BPOS.y = (E_W_BPOS.y == ROWS - 1) ? 1 : E_W_BPOS.y + 1;
 		else if (buff == '\n' || buff == 32)
 			usermove();
+		else if (buff == 'e')
+			exit_prog();
 		get_boardxy(E_W_BPOS.x, E_W_BPOS.y, &E_W_SPOS.x, & E_W_SPOS.y);
 		wmove(E_WIN[WIN_BOARD], E_W_SPOS.y, E_W_SPOS.x);
 		update_panels();
