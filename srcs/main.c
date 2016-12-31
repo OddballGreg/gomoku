@@ -47,6 +47,7 @@ int			main(int argc, char **argv)
 	getopts();
 	ft_bzero(&env, sizeof(t_env));
 	init_ai();
+	init_signals();
+//	dump_mem();
 	run_ncurses();
-	dump_mem();
 }
