@@ -1,5 +1,10 @@
 #include "../includes/gomoku.h"
 
+/*
+** debug code:
+** printf("key pressed = %d (%c)\n", buff, (isprint(buff)) ? buff : ' ');
+*/
+
 void	draw_piece(t_coord move)
 {
 	t_coord		s_pos;
