@@ -31,12 +31,14 @@ SRCS_NAME = ai.c					\
 			draw_grid.c				\
 			draw_win.c				\
 			exit_prog.c				\
+			free.c					\
 			heuristic.c				\
 			init.c					\
 			main.c					\
 			manage_ui.c				\
 			manage_wins.c			\
 			options.c				\
+			signals.c				\
 			validate_move.c			\
 			win_checks.c			\
 

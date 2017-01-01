@@ -25,14 +25,15 @@
 #  include <string.h>
 # endif
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <panel.h>
-#include <ncurses.h>
-#include <stdio.h>
-#include <ctype.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <panel.h>
+# include <ncurses.h>
+# include <stdio.h>
+# include <ctype.h>
+# include <signal.h>
 
-#include "../libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 
 /*
 ** ----------\
@@ -210,13 +211,23 @@ void		draw_grid(WINDOW *win, int columns, int rows);
 /*
 ** draw_win.c
 */
-void    draw_win(int x, int colour, WINDOW *win, const char *title);
+void    	draw_win(int x, int colour, WINDOW *win, const char *title);
 
 /*
 ** exit_prog.c
 */
 void		exit_prog(void);
 void		error_quit(char *message);
+
+/*
+** free.c
+*/
+int			ft_free(void **var);
+
+/*
+** free_wins.c
+*/
+void		free_wins();
 
 /*
 ** heuristic.chars
@@ -230,22 +241,23 @@ void		heuristic(t_node *node);
 void		init_ai(void);
 void    	init_wins(void);
 void    	init_curses(void);
+void		init_signals(void);
 
 /*
 ** manage_ui.c
 */
-void	draw_piece(t_coord move);
-void	usermove(void);
-void	manage_ui(void);
+void		draw_piece(t_coord move);
+void		usermove(void);
+void		manage_ui(void);
 
 /*
 ** manage_wins.c
 */
-void	set_3_win(int x, int y);
-void	set_2_win(int x, int y);
-void	set_1_win(int x, int y);
-void	set_0_win(void);
-void	manage_wins(void);
+void		set_3_win(int x, int y);
+void		set_2_win(int x, int y);
+void		set_1_win(int x, int y);
+void		set_0_win(void);
+void		manage_wins(void);
 
 /*
 ** options.chars
@@ -253,17 +265,22 @@ void	manage_wins(void);
 void		getopts();
 
 /*
+** signals.c
+*/
+void		sig_handler(int signo);
+
+/*
 ** validate_move.c
 */
-int		valid_move(t_coord move);
+int			valid_move(t_coord move);
 
 /*
 ** win_checks.c
 */
-int		is_vline(int pos_x);
-int		is_plus(int pos_x, int	pos_y);
-void	get_boardcr(int colums, int rows, int *x, int *y);
-void	get_boardxy(int pos_x, int pos_y, int *x, int *y);
+int			is_vline(int pos_x);
+int			is_plus(int pos_x, int	pos_y);
+void		get_boardcr(int colums, int rows, int *x, int *y);
+void		get_boardxy(int pos_x, int pos_y, int *x, int *y);
 
 /*
 **                                /----------\                                **
