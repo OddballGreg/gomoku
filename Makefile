@@ -32,6 +32,7 @@ SRCS_NAME = ai.c					\
 			draw_win.c				\
 			exit_prog.c				\
 			free.c					\
+			free_wins.c				\
 			heuristic.c				\
 			init.c					\
 			main.c					\

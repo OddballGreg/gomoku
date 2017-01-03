@@ -227,7 +227,10 @@ int			ft_free(void **var);
 /*
 ** free_wins.c
 */
-void		free_wins();
+void		free_wins(void);
+void		clear_win(WINDOW *win, int width, int height);
+void		clear_all_wins(void);
+void		redraw_all_win(void);
 
 /*
 ** heuristic.chars

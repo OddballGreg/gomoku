@@ -60,3 +60,13 @@ void    init_curses(void)
 	E_W_BPOS.x = 1;
 	E_W_BPOS.y = 1;
 }
+
+void	init_signals(void)
+{
+	int		k;
+
+	k = 0;
+	while (++k < 32)
+		signal(k, sig_handler);
+	//signal(28, sig_handler);
+}
