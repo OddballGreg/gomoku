@@ -47,9 +47,18 @@
 #define EMPTY       0
 #define WHITE       1
 #define BLACK       2
+#define OFF			3
 
 #define WIN         1
 #define LOSE        2
+
+/*
+** AI
+*/
+# define I_VERT     0
+# define I_HOR		1
+# define I_YEX		2
+# define I_YENX		4
 
 /*
 ** Gameplay
@@ -235,7 +244,7 @@ void		redraw_all_win(void);
 /*
 ** heuristic.chars
 */
-int			hpair(t_node *node, int x, int y);
+void		hpair(t_node *node, char **strings);
 void		heuristic(t_node *node);
 
 /*

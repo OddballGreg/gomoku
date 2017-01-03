@@ -8,4 +8,5 @@ void	sig_handler(int signo)
 		redraw_all_win();
 	else if (signo == SIGKILL ||signo == SIGABRT || signo == SIGSTOP || signo == SIGQUIT)
 		exit_prog();
+//	mvprintw(1, 1, "Signal recieved: %d", signo);//debug
 }
