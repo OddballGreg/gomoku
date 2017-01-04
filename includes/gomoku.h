@@ -58,7 +58,7 @@
 # define I_VERT     0
 # define I_HOR		1
 # define I_YEX		2
-# define I_YENX		4
+# define I_YENX		3
 
 /*
 ** Gameplay
