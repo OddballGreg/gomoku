@@ -12,11 +12,12 @@ void	draw_piece(t_coord move)
 	get_boardxy(move.x, move.y, &s_pos.x, &s_pos.y);
 	mvwaddch(E_WIN[WIN_BOARD], s_pos.y, s_pos.x, (++E_DEPTH & 0b1) ?
 		P1_PIECE : P2_PIECE);
+	E_BOARD[move.x][move.y] = (E_DEPTH & 0b1) + 1;
 }
 
 void	usermove(void)
 {
-	if (!valid_move(E_W_BPOS))
+	if (valid_move(E_W_BPOS) < 1)
 		return ;
 	draw_piece(E_W_BPOS);
 	//Inform AI of users move.
@@ -31,7 +32,7 @@ void	manage_ui(void)
 		if (buff == 'd' || buff == 'C')
 			E_W_BPOS.x = (E_W_BPOS.x == COLUMNS - 1) ? 1 : E_W_BPOS.x + 1;
 		else if (buff == 'a' || buff == 'D')
-			E_W_BPOS.x = (E_W_BPOS.x == 1) ? COLUMNS - 1 : E_W_BPOS.x -1;
+			E_W_BPOS.x = (E_W_BPOS.x == 1) ? COLUMNS - 1 : E_W_BPOS.x - 1;
 		else if (buff == 'w' || buff == 'A')
 			E_W_BPOS.y = (E_W_BPOS.y == 1) ? ROWS - 1 : E_W_BPOS.y - 1;
 		else if (buff == 's' || buff == 'B')
