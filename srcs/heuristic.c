@@ -17,16 +17,16 @@ void		h_pair(t_node *node, char **strings)
 		if (piece == BLACK)
 		{
 			if (strings[i][3] == piece)
-				value += 2;
+				value += W_PAIR;
 			if (strings[i][5] == piece)
-				value += 2;
+				value += W_PAIR;
 		}
 		else if (piece == WHITE)
 		{
 			if (strings[i][3] == piece)
-				value -= 2;
+				value -= W_PAIR;
 			if (strings[i][5] == piece)
-				value -= 2;
+				value -= W_PAIR;
 		}
 	}
 	node->minmax += value;
@@ -50,16 +50,16 @@ void		h_quad(t_node *node, char **strings)
 		if (piece == BLACK)
 		{
 			if (strings[i][3] == piece && strings[i][2] == piece && strings[i][1] == piece)
-				value += 4;
+				value += W_QUAD;
 			if (strings[i][5] == piece && strings[i][6] == piece && strings[i][7] == piece)
-				value += 4;
+				value += W_QUAD;
 		}
 		else if (piece == WHITE)
 		{
 			if (strings[i][3] == piece && strings[i][2] == piece && strings[i][1] == piece)
-				value -= 4;
+				value -= W_QUAD;
 			if (strings[i][5] == piece && strings[i][6] == piece && strings[i][7] == piece)
-				value -= 4;
+				value -= W_QUAD;
 		}
 	}
 	node->minmax += value;
@@ -84,13 +84,13 @@ void		h_five(t_node *node, char **strings)
 		{
 			if (strings[i][3] == piece && strings[i][2] == piece && strings[i][1] == piece && strings[i][0] == piece)
 			{
-				value += 10;
+				value += W_FIVE;
 				node->gameover = WIN;
 			}
 			if (strings[i][5] == piece && strings[i][6] == piece && strings[i][7] == piece && strings[i][8] == piece)
 			{
 				node->gameover = WIN;
-				value += 10;
+				value += W_FIVE;
 			}
 		}
 		else if (piece == WHITE)
@@ -98,12 +98,12 @@ void		h_five(t_node *node, char **strings)
 			if (strings[i][3] == piece && strings[i][2] == piece && strings[i][1] == piece && strings[i][0] == piece)
 			{
 				node->gameover = LOSE;
-				value -= 10;
+				value -= W_FIVE;
 			}
 			if (strings[i][5] == piece && strings[i][6] == piece && strings[i][7] == piece && strings[i][8] == piece)
 			{
 				node->gameover = LOSE;
-				value -= 10;
+				value -= W_FIVE;
 			}
 		}
 	}

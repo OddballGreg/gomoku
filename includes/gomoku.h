@@ -32,6 +32,7 @@
 # include <stdio.h>
 # include <ctype.h>
 # include <signal.h>
+# include <time.h>
 
 # include "../libft/includes/libft.h"
 
@@ -53,12 +54,24 @@
 # define LOSE        2
 
 /*
-** AI
+** Pattern Recognition String Offsets
 */
 # define I_VERT     0
 # define I_HOR		1
 # define I_YEX		2
 # define I_YENX		3
+
+/*
+** Node
+*/
+# define NODE_MAX	2000 
+
+/*
+** Weightings
+*/
+# define W_PAIR		2
+# define W_QUAD		4
+# define W_FIVE		10
 
 /*
 ** Gameplay
@@ -129,8 +142,11 @@ typedef struct	s_node
 
 typedef struct	s_ai
 {
-	t_node		nodes[2000];
-	int			id_count;
+	t_node		nodes[NODE_MAX];
+	int			lxb; //Board Bounds
+	int			lyb;
+	int			uxb;
+	int			uyb;
 }				t_ai;
 
 typedef struct	s_game

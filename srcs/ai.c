@@ -30,6 +30,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 	t_node	new;
 	char	save;
 	int		c;
+	int		i;
 
 	save = 1;
 	new.parentid = parentid;
@@ -40,13 +41,13 @@ t_node		make_node(int parentid, t_coord piece_played)
 	{
 		copy_map(AI.nodes[parentid].board, new.board); //copy board from parent
 		new.depth = AI.nodes[parentid].depth + 1;
+		place_piece(&new, piece_played); //Place nodes new piece on board from parent
 	}
 	else
 	{
 		copy_map(GAME.board, new.board); //copy board from game
-		new.depth = 0;
+		new.depth = 1;
 	}
-	place_piece(&new, piece_played); //Place nodes new piece on board from parent
 
 	heuristic(&new); //Generate heuristic value of nodes board state
 	c = -1;
@@ -60,19 +61,19 @@ t_node		make_node(int parentid, t_coord piece_played)
 			printf("\nNot Pruned"); // DEBUG
 			AI.nodes[parentid].child[c] = AI.id_count; //Give offset to parent
 			AI.nodes[parentid].branchweight += new.minmax; //Add to parents branchweight from own minmax NB: Currently only passes weight up to immediate parent
-			AI.nodes[AI.id_count] = new; //DETERMINE EMPTY SPACE, Insert self rather than use id_count
-			AI.id_count++;
+			i = 0;
+			while (i < NODE_MAX && AI.nodes[i].depth != 0) //Find empty node in nodes list
+				i++;
+			if (i < NODE_MAX) //Prevent assigning more nodes than we can handle.
+				AI.nodes[i] = new; //Assign node to list
 		}
 		else // DEBUG
 			printf("\nPruned");
 	}
 	else
-	{
-		AI.nodes[AI.id_count] = new; //DETERMINE EMPTY SPACE, Insert self rather than use id_count
-		AI.id_count++;
-	}
+		AI.nodes[0] = new;
 
-	//Debug: Prints the node infor;
+	//Debug: Prints the node information;
 	int x;
 	int y;
 	printf("\nID: %i\tPID: %i\tDEPTH: %i\tMM: %i\tBW: %i\n", AI.id_count, new.parentid,  new.depth, new.minmax, new.branchweight);
@@ -88,4 +89,54 @@ t_node		make_node(int parentid, t_coord piece_played)
 	//End Debug 
 
 	return (new);
+}
+
+void			gen_children(int i)
+{
+	t_coords	place;
+
+	place.x = AI.lxb - 1;
+	while (++place.x < AI.uxb)
+	{
+		place.y = AI.lyb;
+		while (++place.y < AI.uyb)
+			make_node(i, place);
+	}
+}
+
+t_coord			prompt_ai(t_coord op_move)
+{
+	time_t		now;
+	int			i;
+	int			j;
+	t_coords	new;
+	t_node		*temp;
+
+
+	//start timer
+	now = clock(0) / CLOCKS_PER_SEC; 
+	// find/generate node related to opponent move
+	i = -1;
+	while (i < NODE_MAX && AI.nodes[i].piece_played.x != op_move.x && AI.nodes[i].piece_played.y != op_move.y)
+		i++;
+	j = i;
+	if (i == NODE_MAX)
+	{
+		ft_bzero(AI.nodes, NODE_MAX);
+		j = 0;
+		make_node(-1, new);
+	}
+	// begin checking potential moves according to boundaries, check timer against current time with each node if 0.45 seconds elapse, return best move
+	while (j < NODE_MAX && (now - clock(0)) / CLOCKS_PER_SEC < 0.475 )
+		gen_children(j++);
+	// return best move
+	j = -1;
+	temp = &AI.nodes[AI.nodes[i].child[0]];
+	while (AI.nodes[i].child[++j] != -1)
+	{
+		if (temp.minmax < AI.nodes[AI.nodes[i].child[j]].minmax)
+		temp = &AI.nodes[AI.nodes[i].child[j]];
+	}
+	return (temp.piece_played);
+
 }

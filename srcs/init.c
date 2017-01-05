@@ -1,7 +1,7 @@
 #include "../includes/gomoku.h"
 
 void	init_ai(void)
-{
+{	
 	t_coord initial;
 
 	AI.id_count = 0;
@@ -13,6 +13,7 @@ void	init_ai(void)
 		while(++y < NTILES)
 			GAME.board[x][y] = EMPTY;
 	}
+
 
 	// final code will not create ai nodes in init function
 	initial.x = 7;
