@@ -36,7 +36,7 @@ void	manage_ui(void)
 			E_W_BPOS.y = (E_W_BPOS.y == 1) ? ROWS - 1 : E_W_BPOS.y - 1;
 		else if (buff == 's' || buff == 'B')
 			E_W_BPOS.y = (E_W_BPOS.y == ROWS - 1) ? 1 : E_W_BPOS.y + 1;
-		else if (buff == '\n' || buff == 32)
+		else if (buff == '\n' || buff == ' ')
 			usermove();
 		else if (buff == 'e')
 			exit_prog();
