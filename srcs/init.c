@@ -68,5 +68,4 @@ void	init_signals(void)
 	k = 0;
 	while (++k < 32)
 		signal(k, sig_handler);
-	//signal(28, sig_handler);
 }

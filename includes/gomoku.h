@@ -101,6 +101,8 @@
 # define E_BOARD  env.game.board
 # define E_DEPTH  env.game.depth
 
+# define SIG_R(X) (signo == X )
+
 /*
 ** ----------\
 ** Structures |
