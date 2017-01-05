@@ -35,20 +35,20 @@ t_node		make_node(int parentid, t_coord piece_played)
 	new.parentid = parentid;
 	c = -1;
 	while (++c < 255)
-		new.child[c] = -1;
+		new.child[c] = -1; //Initializing children to -1;
 	if (parentid != -1)
 	{
-		copy_map(AI.nodes[parentid].board, new.board);
+		copy_map(AI.nodes[parentid].board, new.board); //copy board from parent
 		new.depth = AI.nodes[parentid].depth + 1;
 	}
 	else
 	{
-		copy_map(GAME.board, new.board);
+		copy_map(GAME.board, new.board); //copy board from game
 		new.depth = 0;
 	}
-	place_piece(&new, piece_played);
+	place_piece(&new, piece_played); //Place nodes new piece on board from parent
 
-	heuristic(&new);
+	heuristic(&new); //Generate heuristic value of nodes board state
 	c = -1;
 	if (parentid != -1) //Has parent
 	{
@@ -58,9 +58,9 @@ t_node		make_node(int parentid, t_coord piece_played)
 		if (save == 1) //If unpruned, save child to parent
 		{
 			printf("\nNot Pruned"); // DEBUG
-			AI.nodes[parentid].child[c] = AI.id_count;
+			AI.nodes[parentid].child[c] = AI.id_count; //Give offset to parent
 			AI.nodes[parentid].branchweight += new.minmax;
-			AI.nodes[AI.id_count] = new;
+			AI.nodes[AI.id_count] = new; //DETERMINE EMPTY SPACE, Insert self rather than use id_count
 			AI.id_count++;
 		}
 		else // DEBUG
@@ -68,7 +68,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 	}
 	else
 	{
-		AI.nodes[AI.id_count] = new;
+		AI.nodes[AI.id_count] = new; //DETERMINE EMPTY SPACE, Insert self rather than use id_count
 		AI.id_count++;
 	}
 

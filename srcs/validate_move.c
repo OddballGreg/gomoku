@@ -8,5 +8,6 @@ int		valid_move(t_coord move)
 		return (0);
 	//Need to account for double threes, and game ended.
 	//Also needs to check if it is the user's turn.
+	//Check for captures.
 	return (1);
 }

@@ -116,6 +116,7 @@ void		h_run(t_node *node, char **strings)
 	printf("Running Heuristics\n");
 	h_pair(node, strings);
 	h_quad(node, strings);
+	h_five(node, strings);
 	//run additional heuristic functions here
 	printf("Heuristics Completed\n");
 }
