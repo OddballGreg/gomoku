@@ -20,7 +20,7 @@ void	usermove(void)
 	if (valid_move(E_W_BPOS) < 1)
 		return ;
 	draw_piece(E_W_BPOS);
-	//Inform AI of users move.
+	//Inform AI of users move. Prompt Ai to move returns xy of AI move
 }
 
 void	manage_ui(void)

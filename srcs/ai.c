@@ -59,7 +59,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 		{
 			printf("\nNot Pruned"); // DEBUG
 			AI.nodes[parentid].child[c] = AI.id_count; //Give offset to parent
-			AI.nodes[parentid].branchweight += new.minmax;
+			AI.nodes[parentid].branchweight += new.minmax; //Add to parents branchweight from own minmax NB: Currently only passes weight up to immediate parent
 			AI.nodes[AI.id_count] = new; //DETERMINE EMPTY SPACE, Insert self rather than use id_count
 			AI.id_count++;
 		}
