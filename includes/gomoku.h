@@ -44,13 +44,13 @@
 /*
 ** Board
 */
-#define EMPTY       0
-#define WHITE       1
-#define BLACK       2
-#define OFF			3
+# define EMPTY       0
+# define WHITE       1
+# define BLACK       2
+# define OFF			3
 
-#define WIN         1
-#define LOSE        2
+# define WIN         1
+# define LOSE        2
 
 /*
 ** AI

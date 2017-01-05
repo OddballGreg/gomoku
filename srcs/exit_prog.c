@@ -4,6 +4,7 @@ void    exit_prog(void)
 {
     endwin();
     ft_putstr("Goodbye!\n");
+    free_wins();
     exit(0);
 }
 
