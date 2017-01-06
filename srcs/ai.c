@@ -2,8 +2,8 @@
 
 void		copy_map(char source[NTILES][NTILES], char dest[NTILES][NTILES])
 {
-	int		x;
-	int		y;
+	int			x;
+	int			y;
 
 	x = -1;
 	while(++x < NTILES)
@@ -27,10 +27,10 @@ void		place_piece(t_node *node, t_coord piece_played)
 
 t_node		make_node(int parentid, t_coord piece_played)
 {
-	t_node	new;
-	char	save;
-	int		c;
-	int		i;
+	t_node		new;
+	char		save;
+	int			c;
+	int			i;
 
 	save = 1;
 	new.parentid = parentid;
@@ -93,7 +93,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 
 void			gen_children(int i)
 {
-	t_coords	place;
+	t_coord		place;
 
 	place.x = AI.lxb - 1;
 	while (++place.x < AI.uxb)
@@ -109,7 +109,7 @@ t_coord			prompt_ai(t_coord op_move)
 	time_t		now;
 	int			i;
 	int			j;
-	t_coords	new;
+	t_coord		new;
 	t_node		*temp;
 
 
