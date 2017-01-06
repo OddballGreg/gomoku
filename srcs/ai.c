@@ -101,10 +101,10 @@ void			gen_children(int i)
 	t_coord		place;
 
 	printf("Generating Children\n");
-	place.x = AI.lxb - 1;
+	place.x = (AI.lxb < 1) ? 0 : AI.lxb - 1;
 	while (++place.x < AI.uxb)
 	{
-		place.y = AI.lyb;
+		place.y = (AI.lyb < 1) ? 0 : AI.lyb - 1;
 		while (++place.y < AI.uyb)
 			make_node(i, place);
 	}
