@@ -117,52 +117,52 @@ void		rm_captures(t_node *node, int x, int y, int i, int dir)
 	{
 		if (dir == 0)
 		{
-			node.board[x - 1][y] = EMPTY;
-			node.board[x - 2][y] = EMPTY;
+			node->board[x - 1][y] = EMPTY;
+			node->board[x - 2][y] = EMPTY;
 		}
 		else if (dir == 1)
 		{
-			node.board[x + 1][y] = EMPTY;
-			node.board[x + 2][y] = EMPTY;
+			node->board[x + 1][y] = EMPTY;
+			node->board[x + 2][y] = EMPTY;
 		}
 	}
-	else if (i = I_HOR)
+	else if (i == I_HOR)
 	{
 		if (dir == 0)
 		{
-			node.board[x][y - 1] = EMPTY;
-			node.board[x][y - 2] = EMPTY;
+			node->board[x][y - 1] = EMPTY;
+			node->board[x][y - 2] = EMPTY;
 		}
 		else if (dir == 1)
 		{
-			node.board[x][y + 1] = EMPTY;
-			node.board[x][y + 2] = EMPTY;
+			node->board[x][y + 1] = EMPTY;
+			node->board[x][y + 2] = EMPTY;
 		}
 	}
-	else if (i = I_YEX)
+	else if (i == I_YEX)
 	{
 		if (dir == 0)
 		{
-			node.board[x - 1][y - 1] = EMPTY;
-			node.board[x - 2][y - 2] = EMPTY;
+			node->board[x - 1][y - 1] = EMPTY;
+			node->board[x - 2][y - 2] = EMPTY;
 		}
 		else if (dir == 1)
 		{
-			node.board[x + 1][y + 1] = EMPTY;
-			node.board[x + 2][y + 2] = EMPTY;
+			node->board[x + 1][y + 1] = EMPTY;
+			node->board[x + 2][y + 2] = EMPTY;
 		}
 	}
-	else if (i = I_YENX)
+	else if (i == I_YENX)
 	{
 		if (dir == 0)
 		{
-			node.board[x - 1][y + 1] = EMPTY;
-			node.board[x - 2][y + 2] = EMPTY;
+			node->board[x - 1][y + 1] = EMPTY;
+			node->board[x - 2][y + 2] = EMPTY;
 		}
 		else if (dir == 1)
 		{
-			node.board[x + 1][y - 1] = EMPTY;
-			node.board[x + 2][y + 2] = EMPTY;
+			node->board[x + 1][y - 1] = EMPTY;
+			node->board[x + 2][y + 2] = EMPTY;
 		}
 	}
 }
