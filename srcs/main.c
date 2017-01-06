@@ -19,7 +19,7 @@ void		dump_mem()
 
 	i = -1;
 	ft_putstr("\n");
-	while (++i < AI.id_count)
+	while (AI.nodes[i].depth > 0)
 	{
 		ft_putstr("ID: ");
 		ft_putnbr(i);

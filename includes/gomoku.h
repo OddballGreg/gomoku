@@ -133,6 +133,7 @@ typedef struct	s_node
 	int			depth;
 	int			minmax;
 	int			branchweight;
+	int			captures;
 	int			gameover;
 	char		board[NTILES][NTILES];
 	t_coord		piece_played;

@@ -42,11 +42,13 @@ t_node		make_node(int parentid, t_coord piece_played)
 		copy_map(AI.nodes[parentid].board, new.board); //copy board from parent
 		new.depth = AI.nodes[parentid].depth + 1;
 		place_piece(&new, piece_played); //Place nodes new piece on board from parent
+		new.captures = AI.nodes[parentid].captures;
 	}
 	else
 	{
 		copy_map(GAME.board, new.board); //copy board from game
 		new.depth = 1;
+		new.captures = 0;
 	}
 
 	heuristic(&new); //Generate heuristic value of nodes board state
