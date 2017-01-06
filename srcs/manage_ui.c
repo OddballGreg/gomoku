@@ -15,12 +15,22 @@ void	draw_piece(t_coord move)
 	E_BOARD[move.x][move.y] = (E_DEPTH & 0b1) + 1;
 }
 
+void	init_boarders(void)
+{
+	AI.lxb = (E_W_BPOS.x < 6) ? 1 : E_W_BPOS.x - 5;
+	AI.lyb = (E_W_BPOS.y < 6) ? 1 : E_W_BPOS.y;
+	AI.uxb = (E_W_BPOS.x > 14) ? 19 : E_W_BPOS.x + 5;
+	AI.uyb = (E_W_BPOS.y > 14) ? 19 : E_W_BPOS.y + 5;
+}
+
 void	usermove(void)
 {
 	if (valid_move(E_W_BPOS) < 1)
 		return ;
 	draw_piece(E_W_BPOS);
 	//Inform AI of users move. Prompt Ai to move returns xy of AI move
+	//if (E_DEPTH < 1)
+		init_boarders();
 	draw_piece(prompt_ai(E_W_BPOS));
 }
 
