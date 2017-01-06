@@ -18,23 +18,7 @@ void	init_ai(void)
 	initial.x = 7;
 	initial.y = 7;
 	
-	make_node(-1, initial);
- // debug
-	initial.x = 6;
-	initial.y = 7;
-	make_node(0, initial);
-
-	initial.x = 5;
-	initial.y = 6;
-	make_node(0, initial);
-
-	initial.x = 6;
-	initial.y = 6;
-	make_node(1, initial);
-
-	initial.x = 8;
-	initial.y = 7;
-	make_node(2, initial);
+	prompt_ai(initial);
 }
 
 void    init_wins(void)

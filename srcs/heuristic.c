@@ -113,6 +113,7 @@ void		h_five(t_node *node, char **strings)
 
 void		rm_captures(t_node *node, int x, int y, int i, int dir)
 {
+	printf("Removing Captured Pieces\n");
 	if (i == I_VERT)
 	{
 		if (dir == 0)
@@ -165,6 +166,7 @@ void		rm_captures(t_node *node, int x, int y, int i, int dir)
 			node->board[x + 2][y + 2] = EMPTY;
 		}
 	}
+	printf("Captured Pieces Removed\n");
 }
 
 void		h_captures(t_node *node, char **strings, int x, int y)
