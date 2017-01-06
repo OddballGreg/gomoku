@@ -26,6 +26,8 @@ void	draw_info(void)
 
 void	draw_stats(void)
 {
+	if (!E_WIN[WIN_STATS])
+		return ;
 	mvwprintw(E_WIN[WIN_STATS], 3, 1, "TURN: %s", (E_DEPTH & 0b1) ? "P2" : "P1");
 	mvwprintw(E_WIN[WIN_STATS], 4, 1, "MOVE: %d", (E_DEPTH + 1) >> 1);
 }
