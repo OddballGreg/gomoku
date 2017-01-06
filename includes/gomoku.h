@@ -300,6 +300,11 @@ void		getopts();
 void		sig_handler(int signo);
 
 /*
+** ui_info.c
+*/
+void		draw_info(void);
+
+/*
 ** validate_move.c
 */
 int			valid_move(t_coord move);

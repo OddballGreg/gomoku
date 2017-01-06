@@ -40,6 +40,7 @@ SRCS_NAME = ai.c					\
 			manage_wins.c			\
 			options.c				\
 			signals.c				\
+			ui_info.c				\
 			validate_move.c			\
 			win_checks.c			\
 

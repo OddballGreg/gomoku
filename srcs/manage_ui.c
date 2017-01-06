@@ -42,6 +42,7 @@ void	manage_ui(void)
 		else if (buff == 'e')
 			exit_prog();
 		get_boardxy(E_W_BPOS.x, E_W_BPOS.y, &E_W_SPOS.x, & E_W_SPOS.y);
+//		draw_info();
 		wmove(E_WIN[WIN_BOARD], E_W_SPOS.y, E_W_SPOS.x);
 		update_panels();
 		doupdate();
