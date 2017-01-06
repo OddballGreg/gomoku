@@ -114,7 +114,7 @@ t_coord			prompt_ai(t_coord op_move)
 
 
 	//start timer
-	now = clock(0) / CLOCKS_PER_SEC; 
+	now = clock() / CLOCKS_PER_SEC; 
 	// find/generate node related to opponent move
 	i = -1;
 	while (i < NODE_MAX && AI.nodes[i].piece_played.x != op_move.x && AI.nodes[i].piece_played.y != op_move.y)
@@ -127,16 +127,16 @@ t_coord			prompt_ai(t_coord op_move)
 		make_node(-1, new);
 	}
 	// begin checking potential moves according to boundaries, check timer against current time with each node if 0.45 seconds elapse, return best move
-	while (j < NODE_MAX && (now - clock(0)) / CLOCKS_PER_SEC < 0.475 )
+	while (j < NODE_MAX && (now - clock()) / CLOCKS_PER_SEC < 0.475 )
 		gen_children(j++);
 	// return best move
 	j = -1;
 	temp = &AI.nodes[AI.nodes[i].child[0]];
 	while (AI.nodes[i].child[++j] != -1)
 	{
-		if (temp.minmax < AI.nodes[AI.nodes[i].child[j]].minmax)
+		if (temp->minmax < AI.nodes[AI.nodes[i].child[j]].minmax)
 		temp = &AI.nodes[AI.nodes[i].child[j]];
 	}
-	return (temp.piece_played);
+	return (temp->piece_played);
 
 }
