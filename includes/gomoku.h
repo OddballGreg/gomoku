@@ -72,6 +72,7 @@
 # define W_PAIR		2
 # define W_QUAD		4
 # define W_FIVE		10
+# define W_CAP		25
 
 /*
 ** Gameplay

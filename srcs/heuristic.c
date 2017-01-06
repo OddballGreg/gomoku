@@ -111,22 +111,137 @@ void		h_five(t_node *node, char **strings)
 	printf("Fives Detected\n");
 }
 
-void		h_run(t_node *node, char **strings)
+void		rm_captures(t_node *node, int x, int y, int i, int dir)
+{
+	if (i == I_VERT)
+	{
+		if (dir == 0)
+		{
+			node.board[x - 1][y] = EMPTY;
+			node.board[x - 2][y] = EMPTY;
+		}
+		else if (dir == 1)
+		{
+			node.board[x + 1][y] = EMPTY;
+			node.board[x + 2][y] = EMPTY;
+		}
+	}
+	else if (i = I_HOR)
+	{
+		if (dir == 0)
+		{
+			node.board[x][y - 1] = EMPTY;
+			node.board[x][y - 2] = EMPTY;
+		}
+		else if (dir == 1)
+		{
+			node.board[x][y + 1] = EMPTY;
+			node.board[x][y + 2] = EMPTY;
+		}
+	}
+	else if (i = I_YEX)
+	{
+		if (dir == 0)
+		{
+			node.board[x - 1][y - 1] = EMPTY;
+			node.board[x - 2][y - 2] = EMPTY;
+		}
+		else if (dir == 1)
+		{
+			node.board[x + 1][y + 1] = EMPTY;
+			node.board[x + 2][y + 2] = EMPTY;
+		}
+	}
+	else if (i = I_YENX)
+	{
+		if (dir == 0)
+		{
+			node.board[x - 1][y + 1] = EMPTY;
+			node.board[x - 2][y + 2] = EMPTY;
+		}
+		else if (dir == 1)
+		{
+			node.board[x + 1][y - 1] = EMPTY;
+			node.board[x + 2][y + 2] = EMPTY;
+		}
+	}
+}
+
+void		h_captures(t_node *node, char **strings, int x, int y)
+{
+	int		value;
+	int		i;
+	char	piece;
+
+	printf("Detecting Captures\n");
+	value = 0;
+	i = -1;
+	piece = strings[I_VERT][4];
+	printf("Set Focal Point\n");
+	while (++i < 4)
+	{
+		printf("I = %i\n", i);
+		if (piece == BLACK)
+		{
+			if (strings[i][3] == WHITE && strings[i][2] == WHITE && strings[i][1] == BLACK)
+			{
+				value += W_CAP;
+				node->captures += 1;
+				if (node->captures == 5)
+					node->gameover = WIN;
+				rm_captures(node, x, y, i, 0);
+
+			}
+			if (strings[i][5] == WHITE && strings[i][6] == WHITE && strings[i][7] == BLACK)
+			{
+				value += W_CAP;
+				node->captures += 1;
+				if (node->captures == 5)
+					node->gameover = WIN;
+				rm_captures(node, x, y, i, 1);
+			}
+		}
+		else if (piece == WHITE)
+		{
+			if (strings[i][3] == BLACK && strings[i][2] == BLACK && strings[i][1] == WHITE)
+			{
+				value -= W_CAP;
+				node->captures += 1;
+				if (node->captures == 5)
+					node->gameover = LOSE;
+				rm_captures(node, x, y, i, 0);
+			}
+			if (strings[i][5] == BLACK && strings[i][6] == BLACK && strings[i][7] == WHITE)
+			{
+				value -= W_CAP;
+				node->captures += 1;
+				if (node->captures == 5)
+					node->gameover = LOSE;
+				rm_captures(node, x, y, i, 1);
+			}
+		}
+	}
+	node->minmax += value;
+	printf("Fives Detected\n");
+}
+
+void		h_run(t_node *node, char **strings, int x, int y)
 {
 	printf("Running Heuristics\n");
 	h_pair(node, strings);
 	h_quad(node, strings);
 	h_five(node, strings);
+	h_captures(node, strings, x, y);
 	//run additional heuristic functions here
 	printf("Heuristics Completed\n");
 }
 
-char		*gen_vert(t_node *node, int x, int y)
+char		*gen_hor(t_node *node, int x, int y)
 {
 	char 	*string;
 	int		i;
 	int		ix;
-	printf("Generting Vert\n");
+	printf("Generting hor\n");
 	i = -1;
 	string = malloc(sizeof(char) * 10);
 	ix = x - 4;
@@ -147,12 +262,12 @@ char		*gen_vert(t_node *node, int x, int y)
 	return(string);
 }
 
-char		*gen_hor(t_node *node, int x, int y)
+char		*gen_vert(t_node *node, int x, int y)
 {
 	char 	*string;
 	int		i;
 	int		iy;
-	printf("Generting Hor\n");
+	printf("Generting vert\n");
 	i = -1;
 	string = malloc(sizeof(char) * 10);
 	iy = y - 4;
@@ -242,7 +357,7 @@ void		h_prep(t_node *node, int x, int y)
 	strings[I_HOR] = gen_hor(node, x, y);
 	strings[I_YEX] = gen_yex(node, x, y);
 	strings[I_YENX] = gen_yenx(node, x, y);
-	h_run(node, strings);
+	h_run(node, strings, x, y);
 	i = -1;
 	while (++i < 4)
 		free(strings[i]);
