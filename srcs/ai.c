@@ -59,13 +59,15 @@ t_node		make_node(int parentid, t_coord piece_played)
 		if (save == 1) //If unpruned, save child to parent
 		{
 			printf("\nNot Pruned"); // DEBUG
-			AI.nodes[parentid].child[c] = AI.id_count; //Give offset to parent
-			AI.nodes[parentid].branchweight += new.minmax; //Add to parents branchweight from own minmax NB: Currently only passes weight up to immediate parent
 			i = 0;
 			while (i < NODE_MAX && AI.nodes[i].depth != 0) //Find empty node in nodes list
 				i++;
 			if (i < NODE_MAX) //Prevent assigning more nodes than we can handle.
+			{
 				AI.nodes[i] = new; //Assign node to list
+				AI.nodes[parentid].child[c] = i; //Give offset to parent
+				AI.nodes[parentid].branchweight += new.minmax; //Add to parents branchweight from own minmax NB: Currently only passes weight up to immediate parent
+			}
 		}
 		else // DEBUG
 			printf("\nPruned");
@@ -73,10 +75,10 @@ t_node		make_node(int parentid, t_coord piece_played)
 	else
 		AI.nodes[0] = new;
 
-	//Debug: Prints the node information;
+	/*//Debug: Prints the node information;
 	int x;
 	int y;
-	printf("\nID: %i\tPID: %i\tDEPTH: %i\tMM: %i\tBW: %i\n", AI.id_count, new.parentid,  new.depth, new.minmax, new.branchweight);
+	printf("\nID: %i\tPID: %i\tDEPTH: %i\tMM: %i\tBW: %i\n", i, new.parentid,  new.depth, new.minmax, new.branchweight);
 	ft_putendl("Board:");
 	x = -1;
 	while(++x < NTILES)
@@ -86,14 +88,14 @@ t_node		make_node(int parentid, t_coord piece_played)
 			ft_putnbr(new.board[x][y]);
 		ft_putendl("");
 	}
-	//End Debug 
+	//End Debug */
 
 	return (new);
 }
 
 void			gen_children(int i)
 {
-	t_coords	place;
+	t_coord		place;
 
 	place.x = AI.lxb - 1;
 	while (++place.x < AI.uxb)
@@ -129,7 +131,7 @@ t_coord			prompt_ai(t_coord op_move)
 	// begin checking potential moves according to boundaries, check timer against current time with each node if 0.45 seconds elapse, return best move
 	while (j < NODE_MAX && (now - clock(0)) / CLOCKS_PER_SEC < 0.475 )
 		gen_children(j++);
-	// return best move
+	// determine and return best move
 	j = -1;
 	temp = &AI.nodes[AI.nodes[i].child[0]];
 	while (AI.nodes[i].child[++j] != -1)
