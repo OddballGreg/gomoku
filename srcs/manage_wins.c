@@ -51,26 +51,26 @@ void	set_0_win(void)
 
 void	manage_wins(void)
 {
-	int		x;
-	int		y;
-
-	get_boardcr(COLUMNS, ROWS, &x, &y);
-	if (y + 3 > LINES)
+	if (BOARD_HEI + 3 > LINES)
 	{
 		set_0_win();
-		printw("window is too small (min height = %d).", (y + 4));
+		printw("window is too small (min height = %d).", (BOARD_HEI + 4));
 	}
-	else if (x + 5 + STAT_X + INFO_X < COLS)
-		set_3_win(x, y);
-	else if (x + 3 + STAT_X < COLS)
-		set_2_win(x, y);
-	else if (x + 2 < COLS)
-		set_1_win(x, y);
+	else if (BOARD_WID + 5 + STAT_X + INFO_X < COLS)
+		set_3_win(BOARD_WID,BOARD_HEI);
+	else if (BOARD_WID + 3 + STAT_X < COLS)
+		set_2_win(BOARD_WID, BOARD_HEI);
+	else if (BOARD_WID + 2 < COLS)
+		set_1_win(BOARD_WID, BOARD_HEI);
 	else
 	{
 		set_0_win();
-		printw("window is too small (min width = %d).", (x + 3));
+		printw("window is too small (min width = %d).", (BOARD_WID + 3));
 	}
+	if (E_WIN[WIN_INFO])
+		draw_info();
+	if (E_WIN[WIN_STATS])
+		draw_stats();
 	wmove(E_WIN[WIN_BOARD], 4, 5);
 	update_panels();
 	doupdate();

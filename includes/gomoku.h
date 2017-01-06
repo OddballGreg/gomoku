@@ -93,6 +93,9 @@
 # define WIN_STATS  1
 # define WIN_INFO   2
 
+# define BOARD_WID	env.win.board_size.x
+# define BOARD_HEI	env.win.board_size.y
+
 /*
 ** Game Mode
 */
@@ -165,6 +168,7 @@ typedef struct	s_window
 	PANEL		*panel[3];
 	t_coord		bpos;
 	t_coord		spos;
+	t_coord		board_size;
 }				t_window;
 
 typedef struct	s_env
@@ -304,6 +308,7 @@ void		sig_handler(int signo);
 ** ui_info.c
 */
 void		draw_info(void);
+void		draw_stats(void);
 
 /*
 ** validate_move.c
