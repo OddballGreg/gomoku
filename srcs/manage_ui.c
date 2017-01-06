@@ -21,6 +21,7 @@ void	usermove(void)
 		return ;
 	draw_piece(E_W_BPOS);
 	//Inform AI of users move. Prompt Ai to move returns xy of AI move
+	draw_piece(prompt_ai(E_W_BPOS));
 }
 
 void	manage_ui(void)

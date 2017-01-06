@@ -235,6 +235,7 @@ typedef struct		s_p_list
 void		copy_map(char source[NTILES][NTILES], char dest[NTILES][NTILES]);
 void		place_piece(t_node *node, t_coord piece_played);
 t_node		make_node(int parentid, t_coord piece_played);
+t_coord		prompt_ai(t_coord op_move);
 
 /*
 ** draw_grid.c
