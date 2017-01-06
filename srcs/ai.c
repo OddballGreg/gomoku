@@ -126,6 +126,7 @@ t_coord			prompt_ai(t_coord op_move)
 	{
 		ft_bzero(AI.nodes, NODE_MAX);
 		j = 0;
+		bzero(&new, sizeof(t_coord));
 		make_node(-1, new);
 	}
 	// begin checking potential moves according to boundaries, check timer against current time with each node if 0.45 seconds elapse, return best move

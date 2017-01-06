@@ -4,7 +4,6 @@ void	init_ai(void)
 {	
 	t_coord initial;
 
-	AI.id_count = 0;
 	int x = -1;
 	int y;
 	while(++x < NTILES)
