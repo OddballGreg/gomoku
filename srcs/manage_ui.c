@@ -40,6 +40,8 @@ void	usermove(void)
 	//Inform AI of users move. Prompt Ai to move returns xy of AI move
 	//if (E_DEPTH < 1)
 		init_boarders();
+	//bzero(&env.game, sizeof(t_game));
+	//bzero(&env.ai, sizeof(t_ai));
 	tmp = prompt_ai(E_W_BPOS);
 	tmp.x++;
 	tmp.y++;
