@@ -146,7 +146,7 @@ t_coord			prompt_ai(t_coord op_move)
 //	printf("Exploring options\n");
 //	printf("j = %i, i = %i\n", j, i);
 //	while (j < NODE_MAX /*&& now - (clock() * 1000 / CLOCKS_PER_SEC) < 0.475 *//*&& printf("Timer reads: %li\n", (now - clock()) / CLOCKS_PER_SEC)*/)
-	while (j < 5)
+	while (j < 2)
 		gen_children(j++);
 //	printf("0.475 Seconds Expired/No more moves saveable, Determining move\n");
 	// determine and return best move
