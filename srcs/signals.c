@@ -9,10 +9,12 @@ void	sig_handler(int signo)
 	else if (SIG_R(SIGTERM) || SIG_R(SIGQUIT) || SIG_R(SIGQUIT) || SIG_R(SIGINT))
 		exit_prog();
 	else if (SIG_R(SIGSEGV) || SIG_R(SIGFPE) || SIG_R(SIGBUS))
+	{//debug
 		mvprintw(1, 1, "Opps");
+		update_panels();
+		doupdate();
+		manage_ui();
+	}//debug
 //		exit_prog();
 //	mvprintw(1, 1, "Signal recieved: %d", signo);//debug
-	update_panels();//debug
-	doupdate();//debug
-	manage_ui();
 }
