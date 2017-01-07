@@ -19,7 +19,7 @@ CFLAGS =	-Wno-deprecated-declarations -Wall -Wextra -Werror -g -g3 -O3
 
 #MAC
 CFLAGS2 =	-framework OpenGL -framework GLUT -Wno-deprecated-declarations \
-			-g -Ofast -lpanel -lcurses
+			-g -Ofast -lpanel -lcurses -O3
 
 CC = gcc
 
