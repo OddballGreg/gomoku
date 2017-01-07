@@ -52,6 +52,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 //	printf("Generating New Node\n");
 	save = 1;
 	new.parentid = parentid;
+	new.piece_played = piece_played;
 	c = -1;
 	while (++c < 255)
 		new.child[c] = -1; //Initializing children to -1;
@@ -122,7 +123,8 @@ void			gen_children(int i)
 	{
 		place.y = (AI.lyb < 1) ? 0 : AI.lyb - 1;
 		while (++place.y < AI.uyb)
-			make_node(i, place);
+			if (AI.nodes[i].board[place.x][place.y] == EMPTY)
+				make_node(i, place);
 	}
 }
 
@@ -157,7 +159,7 @@ t_coord			prompt_ai(t_coord op_move)
 	// begin checking potential moves according to boundaries, check timer against current time with each node if 0.45 seconds elapse, return best move
 //	printf("Exploring options\n");
 //	printf("j = %i, i = %i\n", j, i);
-//	while (j < NODE_MAX /*&& now - (clock() * 1000 / CLOCKS_PER_SEC) < 0.475 *//*&& printf("Timer reads: %li\n", (now - clock()) / CLOCKS_PER_SEC)*/)
+//	while (j < NODE_MAX /*&& now - (clock() * 1000 / CLOCKS_PER_SEC) < 0.475 *//*&& printf("Timer reads: %li\n", (now - clock()) / CLOCKS_PER_SEC)*/)`
 	while (j < 2)
 		gen_children(j++);
 //	printf("0.475 Seconds Expired/No more moves saveable, Determining move\n");
