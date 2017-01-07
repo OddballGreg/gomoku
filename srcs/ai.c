@@ -53,6 +53,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 	save = 1;
 	new.parentid = parentid;
 	new.piece_played = piece_played;
+	i = 0;
 	c = -1;
 	while (++c < 255)
 		new.child[c] = -1; //Initializing children to -1;
@@ -95,19 +96,21 @@ t_node		make_node(int parentid, t_coord piece_played)
 	else
 		AI.nodes[0] = new;
 
-	/*//Debug: Prints the node information;
+/*	//Debug: Prints the node information;
+	int	fd = open("tmp.txt", O_CREAT | O_APPEND);
 	int x;
 	int y;
-	printf("\nID: %i\tPID: %i\tDEPTH: %i\tMM: %i\tBW: %i\n", i, new.parentid,  new.depth, new.minmax, new.branchweight);
-	ft_putendl("Board:");
+	dprintf(fd, "\nID: %i\tPID: %i\tDEPTH: %i\tMM: %i\tBW: %i\n", i, new.parentid,  new.depth, new.minmax, new.branchweight);
+	ft_putendl_fd("Board:", fd);
 	x = -1;
 	while(++x < NTILES)
 	{
 		y = -1;
 		while(++y < NTILES)
-			ft_putnbr(new.board[x][y]);
-		ft_putendl("");
+			ft_putnbr_fd(new.board[x][y], fd);
+		ft_putendl_fd("", fd);
 	}
+	close(fd);
 	//End Debug */
 
 	return (new);
@@ -154,7 +157,7 @@ t_coord			prompt_ai(t_coord op_move)
 		i = 0;
 		bzero(&new, sizeof(t_coord));
 //		printf("Generating new start node\n");
-		make_node(-1, new);
+		make_node(-1, op_move);
 	}
 	// begin checking potential moves according to boundaries, check timer against current time with each node if 0.45 seconds elapse, return best move
 //	printf("Exploring options\n");

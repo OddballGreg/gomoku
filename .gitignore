@@ -20,3 +20,4 @@ objs
 Debug
 gomoku*
 ~
+tmp.txt
