@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ui_info.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/07 13:10:47 by khansman          #+#    #+#             */
+/*   Updated: 2017/01/07 13:10:57 by khansman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/gomoku.h"
 
 void	draw_info(void)
@@ -28,7 +40,8 @@ void	draw_stats(void)
 {
 	if (!E_WIN[WIN_STATS])
 		return ;
-	mvwprintw(E_WIN[WIN_STATS], 3, 1, "TURN: %s", (E_DEPTH & 0b1) ? "P2" : "P1");
+	mvwprintw(E_WIN[WIN_STATS], 3, 1, "TURN: %s", (E_DEPTH & 0b1) ? "P2" :
+			"P1");
 	mvwprintw(E_WIN[WIN_STATS], 4, 1, "MOVE: %d", (E_DEPTH + 1) >> 1);
 	mvwprintw(E_WIN[WIN_STATS], BOARD_HEI - 2, 1, "MODE: %s",
 		(GAMEMODE == 1) ? "P vs AI" : "P vs P");
