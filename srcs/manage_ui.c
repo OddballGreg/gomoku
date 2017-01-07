@@ -57,7 +57,10 @@ void	usermove(void)
 	tmp = prompt_ai(E_W_BPOS);
 	tmp.x++;
 	tmp.y++;
-	draw_piece(tmp);
+	if (GAMEMODE == 1)
+		draw_piece(tmp);
+	else
+		mvwprintw(E_WIN[WIN_STATS], 15, 1, "SUGGESTED:(%2d; %2d)", tmp.x, tmp.y);
 }
 
 void	manage_ui(void)
