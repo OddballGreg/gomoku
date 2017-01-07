@@ -15,7 +15,7 @@
 
 void		dump_mem()
 {
-	int		i;
+/*	int		i;
 
 	i = -1;
 	ft_putstr("\n");
@@ -30,7 +30,7 @@ void		dump_mem()
 		ft_putstr(" BW: ");
 		ft_putnbr(AI.nodes[i].branchweight);
 		ft_putstr("\n");
-	}
+	}*/
 }
 
 void		run_ncurses()

@@ -133,11 +133,12 @@ t_coord			prompt_ai(t_coord op_move)
 	time_t		now;
 	int			i;
 	int			j;
-	t_coord		new;
+//	t_coord		new;
 	t_node		*temp;
 
 
 	//start timer
+	(void)now;
 	now = clock() * 1000 / CLOCKS_PER_SEC;
 //	printf("Timer Started at %li\n", now); 
 	// find/generate node related to opponent move
@@ -152,9 +153,9 @@ t_coord			prompt_ai(t_coord op_move)
 		ft_bzero(AI.nodes, NODE_MAX);
 		j = 0;
 		i = 0;
-		bzero(&new, sizeof(t_coord));
+//		bzero(&new, sizeof(t_coord));
 //		printf("Generating new start node\n");
-		make_node(-1, new);
+		make_node(-1, op_move);
 	}
 	// begin checking potential moves according to boundaries, check timer against current time with each node if 0.45 seconds elapse, return best move
 //	printf("Exploring options\n");
