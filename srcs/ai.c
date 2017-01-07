@@ -16,9 +16,14 @@ void		copy_map(char source[NTILES][NTILES], char dest[NTILES][NTILES])
 
 void		place_piece(t_node *node, t_coord piece_played)
 {
-	if (piece_played.x != -1 && piece_played.y != -1)
+	if (!on_board(piece_played))
 	{
-		if (node->depth % 2 == 1)
+		// /mvprintw(1, 1, "Invalid move: (%d: %d)", piece_played.x, piece_played.y);//debug
+		return ;
+	}
+	if (piece_played.x < 1 && piece_played.y < 1)
+	{
+		if ((node->depth & 0b1) == 1)
 			node->board[piece_played.x][piece_played.y] = BLACK;
 		else
 			node->board[piece_played.x][piece_played.y] = WHITE;
@@ -32,7 +37,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 	int			c;
 	int			i;
 
-	printf("Generating New Node\n");
+//	printf("Generating New Node\n");
 	save = 1;
 	new.parentid = parentid;
 	c = -1;
@@ -51,7 +56,6 @@ t_node		make_node(int parentid, t_coord piece_played)
 		new.depth = 1;
 		new.captures = 0;
 	}
-
 	heuristic(&new); //Generate heuristic value of nodes board state
 	c = -1;
 	if (parentid != -1) //Has parent
@@ -61,7 +65,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 				save = 0;
 		if (save == 1) //If unpruned, save child to parent
 		{
-			printf("\nNot Pruned"); // DEBUG
+//			printf("\nNot Pruned"); // DEBUG
 			i = 0;
 			while (i < NODE_MAX && AI.nodes[i].depth != 0) //Find empty node in nodes list
 				i++;
@@ -72,8 +76,8 @@ t_node		make_node(int parentid, t_coord piece_played)
 				AI.nodes[parentid].branchweight += new.minmax; //Add to parents branchweight from own minmax NB: Currently only passes weight up to immediate parent
 			}
 		}
-		else // DEBUG
-			printf("\nPruned");
+//		else // DEBUG
+//			printf("\nPruned");
 	}
 	else
 		AI.nodes[0] = new;
@@ -100,7 +104,7 @@ void			gen_children(int i)
 {
 	t_coord		place;
 
-	printf("Generating Children\n");
+//	printf("Generating Children\n");
 	place.x = (AI.lxb < 1) ? 0 : AI.lxb - 1;
 	while (++place.x < AI.uxb)
 	{
@@ -121,29 +125,30 @@ t_coord			prompt_ai(t_coord op_move)
 
 	//start timer
 	now = clock() * 1000 / CLOCKS_PER_SEC;
-	printf("Timer Started at %li\n", now); 
+//	printf("Timer Started at %li\n", now); 
 	// find/generate node related to opponent move
-	printf("Locating Player Move Node\n");
+//	printf("Locating Player Move Node\n");
 	i = -1;
 	while (i < NODE_MAX && AI.nodes[i].piece_played.x != op_move.x && AI.nodes[i].piece_played.y != op_move.y)
 		i++;
 	j = i;
 	if (i == NODE_MAX)
 	{
-		printf("Player made unexpected move, clearing memory\n");
+//		printf("Player made unexpected move, clearing memory\n");
 		ft_bzero(AI.nodes, NODE_MAX);
 		j = 0;
 		i = 0;
 		bzero(&new, sizeof(t_coord));
-		printf("Generating new start node\n");
+//		printf("Generating new start node\n");
 		make_node(-1, new);
 	}
 	// begin checking potential moves according to boundaries, check timer against current time with each node if 0.45 seconds elapse, return best move
-	printf("Exploring options\n");
-	printf("j = %i, i = %i\n", j, i);
-	while (j < NODE_MAX /*&& now - (clock() * 1000 / CLOCKS_PER_SEC) < 0.475 */&& printf("Timer reads: %li\n", (now - clock()) / CLOCKS_PER_SEC))
+//	printf("Exploring options\n");
+//	printf("j = %i, i = %i\n", j, i);
+//	while (j < NODE_MAX /*&& now - (clock() * 1000 / CLOCKS_PER_SEC) < 0.475 *//*&& printf("Timer reads: %li\n", (now - clock()) / CLOCKS_PER_SEC)*/)
+	while (j < 2)
 		gen_children(j++);
-	printf("0.475 Seconds Expired/No more moves saveable, Determining move\n");
+//	printf("0.475 Seconds Expired/No more moves saveable, Determining move\n");
 	// determine and return best move
 	j = -1;
 	temp = &AI.nodes[AI.nodes[i].child[0]];
@@ -152,7 +157,7 @@ t_coord			prompt_ai(t_coord op_move)
 		if (temp->minmax < AI.nodes[AI.nodes[i].child[j]].minmax)
 		temp = &AI.nodes[AI.nodes[i].child[j]];
 	}
-	printf("Move Determined. x:%i, y:%i\n", temp->piece_played.x, temp->piece_played.y);
+//	printf("Move Determined. x:%i, y:%i\n", temp->piece_played.x, temp->piece_played.y);
 	return (temp->piece_played);
 
 }

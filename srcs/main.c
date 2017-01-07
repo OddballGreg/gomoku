@@ -44,8 +44,8 @@ int			main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	getopts();
 	ft_bzero(&env, sizeof(t_env));
+	getopts();
 	init_ai();
 	init_signals();
 //	dump_mem();
