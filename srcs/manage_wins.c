@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   manage_wins.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/07 13:09:33 by khansman          #+#    #+#             */
+/*   Updated: 2017/01/07 13:10:00 by khansman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/gomoku.h"
 
 void	set_3_win(int x, int y)
 {
 	E_WIN[WIN_STATS] = newwin(y, STAT_X, (LINES - y) / 2, ((COLS + x) / 2) + 2);
-	E_WIN[WIN_INFO] = newwin(y, INFO_X, (LINES - y) / 2, ((COLS - x) / 2) - INFO_X - 2);
+	E_WIN[WIN_INFO] = newwin(y, INFO_X, (LINES - y) / 2, ((COLS - x) / 2) -
+			INFO_X - 2);
 	E_WIN[WIN_BOARD] = newwin(y, x, (LINES - y) / 2, (COLS - x) / 2);
 	draw_win(STAT_X, 2, E_WIN[WIN_STATS], "Stats");
 	draw_win(INFO_X, 3, E_WIN[WIN_INFO], "Info");
@@ -16,9 +29,11 @@ void	set_3_win(int x, int y)
 
 void	set_2_win(int x, int y)
 {
-	E_WIN[WIN_STATS] = newwin(y, STAT_X, (LINES - y) / 2, ((COLS + x - STAT_X) / 2) + 1);
+	E_WIN[WIN_STATS] = newwin(y, STAT_X, (LINES - y) / 2,
+			((COLS + x - STAT_X) / 2) + 1);
 	E_WIN[WIN_INFO] = NULL;
-	E_WIN[WIN_BOARD] = newwin(y, x, (LINES - y) / 2, (COLS - (x + STAT_X)) / 2 - 1);
+	E_WIN[WIN_BOARD] = newwin(y, x, (LINES - y) / 2,
+			(COLS - (x + STAT_X)) / 2 - 1);
 	draw_win(STAT_X, 2, E_WIN[WIN_STATS], "Stats");
 	draw_win(x, 1, E_WIN[WIN_BOARD], "Board");
 	E_PAN[WIN_INFO] = NULL;

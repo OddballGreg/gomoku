@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   manage_ui.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/07 13:09:25 by khansman          #+#    #+#             */
+/*   Updated: 2017/01/07 13:09:26 by khansman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/gomoku.h"
 
 /*
@@ -40,6 +52,8 @@ void	usermove(void)
 	//Inform AI of users move. Prompt Ai to move returns xy of AI move
 	//if (E_DEPTH < 1)
 		init_boarders();
+	//bzero(&env.game, sizeof(t_game));
+	//bzero(&env.ai, sizeof(t_ai));
 	tmp = prompt_ai(E_W_BPOS);
 	tmp.x++;
 	tmp.y++;

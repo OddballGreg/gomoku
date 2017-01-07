@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghavenga <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/07 13:08:23 by ghavenga          #+#    #+#             */
+/*   Updated: 2017/01/07 13:08:44 by khansman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/gomoku.h"
 
 void	init_ai(void)
@@ -18,7 +30,7 @@ void	init_ai(void)
 	initial.x = 7;
 	initial.y = 7;
 	
-	prompt_ai(initial);
+//	prompt_ai(initial);
 }
 
 void    init_wins(void)
