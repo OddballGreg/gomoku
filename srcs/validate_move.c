@@ -11,3 +11,12 @@ int		valid_move(t_coord move)
 	//Check for captures.
 	return (1);
 }
+
+int		on_board(t_coord move)
+{
+	if (move.x < 0 || move.x > 19)
+		return (-1);
+	if (move.y < 0 || move.y > 19)
+		return (0);
+	return (1);
+}

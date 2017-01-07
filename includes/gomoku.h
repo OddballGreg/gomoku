@@ -281,6 +281,12 @@ void    	init_curses(void);
 void		init_signals(void);
 
 /*
+** main.c
+*/
+void		dump_mem();
+void		run_ncurses();
+
+/*
 ** manage_ui.c
 */
 void		draw_piece(t_coord move);
@@ -316,6 +322,7 @@ void		draw_stats(void);
 ** validate_move.c
 */
 int			valid_move(t_coord move);
+int			on_board(t_coord move);
 
 /*
 ** win_checks.c

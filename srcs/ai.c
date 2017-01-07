@@ -16,7 +16,12 @@ void		copy_map(char source[NTILES][NTILES], char dest[NTILES][NTILES])
 
 void		place_piece(t_node *node, t_coord piece_played)
 {
-	if (piece_played.x != -1 && piece_played.y != -1)
+	if (!on_board(piece_played))
+	{
+		// /mvprintw(1, 1, "Invalid move: (%d: %d)", piece_played.x, piece_played.y);//debug
+		return ;
+	}
+	if (piece_played.x < 1 && piece_played.y < 1)
 	{
 		if ((node->depth & 0b1) == 1)
 			node->board[piece_played.x][piece_played.y] = BLACK;
@@ -51,7 +56,6 @@ t_node		make_node(int parentid, t_coord piece_played)
 		new.depth = 1;
 		new.captures = 0;
 	}
-
 	heuristic(&new); //Generate heuristic value of nodes board state
 	c = -1;
 	if (parentid != -1) //Has parent

@@ -5,6 +5,7 @@ void    exit_prog(void)
     endwin();
     ft_putstr("\nGoodbye!\n");
     free_wins();
+    dump_mem();
     exit(0);
 }
 
