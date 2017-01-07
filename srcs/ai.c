@@ -18,7 +18,7 @@ void		place_piece(t_node *node, t_coord piece_played)
 {
 	if (piece_played.x != -1 && piece_played.y != -1)
 	{
-		if (node->depth % 2 == 1)
+		if (node->depth & 0b1 == 1)
 			node->board[piece_played.x][piece_played.y] = BLACK;
 		else
 			node->board[piece_played.x][piece_played.y] = WHITE;
