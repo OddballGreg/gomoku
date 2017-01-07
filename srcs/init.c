@@ -30,7 +30,7 @@ void	init_ai(void)
 	initial.x = 7;
 	initial.y = 7;
 	
-//	prompt_ai(initial);
+	prompt_ai(initial);
 }
 
 void    init_wins(void)

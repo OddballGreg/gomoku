@@ -123,7 +123,8 @@ void			gen_children(int i)
 	{
 		place.y = (AI.lyb < 1) ? 0 : AI.lyb - 1;
 		while (++place.y < AI.uyb)
-			make_node(i, place);
+			if (AI.nodes[i].board[place.x][place.y] == EMPTY)
+				make_node(i, place);
 	}
 }
 
