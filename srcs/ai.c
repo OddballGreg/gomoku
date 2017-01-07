@@ -52,6 +52,7 @@ t_node		make_node(int parentid, t_coord piece_played)
 //	printf("Generating New Node\n");
 	save = 1;
 	new.parentid = parentid;
+	new.piece_played = piece_played;
 	c = -1;
 	while (++c < 255)
 		new.child[c] = -1; //Initializing children to -1;
