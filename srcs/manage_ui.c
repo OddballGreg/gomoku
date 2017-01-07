@@ -10,11 +10,16 @@ void	draw_piece(t_coord move)
 	t_coord		s_pos;
 
 	get_boardxy(move.x, move.y, &s_pos.x, &s_pos.y);
+	mvwprintw(E_WIN[WIN_STATS], 6, 1, "LAST (%2d; %2d)", move.x, move.y);
 	if (move.x < 1 || move.x > s_pos.x || move.y < 1 || move.y > s_pos.y)
+	{
+		mvwprintw(E_WIN[WIN_STATS], 5, 1, "MOVE STAT: KO");
 		return ;
+	}
 	mvwaddch(E_WIN[WIN_BOARD], s_pos.y, s_pos.x, (++E_DEPTH & 0b1) ?
 		P1_PIECE : P2_PIECE);
 	E_BOARD[move.x][move.y] = (E_DEPTH & 0b1) + 1;
+	mvwprintw(E_WIN[WIN_STATS], 5, 1, "MOVE STAT: OK");
 }
 
 void	init_boarders(void)
@@ -27,13 +32,18 @@ void	init_boarders(void)
 
 void	usermove(void)
 {
+	t_coord		tmp;
+
 	if (valid_move(E_W_BPOS) < 1)
 		return ;
 	draw_piece(E_W_BPOS);
 	//Inform AI of users move. Prompt Ai to move returns xy of AI move
 	//if (E_DEPTH < 1)
 		init_boarders();
-	draw_piece(prompt_ai(E_W_BPOS));
+	tmp = prompt_ai(E_W_BPOS);
+	tmp.x++;
+	tmp.y++;
+	draw_piece(tmp);
 }
 
 void	manage_ui(void)
