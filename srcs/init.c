@@ -26,8 +26,6 @@ void	init_ai(void)
 	e = (t_e *)&env.e;
 	e->gomoku.cursorx = -1;
 	e->gomoku.cursory = -1;
-
-
 }
 
 void	init_wins(void)

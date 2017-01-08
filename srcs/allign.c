@@ -4,30 +4,17 @@ int		captures_on_max_align(int x1, int y1, int pos)
 {
 	t_max_align		v;
 
-	v.c = 0;
-	v.t = 0;
-	v.fr = 0;
-	v.tx = e->ai.x;
-	v.ty = e->ai.y;
-	COMP_02;
-	v.x = x1;
-	v.y = y1;
+	INIT_04;
 	v.xd = e->ai.hu[3][5] * (1 + -2 * (e->ai.hu[3][9] == 2));
 	v.yd = e->ai.hu[3][6] * (1 + -2 * (e->ai.hu[3][9] == 2));
 	if (!(COMP_05 > -1 && M_DPOS01 && (v.p = M_DPOS01)))
 		return (-1);
 	while (COMP_05 > -1 && M_DPOS01 == v.p)
-	{
-		v.x += v.xd;
-		v.y += v.yd;
-	}
+		LTRUE_01;
 	v.fr += (COMP_05 > -1 && !M_DPOS01);
 	while (COMP_04 && v.y - v.yd > -1 && COMP_06 == v.p)
 	{
-		v.x -= v.xd;
-		v.y -= v.yd;
-		e->ai.x = v.x;
-		e->ai.y = v.y;
+		INIT_03;
 		v.c = opportunities_threats(3, 1, 2 - (v.p == 2), v.p);
 		v.c += opportunities_threats(2, 1, 2 - (v.p == 2), v.p);
 		v.c += opportunities_threats(1, 1, 2 - (v.p == 2), v.p);

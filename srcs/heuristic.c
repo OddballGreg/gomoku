@@ -2,9 +2,7 @@
 
 int		heuristics(int node)
 {
-	int			x;
-	int			y;
-
+	INIT_09;
 	if (node < 0 && (e->ai.n = e->ai.h = y = -1))
 	{
 		while (++y < 5 && (x = -1))
@@ -12,12 +10,10 @@ int		heuristics(int node)
 				e->ai.hu[y][x] = 0; 
 		return (-1);
 	}
-	e->ai.h1 = 0;
-	x = -1;
+	INIT_08;
 	while (++x < 27)
 		if (!(e->ai.hu[1][x] = 0))
-			e->ai.hu[2][x] = 0; 	
-
+			e->ai.hu[2][x] = 0;
 	e->ai.p = e->gomoku.player_turn;
 	e->ai.o = 2 - (e->gomoku.player_turn == 2);
 	e->ai.x = node % 19 + 19 * !(node % 19) - 1;

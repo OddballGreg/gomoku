@@ -46,10 +46,7 @@ void	draw_piece(t_coord move)
 	get_boardxy(move.x, move.y, &s_pos.x, &s_pos.y);
 	mvwprintw(E_WIN[WIN_STATS], 6, 1, "LAST (%2d; %2d)", move.x, move.y);
 	if (e->gomoku.map[3][move.y - 1][move.x - 1] != 0)
-	{
-
 		return ;
-	}
 	mvwaddch(E_WIN[WIN_BOARD], s_pos.y, s_pos.x, (++E_DEPTH & 0b1) ?
 			P1_PIECE : P2_PIECE);
 	E_BOARD[move.x][move.y] = (E_DEPTH & 0b1) + 1;

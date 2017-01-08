@@ -4,10 +4,7 @@ float		free_three2(int x, int y,int xd, int yd)
 {
 	t_f_three		v;
 
-	v.b = 0;
-	v.c = 0.0;
-	v.x1 = x;
-	v.y1 = y;
+	INIT_07;
 	v.p = e->gomoku.player_turn;
 	v.o = 2 - (v.p == 2);
 	if (!(x - xd > -1 && x - xd < 19 && y - yd > -1 && y - yd < 19) ||

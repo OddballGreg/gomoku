@@ -225,6 +225,20 @@
 # define COMP_33 e->gomoku.map[0][v.y + 3][v.x - 3] == v.p
 # define COMP_34 e->gomoku.map[0][v.y + 4][v.x - 4] == v.p
 
+# define INIT_01 v.c=0;v.t=0;v.fr=0;v.tx=e->ai.x;v.t=e->ai.y
+# define INIT_02 COMP_02;v.x=x1;v.y=y1
+# define INIT_03 v.x-=v.xd;v.y-=v.yd;e->ai.x=v.x;e->ai.y=v.y
+# define INIT_04 INIT_01;INIT_02
+# define INIT_05 x=e->gomoku.cursorx;y=e->gomoku.cursory
+# define INIT_06 int o;int p;int x;int y
+# define INIT_07 v.b=0;v.c=0.0;v.x1=x;v.y1=y
+# define INIT_08 e->ai.h1=0;x=-1
+# define INIT_09 int x;int y
+
+# define LTRUE_01 {v.x+=v.xd;v.y+=v.yd;}
+
+# define INC_CAP (e->gomoku.map[n][y][x] += 1)
+
 /*
 ** ----------\
 ** Structures |
