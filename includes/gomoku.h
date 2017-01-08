@@ -162,65 +162,45 @@ typedef struct	s_game
 }				t_game;
 
 typedef struct		s_ai
-{//struct for ai algorithm
-	int             startmove;//if player 1 and startmove then player has to thus place the piece first.
-	int				node;//node number to be able to get appropriate x y coords
-	int				p;//player
-	int				o;//oponent
-	int				n;//node in memory to compare heuristics with other nodes	
-	float			h;//heuristic value of above node
-	float			h1;//tmp to get heuristics and compare with h(best value) above
+{
+	int             startmove;
+	int				node;
+	int				p;
+	int				o;
+	int				n;	
+	float			h;
+	float			h1;
 	float			hu[5][HU_MAX];
-	int				c;//determines who is winning by captures currently.
-	int				x;//x
-	int				y;//y coords for calculating huristics
+	int				c;
+	int				x;
+	int				y;
 	int				difficulty;
 	char			player_no;
-	char    		prev_player_no;//will be used to determin ai's current
-	//player number
+	char    		prev_player_no;
 }					t_ai;
 
 typedef struct		s_player
-{//struct to stor players information
-	int				captures;//5 captures(which amounts to 10 stones wins you the game).
+{
+	int				captures;
 }               	t_player;
 
 typedef struct		s_gomoku
-{//struct for the gomoku map and displaying of the map and player piece placement: cursor x and y.
-	char			map_pointer;//tells which map to display
-	//map for 'double threes', '5 in row/more', possible 'capture' placements, oponent 'capture-threats', and debug map(which shows everything simultaneously)
-	char			map[7][19][19];//0 main, 1 opportunity captures, 2 threat captures, 3 double freethrees,
-	//4 free threes
-	char			player_turn;//not yet used
-	char			curr_player;//bool to wait for player to
-	//finalize their move.
-//	long			sub;//changes icosahedron / map
+{
+	char			map_pointer;
+	char			map[7][19][19];
+	char			player_turn;
+	char			curr_player;
 	char			cursorx;
 	char			cursory;
-//	float			scalex;
-//	float			scaley;
-//	float			scalez;
 }					t_gomoku;
 
 typedef struct		s_e
-{//environment struct for everything
-//	t_menu			main;
-//	t_menu			difficulty;
-//	t_menu			pause;
-
-//	int				game_mode;//to identify whether to wait for player or wait let ai takeover.
-	//the move.
+{
 	t_ai			ai;
-//	t_eye			eye;
 	t_gomoku		gomoku;
-	t_player		player[3];//data of both players
-	int				x;//map looping for diplay
-	int				y;//map looping     "
-	//about gomoku:
-//	GLfloat         starwarsvelocity;//message
-//	float           starwarsview;//message
-//	char            quotes[21][80];//message
-//	int             noquotes;//message
+	t_player		player[3];
+	int				x;
+	int				y;
 }					t_e;
 
 typedef struct	s_window
@@ -241,34 +221,6 @@ typedef struct	s_env
 	t_window	win;
 	t_e			e;
 }				t_env;
-
-/*
-** Proposed data structure:
-*/
-
-typedef struct		s_p_node
-{
-	int				depth; //total number of moves made to this point.
-	int				minmax; //Weighting of the current move;
-	int				max;//optional
-	int				min;//optional
-	int				child_weight;//Average/minmax weight of the branches children.
-	t_coord			move;//the coordinates of the played piece.
-	struct s_p_node	*child1;//Child with the best weight.
-	struct s_p_node	*child2;//Child with the second best weight.
-	struct s_p_node	*child3;//Child with the third best weight.
-	struct s_p_node	*child4;//Child with the fourth best weight.
-	struct s_p_node	*child5;//Child with the fith best weight.
-}					t_p_node;
-
-//Everytime a node gets created, it gets added to this list,
-//to simplify the process of deleting nodes.
-typedef struct		s_p_list
-{
-	t_p_node		*node;//pointer to the node.
-	int				node_depth;//speeds up cleaning process.
-	struct s_p_list	*next;
-}					t_p_list;
 
 /*
 ** ----------\
