@@ -14,7 +14,7 @@
 
 int		valid_move(t_coord move)
 {
-	if (move.x >= NTILES || move.y >= NTILES)
+	if (move.x >= NTILES + 1 || move.y >= NTILES + 1)
 		return (-1);
 	if (E_BOARD[move.x][move.y] != EMPTY)
 		return (0);
