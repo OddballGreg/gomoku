@@ -52,7 +52,6 @@ void	draw_piece(t_coord move)
 	E_BOARD[move.x][move.y] = (E_DEPTH & 0b1) + 1;
 	e->gomoku.cursorx = move.x - 1;
 	e->gomoku.cursory = move.y - 1;
-
 	e->gomoku.map[0][move.y - 1][move.x - 1] = (E_DEPTH & 0b1) + 1;
 	e->gomoku.player_turn = (E_DEPTH & 0b1) + 1;
 	apply_rules();
@@ -107,7 +106,7 @@ void	manage_ui(void)
 			usermove();
 		else if (buff == 'e')
 			exit_prog();
-		get_boardxy(E_W_BPOS.x, E_W_BPOS.y, &E_W_SPOS.x, & E_W_SPOS.y);
+		get_boardxy(E_W_BPOS.x, E_W_BPOS.y, &E_W_SPOS.x, &E_W_SPOS.y);
 		draw_stats();
 		wmove(E_WIN[WIN_BOARD], E_W_SPOS.y, E_W_SPOS.x);
 		update_panels();

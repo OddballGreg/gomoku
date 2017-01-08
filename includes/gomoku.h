@@ -121,7 +121,7 @@
 
 # define SIG_R(X) (signo == X )
 
-# define N_MAP    (e->gomoku.map[0]
+# define N_MAP   e->gomoku.map[0]
 
 /*
 ** shad ai
@@ -131,54 +131,54 @@
 /*
 ** Other
 */
-# define M_POS_01 !e->gomoku.map[0][e->ai.y + d][e->ai.x]
+# define M_POS_01 !N_MAP[e->ai.y + d][e->ai.x]
 # define M_POS_02 !e->gomoku.map[n][e->ai.y + d][e->ai.x]
-# define M_POS_03 !e->gomoku.map[0][e->ai.y - d][e->ai.x]
+# define M_POS_03 !N_MAP[e->ai.y - d][e->ai.x]
 # define M_POS_04 !e->gomoku.map[n][e->ai.y - d][e->ai.x]
-# define M_POS_05 !e->gomoku.map[0][e->ai.y][e->ai.x + d]
+# define M_POS_05 !N_MAP[e->ai.y][e->ai.x + d]
 # define M_POS_06 !e->gomoku.map[n][e->ai.y][e->ai.x + d]
-# define M_POS_07 !e->gomoku.map[0][e->ai.y][e->ai.x - d]
+# define M_POS_07 !N_MAP[e->ai.y][e->ai.x - d]
 # define M_POS_08 !e->gomoku.map[n][e->ai.y][e->ai.x - d]
 # define M_POS_09 e->ai.y + d < 19
-# define M_POS_10 !e->gomoku.map[0][e->ai.y + d][e->ai.x + d]
+# define M_POS_10 !N_MAP[e->ai.y + d][e->ai.x + d]
 # define M_POS_11 !e->gomoku.map[n][e->ai.y + d][e->ai.x + d]
 # define M_POS_12 e->ai.y + d < 19
-# define M_POS_13 !e->gomoku.map[0][e->ai.y + d][e->ai.x - d]
+# define M_POS_13 !N_MAP[e->ai.y + d][e->ai.x - d]
 # define M_POS_14 !e->gomoku.map[n][e->ai.y + d][e->ai.x - d]
 # define M_POS_15 e->ai.y - d > -1
-# define M_POS_16 !e->gomoku.map[0][e->ai.y - d][e->ai.x + d]
+# define M_POS_16 !N_MAP[e->ai.y - d][e->ai.x + d]
 # define M_POS_17 !e->gomoku.map[n][e->ai.y - d][e->ai.x + d]
-# define M_POS_18 !e->gomoku.map[0][e->ai.y - d][e->ai.x - d]
+# define M_POS_18 !N_MAP[e->ai.y - d][e->ai.x - d]
 # define M_POS_19 !e->gomoku.map[n][e->ai.y - d][e->ai.x - d]
-# define M_POS_20 e->gomoku.map[0][y][x + 1] == o
-# define M_POS_21 e->gomoku.map[0][y][x + 2] == o
-# define M_POS_22 e->gomoku.map[0][y][x + 3] == p
-# define M_POS_23 e->gomoku.map[0][y][x - 1] == o
-# define M_POS_24 e->gomoku.map[0][y][x - 2] == o
-# define M_POS_25 e->gomoku.map[0][y][x - 3] == p
-# define M_POS_26 e->gomoku.map[0][y + 1][x] == o
-# define M_POS_27 e->gomoku.map[0][y + 2][x] == o
-# define M_POS_28 e->gomoku.map[0][y + 3][x] == p
-# define M_POS_29 e->gomoku.map[0][y - 1][x] == o
-# define M_POS_30 e->gomoku.map[0][y - 2][x] == o
-# define M_POS_31 e->gomoku.map[0][y - 3][x] == p
-# define M_POS_32 y + 3 < 19 && e->gomoku.map[0][y + 1][x + 1] == o
-# define M_POS_33 e->gomoku.map[0][y + 2][x + 2] == o
-# define M_POS_34 e->gomoku.map[0][y + 1][x - 1] == o
-# define M_POS_35 e->gomoku.map[0][y + 3][x + 3] == p
-# define M_POS_36 e->gomoku.map[0][y + 2][x - 2] == o
-# define M_POS_37 e->gomoku.map[0][y + 3][x - 3] == p
-# define M_POS_38 e->gomoku.map[0][y - 1][x + 1] == o
-# define M_POS_39 e->gomoku.map[0][y - 2][x + 2] == o
-# define M_POS_40 e->gomoku.map[0][y - 3][x + 3] == p
-# define M_POS_41 e->gomoku.map[0][y - 1][x - 1] == o
-# define M_POS_42 e->gomoku.map[0][y - 2][x - 2] == o
-# define M_POS_43 e->gomoku.map[0][y - 3][x - 3] == p
+# define M_POS_20 N_MAP[y][x + 1] == o
+# define M_POS_21 N_MAP[y][x + 2] == o
+# define M_POS_22 N_MAP[y][x + 3] == p
+# define M_POS_23 N_MAP[y][x - 1] == o
+# define M_POS_24 N_MAP[y][x - 2] == o
+# define M_POS_25 N_MAP[y][x - 3] == p
+# define M_POS_26 N_MAP[y + 1][x] == o
+# define M_POS_27 N_MAP[y + 2][x] == o
+# define M_POS_28 N_MAP[y + 3][x] == p
+# define M_POS_29 N_MAP[y - 1][x] == o
+# define M_POS_30 N_MAP[y - 2][x] == o
+# define M_POS_31 N_MAP[y - 3][x] == p
+# define M_POS_32 y + 3 < 19 && N_MAP[y + 1][x + 1] == o
+# define M_POS_33 N_MAP[y + 2][x + 2] == o
+# define M_POS_34 N_MAP[y + 1][x - 1] == o
+# define M_POS_35 N_MAP[y + 3][x + 3] == p
+# define M_POS_36 N_MAP[y + 2][x - 2] == o
+# define M_POS_37 N_MAP[y + 3][x - 3] == p
+# define M_POS_38 N_MAP[y - 1][x + 1] == o
+# define M_POS_39 N_MAP[y - 2][x + 2] == o
+# define M_POS_40 N_MAP[y - 3][x + 3] == p
+# define M_POS_41 N_MAP[y - 1][x - 1] == o
+# define M_POS_42 N_MAP[y - 2][x - 2] == o
+# define M_POS_43 N_MAP[y - 3][x - 3] == p
 # define M_POS_44 (e->gomoku.map[n][y][x] += 1)
-# define M_POS_45 e->gomoku.map[0][y + 3][x + 3] == p
+# define M_POS_45 N_MAP[y + 3][x + 3] == p
 
-# define M_DPOS01 e->gomoku.map[0][v.y + v.yd][v.x + v.xd]
-# define M_DPOS02 e->gomoku.map[0][v.y + yd][v.x + xd]
+# define M_DPOS01 N_MAP[v.y + v.yd][v.x + v.xd]
+# define M_DPOS02 N_MAP[v.y + yd][v.x + xd]
 
 # define M_CAP_01 (c += is_capture(e->ai.x, e->ai.y + d, o, p))
 # define M_CAP_02 (c += is_capture(e->ai.x, e->ai.y - d, o, p))
@@ -195,35 +195,56 @@
 # define COMP_03 v.x + v.xd < 19 && v.x + v.xd > -1
 # define COMP_04 v.x - v.xd < 19 && v.x - v.xd > -1 && v.y - v.yd < 19
 # define COMP_05 COMP_03 && v.y + v.yd < 19 && v.y + v.yd
-# define COMP_06 e->gomoku.map[0][v.y - v.yd][v.x - v.xd]
+# define COMP_06 N_MAP[v.y - v.yd][v.x - v.xd]
 # define COMP_07 v.x + xd > -1 && v.x + xd < 19 && v.y + yd > -1
-# define COMP_08 (e->gomoku.map[0][y - yd][x - xd] == v.o && ++v.b && 0)
+# define COMP_08 (N_MAP[y - yd][x - xd] == v.o && ++v.b && 0)
 
 # define COMP_10 e->player[e->ai.o].captures + e->ai.hu[3][10] == 5
 # define COMP_11 e->ai.hu[3][26] && e->ai.hu[3][24] > 2
 # define COMP_12 e->ai.hu[3][26] && e->ai.hu[3][25] > 2
 
 # define COMP_14 e->player[e->ai.o].captures + e->ai.hu[3][11] < 5
-# define COMP_15 !e->gomoku.map[0][9][9] && e->ai.h < 1 && (e->ai.n = 181)
+# define COMP_15 !N_MAP[9][9] && e->ai.h < 1 && (e->ai.n = 181)
 # define COMP_16 (e->ai.hu[1][2]) + e->ai.hu[1][3] - e->ai.hu[1][4]
-# define COMP_17 v.x + 4 < 19 && e->gomoku.map[0][v.y][v.x]
-# define COMP_18 e->gomoku.map[0][v.y][v.x + 1] == v.p
-# define COMP_19 e->gomoku.map[0][v.y][v.x + 2] == v.p
-# define COMP_20 e->gomoku.map[0][v.y][v.x + 3] == v.p
-# define COMP_21 e->gomoku.map[0][v.y][v.x + 4] == v.p
-# define COMP_22 e->gomoku.map[0][v.y][v.x] == v.p
-# define COMP_23 e->gomoku.map[0][v.y + 1][v.x] == v.p
-# define COMP_24 e->gomoku.map[0][v.y + 2][v.x] == v.p
-# define COMP_25 e->gomoku.map[0][v.y + 3][v.x] == v.p
-# define COMP_26 e->gomoku.map[0][v.y + 4][v.x] == v.p
-# define COMP_27 e->gomoku.map[0][v.y + 1][v.x + 1] == v.p
-# define COMP_28 e->gomoku.map[0][v.y + 2][v.x + 2] == v.p
-# define COMP_29 e->gomoku.map[0][v.y + 3][v.x + 3] == v.p
-# define COMP_30 e->gomoku.map[0][v.y + 4][v.x + 4] == v.p
-# define COMP_31 e->gomoku.map[0][v.y + 1][v.x - 1] == v.p
-# define COMP_32 e->gomoku.map[0][v.y + 2][v.x - 2] == v.p
-# define COMP_33 e->gomoku.map[0][v.y + 3][v.x - 3] == v.p
-# define COMP_34 e->gomoku.map[0][v.y + 4][v.x - 4] == v.p
+# define COMP_17 v.x + 4 < 19 && N_MAP[v.y][v.x]
+# define COMP_18 N_MAP[v.y][v.x + 1] == v.p
+# define COMP_19 N_MAP[v.y][v.x + 2] == v.p
+# define COMP_20 N_MAP[v.y][v.x + 3] == v.p
+# define COMP_21 N_MAP[v.y][v.x + 4] == v.p
+# define COMP_22 N_MAP[v.y][v.x] == v.p
+# define COMP_23 N_MAP[v.y + 1][v.x] == v.p
+# define COMP_24 N_MAP[v.y + 2][v.x] == v.p
+# define COMP_25 N_MAP[v.y + 3][v.x] == v.p
+# define COMP_26 N_MAP[v.y + 4][v.x] == v.p
+# define COMP_27 N_MAP[v.y + 1][v.x + 1] == v.p
+# define COMP_28 N_MAP[v.y + 2][v.x + 2] == v.p
+# define COMP_29 N_MAP[v.y + 3][v.x + 3] == v.p
+# define COMP_30 N_MAP[v.y + 4][v.x + 4] == v.p
+# define COMP_31 N_MAP[v.y + 1][v.x - 1] == v.p
+# define COMP_32 N_MAP[v.y + 2][v.x - 2] == v.p
+# define COMP_33 N_MAP[v.y + 3][v.x - 3] == v.p
+# define COMP_34 N_MAP[v.y + 4][v.x - 4] == v.p
+
+# define COMP_35 x > e->ai.hu[1][24] && (b = 1) && (e->ai.hu[1][24] = x)
+# define COMP_36 -x > e->ai.hu[1][25] && (b = 1) && (e->ai.hu[1][25] = -x)
+# define COMP_37 y > e->ai.hu[1][24] && (b = 2) && (e->ai.hu[1][24] = y)
+# define COMP_38 -y > e->ai.hu[1][25] && (b = 2) && (e->ai.hu[1][25] = -y)
+# define COMP_39 z > e->ai.hu[1][24] && (b = 3) && (e->ai.hu[1][24] = z)
+# define COMP_40 -z > e->ai.hu[1][25] && (b = 3) && (e->ai.hu[1][25] = -z)
+# define COMP_41 e->player[p].captures += x - 3 >= 0
+# define COMP_42 COMP_41 && M_POS_23 && M_POS_24 && M_POS_25 &&
+# define COMP_43 COMP_41 && y + 3 < 19 && M_POS_34 && M_POS_36
+# define COMP_44 (b = get_max_aligned(c[0], c[1], 0)) > 0
+# define COMP_45 (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b)
+# define COMP_46 COMP_44 && ((e->ai.hu[1][5] = 0) || 1) && COMP_45
+# define COMP_47 COMP_44 && (e->ai.hu[1][5] = 1) && COMP_45
+# define COMP_48 COMP_44 && (e->ai.hu[1][5] = -1) && COMP_45
+# define COMP_49 ((e->ai.hu[1][6] = 0) || 1) && (e->ai.hu[1][9] = b)
+# define COMP_50 COMP_44 && (e->ai.hu[1][5] = 1) && COMP_49
+# define COMP_51 !e->ai.startmove && ++e->ai.startmove
+# define COMP_52 COMP_51 && e->ai.p == 1 && COMP_15
+# define COMP_53 (e->ai.n = node) && (e->ai.h = e->ai.h1)
+# define COMP_54 e->ai.h < e->ai.h1 && COMP_53
 
 # define INIT_01 v.c=0;v.t=0;v.fr=0;v.tx=e->ai.x;v.t=e->ai.y
 # define INIT_02 COMP_02;v.x=x1;v.y=y1
@@ -236,9 +257,15 @@
 # define INIT_09 int x;int y
 # define INIT_10 int x;int y;int p;float c
 
+# define RET_01 0 + (e->ai.x = v.tx) * 0 + (e->ai.y = v.ty) * 0
+
 # define LTRUE_01 {v.x+=v.xd;v.y+=v.yd;}
 
 # define INC_CAP (e->gomoku.map[n][y][x] += 1)
+
+# define E_AI_01 e->ai.hu[3][8]][(int)e->ai.hu[3][7]]
+
+# define ASSI_01 (e->ai.n = e->ai.h = y = -1)
 
 /*
 ** ----------\

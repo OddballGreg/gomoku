@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   heuristic2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/08 14:49:48 by khansman          #+#    #+#             */
+/*   Updated: 2017/01/08 14:49:50 by khansman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/gomoku.h"
 
 int		heuristics2(int node)
@@ -8,23 +20,19 @@ int		heuristics2(int node)
 	bzero(c, 3);
 	c[0] = max_aligns(16, 0, -1);
 	c[1] = max_aligns(17, 0, 1);
-	(b = get_max_aligned(c[0], c[1], 0)) > 0 && ((e->ai.hu[1][5] = 0) || 1)
-		&& (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b);
+	COMP_46;
 	bzero(c, 3);
 	c[0] = max_aligns(18, 1, -1);
 	c[1] = max_aligns(21, -1, 1);
-	(b = get_max_aligned(c[0], c[1], 0)) > 0 && (e->ai.hu[1][5] = 1)
-		&& (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b);
+	COMP_47;
 	bzero(c, 3);
 	c[0] = max_aligns(19, -1, -1);
 	c[1] = max_aligns(20, 1, 1);
-	(b = get_max_aligned(c[0], c[1], 0)) > 0 && (e->ai.hu[1][5] = -1)
-		&& (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b);
+	COMP_48;
 	bzero(c, 3);
 	c[0] = max_aligns(22, 1, 0);
 	c[1] = max_aligns(23, -1, 0);
-	(b = get_max_aligned(c[0], c[1], 0)) > 0 && (e->ai.hu[1][5] = 1) &&
-		((e->ai.hu[1][6] = 0) || 1) && (e->ai.hu[1][9] = b);
+	COMP_50;
 	return (0);
 }
 
@@ -48,6 +56,6 @@ int		heuristics1(int node)
 	e->ai.hu[2][3] = t;
 	e->ai.hu[2][4] = c;
 	e->gomoku.map[0][e->ai.y][e->ai.x] = e->ai.o;
-	e->gomoku.map[0][e->ai.y][e->ai.x] = 0;	
+	e->gomoku.map[0][e->ai.y][e->ai.x] = 0;
 	return (1);
 }

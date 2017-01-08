@@ -13,7 +13,7 @@
 #include "../includes/gomoku.h"
 
 void	init_ai(void)
-{	
+{
 	t_coord		pos;
 
 	pos.x = -1;

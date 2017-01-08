@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_threes.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/08 14:49:31 by khansman          #+#    #+#             */
+/*   Updated: 2017/01/08 14:49:32 by khansman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/gomoku.h"
 
 float		free_three2(int x, int y,int xd, int yd)
@@ -11,7 +23,7 @@ float		free_three2(int x, int y,int xd, int yd)
 			e->gomoku.map[0][y - yd][x - xd] != v.p)
 		return (0);
 	while (x - xd > -1 && x - xd < 19 && y - yd > -1 && y - yd < 19 &&
-			N_MAP[y - yd][x - xd] == v.p || COMP_08))
+			(N_MAP[y - yd][x - xd] == v.p || COMP_08))
 			{
 				v.c += 1.0;
 				x -= xd;
@@ -20,7 +32,7 @@ float		free_three2(int x, int y,int xd, int yd)
 	x = v.x1;
 	y = v.y1;
 	while (x + xd > -1 && x + xd < 19 && y + yd > -1 && y + yd < 19 &&
-			N_MAP[y + yd][x + xd] == v.p || COMP_08))
+			(N_MAP[y + yd][x + xd] == v.p || COMP_08))
 			{
 				v.c += 1.0;
 				x += xd;
@@ -41,14 +53,14 @@ float		free_three(int x, int y, int xd, int yd)
 	if (!(x - xd > -1 && x - xd < 19 && y - yd > -1 && y - yd < 19) ||
 			e->gomoku.map[0][y - yd][x - xd])
 		return (free_three2(x, y, xd, yd));
-	a[++v.c] = e->gomoku.map[0][y][x] + 48 - N_MAP[y][x] == 2);
+	a[++v.c] = e->gomoku.map[0][y][x] + 48 - (N_MAP[y][x] == 2);
 	while (++v.b < 7 && x + xd > -1 && x + xd < 19 && y + yd > -1 && y + yd < 19)
 	{
 		x += xd;
 		y += yd;
-		if N_MAP[y][x] == v.o)
+		if (N_MAP[y][x] == v.o)
 			return (0);
-		a[++v.c] = e->gomoku.map[0][y][x] + 48 - N_MAP[y][x] == 2);
+		a[++v.c] = e->gomoku.map[0][y][x] + 48 - (N_MAP[y][x] == 2);
 	}
 	if (!strncmp(a, "1110", 4) || !strncmp(a, "10110", 5) ||
 			!strncmp(a, "11010", 5))

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ai.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/08 14:51:55 by khansman          #+#    #+#             */
+/*   Updated: 2017/01/08 14:51:56 by khansman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/gomoku.h"
 
 long	timing(void)
@@ -15,7 +27,7 @@ void	ai(void)
 	t = timing();
 	possible_solutions();
 	e->gomoku.cursorx = e->ai.node % 19 + 19 * !(e->ai.node % 19) - 1;
-	e->gomoku.cursory = 18 - (e->ai.node / 19 - (e->gomoku.cursorx == 18)); 
+	e->gomoku.cursory = 18 - (e->ai.node / 19 - (e->gomoku.cursorx == 18));
 	mvwprintw(E_WIN[WIN_STATS], 17, 1, "TIME: %dms", timing() - t);
 }
 
@@ -27,7 +39,7 @@ int		opportunities_threats(int d, int n, int o, int p)
 	e->ai.y + d < 19 && M_POS_01 && M_POS_02 && M_CAP_01;
 	M_POS_15 && M_POS_03 && M_POS_04 && M_CAP_02;
 	e->ai.x + d < 19 && M_POS_05 && M_POS_06 && M_CAP_03;
-	e->ai.x - d > -1 && M_POS_07 && M_POS_08 &&M_CAP_04;
+	e->ai.x - d > -1 && M_POS_07 && M_POS_08 && M_CAP_04;
 	e->ai.x + d < 19 && M_POS_09 && M_POS_10 && M_POS_11 && M_CAP_05;
 	e->ai.x - d > -1 && M_POS_12 && M_POS_13 && M_POS_14 && M_CAP_06;
 	e->ai.x + d < 19 && M_POS_15 && M_POS_16 && M_POS_17 && M_CAP_07;

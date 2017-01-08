@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   allign.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/08 14:49:07 by khansman          #+#    #+#             */
+/*   Updated: 2017/01/08 14:49:09 by khansman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/gomoku.h"
 
 int		captures_on_max_align(int x1, int y1, int pos)
@@ -26,7 +38,7 @@ int		captures_on_max_align(int x1, int y1, int pos)
 	e->ai.hu[3][pos] = v.c;
 	e->ai.hu[3][pos + 1] = v.t;
 	v.fr == 2 && (e->ai.hu[3][26] = 1);
-	return (0 + (e->ai.x = v.tx) * 0 + (e->ai.y = v.ty) * 0);
+	return (RET_01);
 }
 
 int		max_aligns(int hu, int xd, int yd)
@@ -56,13 +68,13 @@ int		get_max_aligned(int x, int y, int z)
 	int		b;
 
 	b = 0;
-	x > e->ai.hu[1][24] && (b = 1) && (e->ai.hu[1][24] = x);
-	-x > e->ai.hu[1][25] && (b = 1) && (e->ai.hu[1][25] = -x);
-	y > e->ai.hu[1][24] && (b = 2) && (e->ai.hu[1][24] = y);
-	-y > e->ai.hu[1][25] && (b = 2) && (e->ai.hu[1][25] = -y);
+	COMP_35;
+	COMP_36;
+	COMP_37;
+	COMP_38;
 	x <= 0 && y <= 0 && (z = x + y);
 	x >= 0 && y >= 0 && (z = x + y);
-	z > e->ai.hu[1][24] && (b = 3) && (e->ai.hu[1][24] = z);
-	-z > e->ai.hu[1][25] && (b = 3) && (e->ai.hu[1][25] = -z);
+	COMP_39;
+	COMP_40;
 	return (b);
 }

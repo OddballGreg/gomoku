@@ -12,7 +12,7 @@
 
 #include "../includes/gomoku.h"
 
-void		getopts()
+void		getopts(void)
 {
 	char 	*input;
 

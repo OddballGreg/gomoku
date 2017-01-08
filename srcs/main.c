@@ -13,7 +13,7 @@
 #define MAIN_FILE
 #include "../includes/gomoku.h"
 
-void		run_ncurses()
+void		run_ncurses(void)
 {
 	init_curses();
 	manage_wins();

@@ -50,7 +50,7 @@ void	set_1_win(int x, int y)
 	E_WIN[WIN_BOARD] = newwin(y, x, (LINES - y) / 2, (COLS - x) / 2);
 	draw_win(x, 1, E_WIN[WIN_BOARD], "Board");
 	E_PAN[WIN_INFO] = NULL;
-	E_PAN[WIN_STATS] =NULL;
+	E_PAN[WIN_STATS] = NULL;
 	E_PAN[WIN_BOARD] = new_panel(E_WIN[WIN_BOARD]);
 	draw_grid(E_WIN[WIN_BOARD], COLUMNS, ROWS);
 }
@@ -73,7 +73,7 @@ void	manage_wins(void)
 		printw("window is too small (min height = %d).", (BOARD_HEI + 4));
 	}
 	else if (BOARD_WID + 5 + STAT_X + INFO_X < COLS)
-		set_3_win(BOARD_WID,BOARD_HEI);
+		set_3_win(BOARD_WID, BOARD_HEI);
 	else if (BOARD_WID + 3 + STAT_X < COLS)
 		set_2_win(BOARD_WID, BOARD_HEI);
 	else if (BOARD_WID + 2 < COLS)
