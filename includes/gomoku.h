@@ -294,18 +294,25 @@ typedef struct		s_p_list
 /*
 ** ai.c
 */
+long	timing(void);
+void	ai(void);
+int		opportunities_threats(int d, int n, int o, int p);
+void	copy(int n, int o);
+void	reset_map(void);
 
-void	get_rule_maps(void);//h.cpp
+/*
+** allign.c
+*/
+int     captures_on_max_align(int x1, int y1, int pos);
+int     max_aligns(int hu, int xd, int yd);
+int		get_max_aligned(int x, int y, int z);
 
-int		heuristics(int node);//j.cpp
-void	ai(void);//k.cpp
-int		heuristics1(int node);//k.cpp
-int		calc_heuristic(int node);//l.cpp
-
-void	reset_rule_maps(void);//g.cpp
-void	reset_map(void);//g.cpp
-void    apply_rules(void);//i.cpp
-int    player_wins_check(void);//i.cpp
+/*
+** captures.c
+*/
+int		is_capture(int x, int y, int o, int p);
+void    possible_captures(int n, int o, int p);
+void    apply_capture(void);
 
 /*
 ** draw_grid.c
@@ -330,6 +337,13 @@ void		exit_player_win(char player);
 int			ft_free(void **var);
 
 /*
+** free_threes.c
+*/
+float		free_three2(int x, int y,int xd, int yd);
+float		free_three(int x, int y, int xd, int yd);
+void		double_free_threes(void);
+
+/*
 ** free_wins.c
 */
 void		free_wins(void);
@@ -338,10 +352,24 @@ void		clear_all_wins(void);
 void		redraw_all_win(void);
 
 /*
-** heuristic.chars
+** heuristic.chars (j.cpp)
 */
-void		hpair(t_node *node, char **strings);
-void		heuristic(t_node *node);
+int			heuristics(int node);
+int			minimax(int node, int depth, int maximizing_player);
+void		possible_solutions(void);
+
+/*
+** heuristic2.c
+*/
+int		heuristics2(int node);
+int		heuristics1(int node);
+
+/*
+** heuristic3.c
+*/
+int     hu_algo(int node);
+int		calc_heuristic(int node);
+void	max_hu(void);
 
 /*
 ** init.c
@@ -374,9 +402,17 @@ void		set_0_win(void);
 void		manage_wins(void);
 
 /*
-** options.chars
+** options.c
 */
 void		getopts();
+
+/*
+** rules.c
+*/
+void    get_rule_maps(void);
+void	reset_rule_maps(void);
+void	apply_rules(void);
+int		player_wins_check(void);
 
 /*
 ** signals.c

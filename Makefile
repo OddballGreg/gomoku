@@ -28,17 +28,23 @@ INCLUDES_PATH = includes/
 SRCS_PATH = srcs/
 
 SRCS_NAME = ai.c					\
+			allign.c				\
+			captures.c				\
 			draw_grid.c				\
 			draw_win.c				\
 			exit_prog.c				\
 			free.c					\
+			free_threes.c			\
 			free_wins.c				\
 			heuristic.c				\
+			heuristic2.c			\
+			heuristic3.c			\
 			init.c					\
 			main.c					\
 			manage_ui.c				\
 			manage_wins.c			\
 			options.c				\
+			rules.c					\
 			signals.c				\
 			ui_info.c				\
 			validate_move.c			\
