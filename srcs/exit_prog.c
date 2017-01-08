@@ -15,7 +15,6 @@
 void    exit_prog(void)
 {
     endwin();
-//    ft_putstr("\nGoodbye!\n");
     free_wins();
     exit(0);
 }

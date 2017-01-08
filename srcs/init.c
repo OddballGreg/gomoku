@@ -24,8 +24,8 @@ void	init_ai(void)
 			E_BOARD[pos.x][pos.y] = 0;
 	}
 	e = (t_e *)&env.e;
-	e->gomoku.cursorx = -1;//req M
-	e->gomoku.cursory = -1;//req M
+	e->gomoku.cursorx = -1;
+	e->gomoku.cursory = -1;
 
 
 }

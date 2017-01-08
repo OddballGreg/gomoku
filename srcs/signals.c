@@ -14,19 +14,15 @@
 
 void	sig_handler(int signo)
 {
-//	static int k;//debug
-//	mvprintw(++k, 1, "Signal recieved: %d", signo);//debug
 	if (SIG_R(SIGWINCH))
 		redraw_all_win();
 	else if (SIG_R(SIGTERM) || SIG_R(SIGQUIT) || SIG_R(SIGQUIT) || SIG_R(SIGINT))
 		exit_prog();
 	else if (SIG_R(SIGSEGV) || SIG_R(SIGFPE) || SIG_R(SIGBUS))
-	{//debug
+	{
 		mvprintw(1, 1, "Opps");
 		update_panels();
 		doupdate();
 		manage_ui();
-	}//debug
-//		exit_prog();
-//	mvprintw(1, 1, "Signal recieved: %d", signo);//debug
+	}
 }

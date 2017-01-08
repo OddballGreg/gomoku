@@ -48,10 +48,6 @@ void	clear_all_wins(void)
 
 void	redraw_all_win(void)
 {
-//	clear_all_wins();
-//	free_wins();
-//	manage_wins();
-//	wmove(E_WIN[WIN_BOARD], E_W_SPOS.y, E_W_SPOS.x);
 	update_panels();
 	doupdate();
 }
