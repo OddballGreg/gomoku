@@ -122,6 +122,8 @@
 
 # define N_MAP   g_e->gomoku.map[0]
 
+# define E_HU g_e->ai.hu
+
 /*
 ** shad ai
 */
@@ -189,7 +191,8 @@
 # define M_CAP_08 (c += is_capture(g_e->ai.x - d, g_e->ai.y - d, o, p))
 # define M_CAP_09 g_e->player[p].captures
 
-# define COMP_01  g_e->ai.hu[3][24] >= g_e->ai.hu[3][25] && (v.p = g_e->ai.player_no)
+# define COMP_00 (v.p = g_e->ai.player_no)
+# define COMP_01  g_e->ai.hu[3][24] >= g_e->ai.hu[3][25] && COMP_00
 # define COMP_02  (COMP_01) || (v.p = 2 - (g_e->ai.player_no == 2))
 # define COMP_03 v.x + v.xd < 19 && v.x + v.xd > -1
 # define COMP_04 v.x - v.xd < 19 && v.x - v.xd > -1 && v.y - v.yd < 19
@@ -499,7 +502,7 @@ int					ft_free(void **var);
 /*
 ** free_threes.c
 */
-float				free_three2(int x, int y,int xd, int yd);
+float				free_three2(int x, int y, int xd, int yd);
 float				free_three(int x, int y, int xd, int yd);
 void				double_free_threes(void);
 
