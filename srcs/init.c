@@ -14,20 +14,16 @@
 
 void	init_ai(void)
 {	
+	t_coord		pos;
+
+	pos.x = -1;
+	while (++pos.x < COLUMNS)
+	{
+		pos.y = -1;
+		while (++pos.y < ROWS)
+			E_BOARD[pos.x][pos.y] = 0;
+	}
 	e = (t_e *)&env.e;
-	//bzero(&e, sizeof(t_e));//req
-//	bzero(&e->eye, sizeof(t_eye));//RM
-//	bzero(&e->main, sizeof(t_menu));//RM
-//	bzero(&e->pause, sizeof(t_menu));//RM
-//	bzero(&e->player[0], sizeof(t_player));//RM
-//	bzero(&e->player[1], sizeof(t_player));//RM
-//	bzero(&e->player[2], sizeof(t_player));//RM
-//	e->eye.ey = 6;
-//	e->eye.ez = 0.4;
-//	e->gomoku.sub = 0;
-//	e->gomoku.scalex = 0.05;
-//	e->gomoku.scaley = 0.05;
-//	e->gomoku.scalez = 0.05;
 	e->gomoku.cursorx = -1;//req M
 	e->gomoku.cursory = -1;//req M
 
@@ -36,9 +32,6 @@ void	init_ai(void)
 
 void    init_wins(void)
 {
- //   manage_wins();
-//	get_boardcr();
-//	draw_grid(env.win.win[WIN_BOARD], COLUMNS, ROWS);
 	wmove(env.win.win[WIN_BOARD], 4, 5);
 	update_panels();
 	doupdate();

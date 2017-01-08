@@ -13,26 +13,6 @@
 #define MAIN_FILE
 #include "../includes/gomoku.h"
 
-void		dump_mem()
-{
-/*	int		i;
-
-	i = -1;
-	ft_putstr("\n");
-	while (AI.nodes[i].depth > 0)
-	{
-		ft_putstr("ID: ");
-		ft_putnbr(i);
-		ft_putstr(" PID: ");
-		ft_putnbr(AI.nodes[i].parentid);
-		ft_putstr(" MM: ");
-		ft_putnbr(AI.nodes[i].minmax);
-		ft_putstr(" BW: ");
-		ft_putnbr(AI.nodes[i].branchweight);
-		ft_putstr("\n");
-	}*/
-}
-
 void		run_ncurses()
 {
 	init_curses();
@@ -48,6 +28,5 @@ int			main(int argc, char **argv)
 	getopts();
 	init_ai();
 	init_signals();
-//	dump_mem();
 	run_ncurses();
 }

@@ -30,7 +30,11 @@ void	update_map(void)
 		while (++pos.y < COLUMNS)
 		{
 			get_boardcr(pos.x, pos.y, &tmp.x, &tmp.y);
-			if (!E_BOARD[pos.x][pos.y])
+			if (E_BOARD[pos.x][pos.y] == 1)
+				mvwaddch(E_WIN[WIN_BOARD], tmp.y - 1, tmp.x - 2, P1_PIECE);
+			else if (E_BOARD[pos.x][pos.y] == 2)
+				mvwaddch(E_WIN[WIN_BOARD], tmp.y - 1, tmp.x - 2, P2_PIECE);
+			else
 				mvwaddch(E_WIN[WIN_BOARD], tmp.y - 1, tmp.x - 2, ACS_PLUS);
 		}
 	}
@@ -44,7 +48,7 @@ void	draw_piece(t_coord move)
 	mvwprintw(E_WIN[WIN_STATS], 6, 1, "LAST (%2d; %2d)", move.x, move.y);
 	if (e->gomoku.map[3][move.y - 1][move.x - 1] != 0)
 	{
-		mvwprintw(E_WIN[WIN_STATS], 5, 1, "MOVE STAT: KO");
+		
 		return ;
 	}
 	mvwaddch(E_WIN[WIN_BOARD], s_pos.y, s_pos.x, (++E_DEPTH & 0b1) ?
@@ -89,28 +93,16 @@ void	usermove(void)
 	if (valid_move(E_W_BPOS) < 1)
 		return ;
 	draw_piece(E_W_BPOS);
-	//Inform AI of users move. Prompt Ai to move returns xy of AI move
-	//if (E_DEPTH < 1)
 	init_boarders();
-	//bzero(&env.game, sizeof(t_game));
-	//bzero(&env.ai, sizeof(t_ai));
-//	tmp = prompt_ai(E_W_BPOS);
-//	
 	heuristics(-1);
 	ai();
 	e->gomoku.map[0][18 - e->gomoku.cursory][e->gomoku.cursorx] = e->gomoku.player_turn;//which the ai will thus use the cursor and place piece.
     tmp.x = e->gomoku.cursorx + 1;
 	tmp.y = 18 - e->gomoku.cursory + 1;
-	//
-
-	//apply_rules();//applies rules on e->gomoku.cursorx && e->gomoku.cursory
-    //e->gomoku.player_turn = 2 - (e->gomoku.player_turn == 2);
-//apply_rules
-	//shd algo 
-	//e->gomoku.cursorx = move.x;
-	//e->gomoku.cursory = move.y;//MAYBE 18 - 
-	//reset_map();
-	draw_piece(tmp);
+	if (GAMEMODE == 1)
+		draw_piece(tmp);
+	else
+		mvwprintw(E_WIN[WIN_STATS], 6, 1, "BEST: (%2d; %2d)", tmp.x, tmp.y);
 }
 
 void	manage_ui(void)
