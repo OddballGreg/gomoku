@@ -16,7 +16,8 @@ void	sig_handler(int signo)
 {
 	if (SIG_R(SIGWINCH))
 		redraw_all_win();
-	else if (SIG_R(SIGTERM) || SIG_R(SIGQUIT) || SIG_R(SIGQUIT) || SIG_R(SIGINT))
+	else if (SIG_R(SIGTERM) || SIG_R(SIGQUIT) || SIG_R(SIGQUIT) ||
+			SIG_R(SIGINT))
 		exit_prog();
 	else if (SIG_R(SIGSEGV) || SIG_R(SIGFPE) || SIG_R(SIGBUS))
 	{

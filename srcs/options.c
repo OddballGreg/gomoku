@@ -17,7 +17,8 @@ void		getopts()
 	char 	*input;
 
 	input = NULL;
-	ft_putendl("Select your gamemode:\n(1) Player vs Comp\n(2) Player vs Player");
+	ft_putendl("Select your gamemode:\n(1) Player vs Comp");
+	ft_putendl("(2) Player vs Player");
 	while (GAMEMODE == 0)
 	{
 		if (!get_next_line(0, &input))

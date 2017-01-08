@@ -79,7 +79,8 @@ void	usermove(void)
 	draw_piece(E_W_BPOS);
 	heuristics(-1);
 	ai();
-	e->gomoku.map[0][18 - e->gomoku.cursory][e->gomoku.cursorx] = e->gomoku.player_turn;
+	e->gomoku.map[0][18 - e->gomoku.cursory][e->gomoku.cursorx] = \
+		e->gomoku.player_turn;
     tmp.x = e->gomoku.cursorx + 1;
 	tmp.y = 18 - e->gomoku.cursory + 1;
 	if (GAMEMODE == 1)

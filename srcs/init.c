@@ -49,7 +49,8 @@ void    init_curses(void)
 	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
 	E_W_BPOS.x = 1;
 	E_W_BPOS.y = 1;
-	get_boardcr(COLUMNS, ROWS, &(env.win.board_size.x), &(env.win.board_size.y));
+	get_boardcr(COLUMNS, ROWS, &(env.win.board_size.x),
+		&(env.win.board_size.y));
 }
 
 void	init_signals(void)

@@ -8,19 +8,23 @@ int		heuristics2(int node)
 	bzero(c, 3);
 	c[0] = max_aligns(16, 0, -1);
     c[1] = max_aligns(17, 0, 1);
-	(b = get_max_aligned(c[0], c[1], 0)) > 0 && ((e->ai.hu[1][5] = 0) || 1) && (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b);
+	(b = get_max_aligned(c[0], c[1], 0)) > 0 && ((e->ai.hu[1][5] = 0) || 1)
+		&& (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b);
 	bzero(c, 3);    
 	c[0] = max_aligns(18, 1, -1);
 	c[1] = max_aligns(21, -1, 1);
-	(b = get_max_aligned(c[0], c[1], 0)) > 0 && (e->ai.hu[1][5] = 1) && (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b);
+	(b = get_max_aligned(c[0], c[1], 0)) > 0 && (e->ai.hu[1][5] = 1)
+		&& (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b);
 	bzero(c, 3);
     c[0] = max_aligns(19, -1, -1);
     c[1] = max_aligns(20, 1, 1);
-	(b = get_max_aligned(c[0], c[1], 0)) > 0 && (e->ai.hu[1][5] = -1) && (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b);
+	(b = get_max_aligned(c[0], c[1], 0)) > 0 && (e->ai.hu[1][5] = -1)
+		&& (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b);
 	bzero(c, 3);
     c[0] = max_aligns(22, 1, 0);
     c[1] = max_aligns(23, -1, 0);
-	(b = get_max_aligned(c[0], c[1], 0)) > 0 && (e->ai.hu[1][5] = 1) && ((e->ai.hu[1][6] = 0) || 1) && (e->ai.hu[1][9] = b);
+	(b = get_max_aligned(c[0], c[1], 0)) > 0 && (e->ai.hu[1][5] = 1) &&
+		((e->ai.hu[1][6] = 0) || 1) && (e->ai.hu[1][9] = b);
 	return (0);
 }
 

@@ -197,6 +197,33 @@
 # define COMP_05 COMP_03 && v.y + v.yd < 19 && v.y + v.yd
 # define COMP_06 e->gomoku.map[0][v.y - v.yd][v.x - v.xd]
 # define COMP_07 v.x + xd > -1 && v.x + xd < 19 && v.y + yd > -1
+# define COMP_08 (e->gomoku.map[0][y - yd][x - xd] == v.o && ++v.b && 0)
+# define COMP_09 e->ai.hu[3][24] >= 5) && node == e->ai.hu[3][0]
+# define COMP_10 e->player[e->ai.o].captures + e->ai.hu[3][10] == 5
+# define COMP_11 e->ai.hu[3][26] && e->ai.hu[3][24] > 2
+# define COMP_12 e->ai.hu[3][26] && e->ai.hu[3][25] > 2
+# define COMP_13 e->ai.hu[3][25] == 4) && node == e->ai.hu[3][0]
+# define COMP_14 e->player[e->ai.o].captures + e->ai.hu[3][11] < 5
+# define COMP_15 !e->gomoku.map[0][9][9] && e->ai.h < 1 && (e->ai.n = 181)
+# define COMP_16 (e->ai.hu[1][2]) + e->ai.hu[1][3] - e->ai.hu[1][4]
+# define COMP_17 v.x + 4 < 19 && e->gomoku.map[0][v.y][v.x]
+# define COMP_18 e->gomoku.map[0][v.y][v.x + 1] == v.p
+# define COMP_19 e->gomoku.map[0][v.y][v.x + 2] == v.p
+# define COMP_20 e->gomoku.map[0][v.y][v.x + 3] == v.p
+# define COMP_21 e->gomoku.map[0][v.y][v.x + 4] == v.p
+# define COMP_22 e->gomoku.map[0][v.y][v.x] == v.p
+# define COMP_23 e->gomoku.map[0][v.y + 1][v.x] == v.p
+# define COMP_24 e->gomoku.map[0][v.y + 2][v.x] == v.p
+# define COMP_25 e->gomoku.map[0][v.y + 3][v.x] == v.p
+# define COMP_26 e->gomoku.map[0][v.y + 4][v.x] == v.p
+# define COMP_27 e->gomoku.map[0][v.y + 1][v.x + 1] == v.p
+# define COMP_28 e->gomoku.map[0][v.y + 2][v.x + 2] == v.p
+# define COMP_29 e->gomoku.map[0][v.y + 3][v.x + 3] == v.p
+# define COMP_30 e->gomoku.map[0][v.y + 4][v.x + 4] == v.p
+# define COMP_31 e->gomoku.map[0][v.y + 1][v.x - 1] == v.p
+# define COMP_32 e->gomoku.map[0][v.y + 2][v.x - 2] == v.p
+# define COMP_33 e->gomoku.map[0][v.y + 3][v.x - 3] == v.p
+# define COMP_34 e->gomoku.map[0][v.y + 4][v.x - 4] == v.p
 
 /*
 ** ----------\
@@ -233,6 +260,25 @@ typedef struct	s_max_align2
 	int			x;
 	int			y;
 }				t_max_align2;
+
+typedef struct	s_f_three
+{
+	int			x1;
+    int			y1;
+    int			b;
+    float		c;
+    int			p;
+	int			o;
+}				t_f_three;
+
+typedef struct	s_pwin
+{
+	int			p;
+    int			x;
+    int			y;
+    int			tx;
+    int			ty;
+}				t_pwin;
 
 typedef struct	s_node
 {

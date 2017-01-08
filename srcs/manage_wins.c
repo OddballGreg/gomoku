@@ -14,7 +14,8 @@
 
 void	set_3_win(int x, int y)
 {
-	E_WIN[WIN_STATS] = newwin(y, STAT_X, (LINES - y) / 2, ((COLS + x) / 2) + 2);
+	E_WIN[WIN_STATS] = newwin(y, STAT_X, (LINES - y) / 2,
+		((COLS + x) / 2) + 2);
 	E_WIN[WIN_INFO] = newwin(y, INFO_X, (LINES - y) / 2, ((COLS - x) / 2) -
 			INFO_X - 2);
 	E_WIN[WIN_BOARD] = newwin(y, x, (LINES - y) / 2, (COLS - x) / 2);
