@@ -17,8 +17,8 @@ int		captures_on_max_align(int x1, int y1, int pos)
 	t_max_align		v;
 
 	INIT_04;
-	v.xd = e->ai.hu[3][5] * (1 + -2 * (e->ai.hu[3][9] == 2));
-	v.yd = e->ai.hu[3][6] * (1 + -2 * (e->ai.hu[3][9] == 2));
+	v.xd = g_e->ai.hu[3][5] * (1 + -2 * (g_e->ai.hu[3][9] == 2));
+	v.yd = g_e->ai.hu[3][6] * (1 + -2 * (g_e->ai.hu[3][9] == 2));
 	if (!(COMP_05 > -1 && M_DPOS01 && (v.p = M_DPOS01)))
 		return (-1);
 	while (COMP_05 > -1 && M_DPOS01 == v.p)
@@ -35,9 +35,9 @@ int		captures_on_max_align(int x1, int y1, int pos)
 		v.t += opportunities_threats(1, 2, v.p, 2 - (v.p == 2));
 	}
 	v.fr += (COMP_04 && v.y - v.yd > -1 && !COMP_06);
-	e->ai.hu[3][pos] = v.c;
-	e->ai.hu[3][pos + 1] = v.t;
-	v.fr == 2 && (e->ai.hu[3][26] = 1);
+	g_e->ai.hu[3][pos] = v.c;
+	g_e->ai.hu[3][pos + 1] = v.t;
+	v.fr == 2 && (g_e->ai.hu[3][26] = 1);
 	return (RET_01);
 }
 
@@ -48,19 +48,19 @@ int		max_aligns(int hu, int xd, int yd)
 	v.b = -1;
 	v.c = -1;
 	v.node = 0;
-	v.x = e->ai.x;
-	v.y = e->ai.y;
+	v.x = g_e->ai.x;
+	v.y = g_e->ai.y;
 	while (++v.b < 7 && COMP_07 && v.y + yd < 19 && M_DPOS02)
 	{
 		v.x += xd;
 		v.y += yd;
-		!v.node && (v.node = e->gomoku.map[0][v.y][v.x]);
-		if (v.node != e->gomoku.map[0][v.y][v.x] && (v.b = 8))
+		!v.node && (v.node = g_e->gomoku.map[0][v.y][v.x]);
+		if (v.node != g_e->gomoku.map[0][v.y][v.x] && (v.b = 8))
 			continue;
 		++v.c;
 	}
-	e->ai.hu[1][hu] = ++v.c * (1 + (-2 * (v.node != e->ai.player_no)));
-	return (v.c * (1 + (-2 * (v.node != e->ai.player_no))));
+	g_e->ai.hu[1][hu] = ++v.c * (1 + (-2 * (v.node != g_e->ai.player_no)));
+	return (v.c * (1 + (-2 * (v.node != g_e->ai.player_no))));
 }
 
 int		get_max_aligned(int x, int y, int z)

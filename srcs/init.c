@@ -23,14 +23,14 @@ void	init_ai(void)
 		while (++pos.y < ROWS)
 			E_BOARD[pos.x][pos.y] = 0;
 	}
-	e = (t_e *)&env.e;
-	e->gomoku.cursorx = -1;
-	e->gomoku.cursory = -1;
+	g_e = (t_e *)&g_env.e;
+	g_e->gomoku.cursorx = -1;
+	g_e->gomoku.cursory = -1;
 }
 
 void	init_wins(void)
 {
-	wmove(env.win.win[WIN_BOARD], 4, 5);
+	wmove(g_env.win.win[WIN_BOARD], 4, 5);
 	update_panels();
 	doupdate();
 }
@@ -47,8 +47,8 @@ void	init_curses(void)
 	init_pair(4, COLOR_YELLOW, COLOR_BLACK);
 	E_W_BPOS.x = 1;
 	E_W_BPOS.y = 1;
-	get_boardcr(COLUMNS, ROWS, &(env.win.board_size.x),
-			&(env.win.board_size.y));
+	get_boardcr(COLUMNS, ROWS, &(g_env.win.board_size.x),
+			&(g_env.win.board_size.y));
 }
 
 void	init_signals(void)

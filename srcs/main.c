@@ -24,7 +24,7 @@ int			main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	ft_bzero(&env, sizeof(t_env));
+	ft_bzero(&g_env, sizeof(t_g_env));
 	getopts();
 	init_ai();
 	init_signals();

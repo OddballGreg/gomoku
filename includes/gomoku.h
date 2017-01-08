@@ -95,8 +95,8 @@
 # define WIN_STATS	1
 # define WIN_INFO	2
 
-# define BOARD_WID	env.win.board_size.x
-# define BOARD_HEI	env.win.board_size.y
+# define BOARD_WID	g_env.win.board_size.x
+# define BOARD_HEI	g_env.win.board_size.y
 
 /*
 ** Game Mode
@@ -105,22 +105,22 @@
 /*
 ** Shorthand:
 */
-# define AI env.ai
-# define GAME env.game
-# define GAMEMODE env.gamemode
+# define AI g_env.ai
+# define GAME g_env.game
+# define GAMEMODE g_env.gamemode
 
-# define E_WIN env.win.win
-# define E_PAN env.win.panel
+# define E_WIN g_env.win.win
+# define E_PAN g_env.win.panel
 
-# define E_W_BPOS env.win.bpos
-# define E_W_SPOS env.win.spos
+# define E_W_BPOS g_env.win.bpos
+# define E_W_SPOS g_env.win.spos
 
-# define E_BOARD  env.game.board
-# define E_DEPTH  env.game.depth
+# define E_BOARD  g_env.game.board
+# define E_DEPTH  g_env.game.depth
 
 # define SIG_R(X) (signo == X )
 
-# define N_MAP   e->gomoku.map[0]
+# define N_MAP   g_e->gomoku.map[0]
 
 /*
 ** shad ai
@@ -130,25 +130,25 @@
 /*
 ** Other
 */
-# define M_POS_01 !N_MAP[e->ai.y + d][e->ai.x]
-# define M_POS_02 !e->gomoku.map[n][e->ai.y + d][e->ai.x]
-# define M_POS_03 !N_MAP[e->ai.y - d][e->ai.x]
-# define M_POS_04 !e->gomoku.map[n][e->ai.y - d][e->ai.x]
-# define M_POS_05 !N_MAP[e->ai.y][e->ai.x + d]
-# define M_POS_06 !e->gomoku.map[n][e->ai.y][e->ai.x + d]
-# define M_POS_07 !N_MAP[e->ai.y][e->ai.x - d]
-# define M_POS_08 !e->gomoku.map[n][e->ai.y][e->ai.x - d]
-# define M_POS_09 e->ai.y + d < 19
-# define M_POS_10 !N_MAP[e->ai.y + d][e->ai.x + d]
-# define M_POS_11 !e->gomoku.map[n][e->ai.y + d][e->ai.x + d]
-# define M_POS_12 e->ai.y + d < 19
-# define M_POS_13 !N_MAP[e->ai.y + d][e->ai.x - d]
-# define M_POS_14 !e->gomoku.map[n][e->ai.y + d][e->ai.x - d]
-# define M_POS_15 e->ai.y - d > -1
-# define M_POS_16 !N_MAP[e->ai.y - d][e->ai.x + d]
-# define M_POS_17 !e->gomoku.map[n][e->ai.y - d][e->ai.x + d]
-# define M_POS_18 !N_MAP[e->ai.y - d][e->ai.x - d]
-# define M_POS_19 !e->gomoku.map[n][e->ai.y - d][e->ai.x - d]
+# define M_POS_01 !N_MAP[g_e->ai.y + d][g_e->ai.x]
+# define M_POS_02 !g_e->gomoku.map[n][g_e->ai.y + d][g_e->ai.x]
+# define M_POS_03 !N_MAP[g_e->ai.y - d][g_e->ai.x]
+# define M_POS_04 !g_e->gomoku.map[n][g_e->ai.y - d][g_e->ai.x]
+# define M_POS_05 !N_MAP[g_e->ai.y][g_e->ai.x + d]
+# define M_POS_06 !g_e->gomoku.map[n][g_e->ai.y][g_e->ai.x + d]
+# define M_POS_07 !N_MAP[g_e->ai.y][g_e->ai.x - d]
+# define M_POS_08 !g_e->gomoku.map[n][g_e->ai.y][g_e->ai.x - d]
+# define M_POS_09 g_e->ai.y + d < 19
+# define M_POS_10 !N_MAP[g_e->ai.y + d][g_e->ai.x + d]
+# define M_POS_11 !g_e->gomoku.map[n][g_e->ai.y + d][g_e->ai.x + d]
+# define M_POS_12 g_e->ai.y + d < 19
+# define M_POS_13 !N_MAP[g_e->ai.y + d][g_e->ai.x - d]
+# define M_POS_14 !g_e->gomoku.map[n][g_e->ai.y + d][g_e->ai.x - d]
+# define M_POS_15 g_e->ai.y - d > -1
+# define M_POS_16 !N_MAP[g_e->ai.y - d][g_e->ai.x + d]
+# define M_POS_17 !g_e->gomoku.map[n][g_e->ai.y - d][g_e->ai.x + d]
+# define M_POS_18 !N_MAP[g_e->ai.y - d][g_e->ai.x - d]
+# define M_POS_19 !g_e->gomoku.map[n][g_e->ai.y - d][g_e->ai.x - d]
 # define M_POS_20 N_MAP[y][x + 1] == o
 # define M_POS_21 N_MAP[y][x + 2] == o
 # define M_POS_22 N_MAP[y][x + 3] == p
@@ -173,24 +173,24 @@
 # define M_POS_41 N_MAP[y - 1][x - 1] == o
 # define M_POS_42 N_MAP[y - 2][x - 2] == o
 # define M_POS_43 N_MAP[y - 3][x - 3] == p
-# define M_POS_44 (e->gomoku.map[n][y][x] += 1)
+# define M_POS_44 (g_e->gomoku.map[n][y][x] += 1)
 # define M_POS_45 N_MAP[y + 3][x + 3] == p
 
 # define M_DPOS01 N_MAP[v.y + v.yd][v.x + v.xd]
 # define M_DPOS02 N_MAP[v.y + yd][v.x + xd]
 
-# define M_CAP_01 (c += is_capture(e->ai.x, e->ai.y + d, o, p))
-# define M_CAP_02 (c += is_capture(e->ai.x, e->ai.y - d, o, p))
-# define M_CAP_03 (c += is_capture(e->ai.x + d, e->ai.y, o, p))
-# define M_CAP_04 (c += is_capture(e->ai.x - d, e->ai.y, o, p))
-# define M_CAP_05 (c += is_capture(e->ai.x + d, e->ai.y + d, o, p))
-# define M_CAP_06 (c += is_capture(e->ai.x - d, e->ai.y + d, o, p))
-# define M_CAP_07 (c += is_capture(e->ai.x + d, e->ai.y - d, o, p))
-# define M_CAP_08 (c += is_capture(e->ai.x - d, e->ai.y - d, o, p))
-# define M_CAP_09 e->player[p].captures
+# define M_CAP_01 (c += is_capture(g_e->ai.x, g_e->ai.y + d, o, p))
+# define M_CAP_02 (c += is_capture(g_e->ai.x, g_e->ai.y - d, o, p))
+# define M_CAP_03 (c += is_capture(g_e->ai.x + d, g_e->ai.y, o, p))
+# define M_CAP_04 (c += is_capture(g_e->ai.x - d, g_e->ai.y, o, p))
+# define M_CAP_05 (c += is_capture(g_e->ai.x + d, g_e->ai.y + d, o, p))
+# define M_CAP_06 (c += is_capture(g_e->ai.x - d, g_e->ai.y + d, o, p))
+# define M_CAP_07 (c += is_capture(g_e->ai.x + d, g_e->ai.y - d, o, p))
+# define M_CAP_08 (c += is_capture(g_e->ai.x - d, g_e->ai.y - d, o, p))
+# define M_CAP_09 g_e->player[p].captures
 
-# define COMP_01  e->ai.hu[3][24] >= e->ai.hu[3][25] && (v.p = e->ai.player_no)
-# define COMP_02  (COMP_01) || (v.p = 2 - (e->ai.player_no == 2))
+# define COMP_01  g_e->ai.hu[3][24] >= g_e->ai.hu[3][25] && (v.p = g_e->ai.player_no)
+# define COMP_02  (COMP_01) || (v.p = 2 - (g_e->ai.player_no == 2))
 # define COMP_03 v.x + v.xd < 19 && v.x + v.xd > -1
 # define COMP_04 v.x - v.xd < 19 && v.x - v.xd > -1 && v.y - v.yd < 19
 # define COMP_05 COMP_03 && v.y + v.yd < 19 && v.y + v.yd
@@ -198,13 +198,13 @@
 # define COMP_07 v.x + xd > -1 && v.x + xd < 19 && v.y + yd > -1
 # define COMP_08 (N_MAP[y - yd][x - xd] == v.o && ++v.b && 0)
 
-# define COMP_10 e->player[e->ai.o].captures + e->ai.hu[3][10] == 5
-# define COMP_11 e->ai.hu[3][26] && e->ai.hu[3][24] > 2
-# define COMP_12 e->ai.hu[3][26] && e->ai.hu[3][25] > 2
+# define COMP_10 g_e->player[g_e->ai.o].captures + g_e->ai.hu[3][10] == 5
+# define COMP_11 g_e->ai.hu[3][26] && g_e->ai.hu[3][24] > 2
+# define COMP_12 g_e->ai.hu[3][26] && g_e->ai.hu[3][25] > 2
 
-# define COMP_14 e->player[e->ai.o].captures + e->ai.hu[3][11] < 5
-# define COMP_15 !N_MAP[9][9] && e->ai.h < 1 && (e->ai.n = 181)
-# define COMP_16 (e->ai.hu[1][2]) + e->ai.hu[1][3] - e->ai.hu[1][4]
+# define COMP_14 g_e->player[g_e->ai.o].captures + g_e->ai.hu[3][11] < 5
+# define COMP_15 !N_MAP[9][9] && g_e->ai.h < 1 && (g_e->ai.n = 181)
+# define COMP_16 (g_e->ai.hu[1][2]) + g_e->ai.hu[1][3] - g_e->ai.hu[1][4]
 # define COMP_17 v.x + 4 < 19 && N_MAP[v.y][v.x]
 # define COMP_18 N_MAP[v.y][v.x + 1] == v.p
 # define COMP_19 N_MAP[v.y][v.x + 2] == v.p
@@ -224,26 +224,26 @@
 # define COMP_33 N_MAP[v.y + 3][v.x - 3] == v.p
 # define COMP_34 N_MAP[v.y + 4][v.x - 4] == v.p
 
-# define COMP_35 x > e->ai.hu[1][24] && (b = 1) && (e->ai.hu[1][24] = x)
-# define COMP_36 -x > e->ai.hu[1][25] && (b = 1) && (e->ai.hu[1][25] = -x)
-# define COMP_37 y > e->ai.hu[1][24] && (b = 2) && (e->ai.hu[1][24] = y)
-# define COMP_38 -y > e->ai.hu[1][25] && (b = 2) && (e->ai.hu[1][25] = -y)
-# define COMP_39 z > e->ai.hu[1][24] && (b = 3) && (e->ai.hu[1][24] = z)
-# define COMP_40 -z > e->ai.hu[1][25] && (b = 3) && (e->ai.hu[1][25] = -z)
-# define COMP_41 e->player[p].captures += x - 3 >= 0
+# define COMP_35 x > g_e->ai.hu[1][24] && (b = 1) && (g_e->ai.hu[1][24] = x)
+# define COMP_36 -x > g_e->ai.hu[1][25] && (b = 1) && (g_e->ai.hu[1][25] = -x)
+# define COMP_37 y > g_e->ai.hu[1][24] && (b = 2) && (g_e->ai.hu[1][24] = y)
+# define COMP_38 -y > g_e->ai.hu[1][25] && (b = 2) && (g_e->ai.hu[1][25] = -y)
+# define COMP_39 z > g_e->ai.hu[1][24] && (b = 3) && (g_e->ai.hu[1][24] = z)
+# define COMP_40 -z > g_e->ai.hu[1][25] && (b = 3) && (g_e->ai.hu[1][25] = -z)
+# define COMP_41 g_e->player[p].captures += x - 3 >= 0
 # define COMP_42 COMP_41 && M_POS_23 && M_POS_24 && M_POS_25 &&
 # define COMP_43 COMP_41 && y + 3 < 19 && M_POS_34 && M_POS_36
 # define COMP_44 (b = get_max_aligned(c[0], c[1], 0)) > 0
-# define COMP_45 (e->ai.hu[1][6] = -1) && (e->ai.hu[1][9] = b)
-# define COMP_46 COMP_44 && ((e->ai.hu[1][5] = 0) || 1) && COMP_45
-# define COMP_47 COMP_44 && (e->ai.hu[1][5] = 1) && COMP_45
-# define COMP_48 COMP_44 && (e->ai.hu[1][5] = -1) && COMP_45
-# define COMP_49 ((e->ai.hu[1][6] = 0) || 1) && (e->ai.hu[1][9] = b)
-# define COMP_50 COMP_44 && (e->ai.hu[1][5] = 1) && COMP_49
-# define COMP_51 !e->ai.startmove && ++e->ai.startmove
-# define COMP_52 COMP_51 && e->ai.p == 1 && COMP_15
-# define COMP_53 (e->ai.n = node) && (e->ai.h = e->ai.h1)
-# define COMP_54 e->ai.h < e->ai.h1 && COMP_53
+# define COMP_45 (g_e->ai.hu[1][6] = -1) && (g_e->ai.hu[1][9] = b)
+# define COMP_46 COMP_44 && ((g_e->ai.hu[1][5] = 0) || 1) && COMP_45
+# define COMP_47 COMP_44 && (g_e->ai.hu[1][5] = 1) && COMP_45
+# define COMP_48 COMP_44 && (g_e->ai.hu[1][5] = -1) && COMP_45
+# define COMP_49 ((g_e->ai.hu[1][6] = 0) || 1) && (g_e->ai.hu[1][9] = b)
+# define COMP_50 COMP_44 && (g_e->ai.hu[1][5] = 1) && COMP_49
+# define COMP_51 !g_e->ai.startmove && ++g_e->ai.startmove
+# define COMP_52 COMP_51 && g_e->ai.p == 1 && COMP_15
+# define COMP_53 (g_e->ai.n = node) && (g_e->ai.h = g_e->ai.h1)
+# define COMP_54 g_e->ai.h < g_e->ai.h1 && COMP_53
 # define COMP_55 M_CAP_09 += x + 3 < 19
 
 # define COMP_56 !(N_MAP[y][x + 2] = 0) && !(N_MAP[y][x + 1] = 0)
@@ -259,28 +259,28 @@
 # define COMP_66 M_POS_42 && M_POS_43 && !(N_MAP[y - 2][x - 2] = 0)
 # define COMP_67 COMP_66 && !(N_MAP[y - 1][x - 1] = 0)
 # define COMP_68 COMP_42 !(N_MAP[y][x - 2] = 0)
-# define COMP_69 (e->ai.hu[3][5] = e->ai.hu[1][5])
+# define COMP_69 (g_e->ai.hu[3][5] = g_e->ai.hu[1][5])
 
-# define INIT_01 v.c=0;v.t=0;v.fr=0;v.tx=e->ai.x;v.t=e->ai.y
+# define INIT_01 v.c=0;v.t=0;v.fr=0;v.tx=g_e->ai.x;v.t=g_e->ai.y
 # define INIT_02 COMP_02;v.x=x1;v.y=y1
-# define INIT_03 v.x-=v.xd;v.y-=v.yd;e->ai.x=v.x;e->ai.y=v.y
+# define INIT_03 v.x-=v.xd;v.y-=v.yd;g_e->ai.x=v.x;g_e->ai.y=v.y
 # define INIT_04 INIT_01;INIT_02
-# define INIT_05 x=e->gomoku.cursorx;y=e->gomoku.cursory
+# define INIT_05 x=g_e->gomoku.cursorx;y=g_e->gomoku.cursory
 # define INIT_06 int o;int p;int x;int y
 # define INIT_07 v.b=0;v.c=0.0;v.x1=x;v.y1=y
-# define INIT_08 e->ai.h1=0;x=-1
+# define INIT_08 g_e->ai.h1=0;x=-1
 # define INIT_09 int x;int y
 # define INIT_10 int x;int y;int p;float c
 
-# define RET_01 0 + (e->ai.x = v.tx) * 0 + (e->ai.y = v.ty) * 0
+# define RET_01 0 + (g_e->ai.x = v.tx) * 0 + (g_e->ai.y = v.ty) * 0
 
 # define LTRUE_01 {v.x+=v.xd;v.y+=v.yd;}
 
-# define INC_CAP (e->gomoku.map[n][y][x] += 1)
+# define INC_CAP (g_e->gomoku.map[n][y][x] += 1)
 
-# define ASSI_01 (e->ai.n = e->ai.h = y = -1)
-# define ASSI_02 o = 2 - (e->gomoku.player_turn == 2)
-# define ASSI_03 p = e->gomoku.player_turn
+# define ASSI_01 (g_e->ai.n = g_e->ai.h = y = -1)
+# define ASSI_02 o = 2 - (g_e->gomoku.player_turn == 2)
+# define ASSI_03 p = g_e->gomoku.player_turn
 # define ASSI_04 COMP_55 && M_POS_20 && M_POS_21 && M_POS_22 && COMP_56
 
 /*
@@ -419,7 +419,7 @@ typedef struct		s_window
 	t_coord			board_size;
 }					t_window;
 
-typedef struct		s_env
+typedef struct		s_g_env
 {
 	char			gamemode;
 	char			verbose;
@@ -427,7 +427,7 @@ typedef struct		s_env
 	t_ai			ai;
 	t_window		win;
 	t_e				e;
-}					t_env;
+}					t_g_env;
 
 /*
 ** ----------\
@@ -437,12 +437,12 @@ typedef struct		s_env
 
 # ifdef MAIN_FILE
 
-t_env				env;
-t_e					*e;
+t_g_env				g_env;
+t_e					*g_e;
 # else
 
-extern t_env		env;
-extern t_e			*e;
+extern t_g_env		g_env;
+extern t_e			*g_e;
 # endif
 
 /*

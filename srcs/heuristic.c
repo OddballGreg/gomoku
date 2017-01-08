@@ -19,25 +19,25 @@ int		heuristics(int node)
 	{
 		while (++y < 5 && (x = -1))
 			while (++x < 27)
-				e->ai.hu[y][x] = 0;
+				g_e->ai.hu[y][x] = 0;
 		return (-1);
 	}
 	INIT_08;
 	while (++x < 27)
-		if (!(e->ai.hu[1][x] = 0))
-			e->ai.hu[2][x] = 0;
-	e->ai.p = e->gomoku.player_turn;
-	e->ai.o = 2 - (e->gomoku.player_turn == 2);
-	e->ai.x = node % 19 + 19 * !(node % 19) - 1;
-	e->ai.y = node / 19 - (e->ai.x == 18);
-	e->ai.hu[1][0] = node;
-	e->ai.hu[1][1] = e->gomoku.map[1][e->ai.y][e->ai.x];
-	e->ai.hu[1][2] = e->gomoku.map[2][e->ai.y][e->ai.x];
-	e->ai.hu[1][7] = e->ai.x;
-	e->ai.hu[1][8] = e->ai.y;
+		if (!(g_e->ai.hu[1][x] = 0))
+			g_e->ai.hu[2][x] = 0;
+	g_e->ai.p = g_e->gomoku.player_turn;
+	g_e->ai.o = 2 - (g_e->gomoku.player_turn == 2);
+	g_e->ai.x = node % 19 + 19 * !(node % 19) - 1;
+	g_e->ai.y = node / 19 - (g_e->ai.x == 18);
+	g_e->ai.hu[1][0] = node;
+	g_e->ai.hu[1][1] = g_e->gomoku.map[1][g_e->ai.y][g_e->ai.x];
+	g_e->ai.hu[1][2] = g_e->gomoku.map[2][g_e->ai.y][g_e->ai.x];
+	g_e->ai.hu[1][7] = g_e->ai.x;
+	g_e->ai.hu[1][8] = g_e->ai.y;
 	heuristics1(node);
 	calc_heuristic(node);
-	return (e->ai.n);
+	return (g_e->ai.n);
 }
 
 int		minimax(int node, int depth, int maximizing_player)
@@ -58,8 +58,8 @@ void	possible_solutions(void)
 	y = -1;
 	while (++y < 19 && (x = -1))
 		while (++x < 19 && (++z))
-			if (!e->gomoku.map[0][y][x] && !e->gomoku.map[3][y][x])
-				e->ai.node = minimax(z, z, 1);
+			if (!g_e->gomoku.map[0][y][x] && !g_e->gomoku.map[3][y][x])
+				g_e->ai.node = minimax(z, z, 1);
 }
 
 void	copy_map(void)
@@ -70,5 +70,5 @@ void	copy_map(void)
 	y = -1;
 	while (++y < 19 && (x = -1))
 		while (++x < 19)
-			e->gomoku.map[0][y][x] = E_BOARD[x + 1][y + 1];
+			g_e->gomoku.map[0][y][x] = E_BOARD[x + 1][y + 1];
 }

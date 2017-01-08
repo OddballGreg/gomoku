@@ -44,18 +44,18 @@ int		heuristics1(int node)
 	int		t;
 
 	heuristics2(node);
-	e->gomoku.map[0][e->ai.y][e->ai.x] = e->ai.p;
-	c = opportunities_threats(3, 1, e->ai.o, e->ai.p);
-	c += opportunities_threats(2, 1, e->ai.o, e->ai.p);
-	c += opportunities_threats(1, 1, e->ai.o, e->ai.p);
-	t = opportunities_threats(3, 2, e->ai.p, e->ai.o);
-	t += opportunities_threats(2, 2, e->ai.p, e->ai.o);
-	t += opportunities_threats(1, 2, e->ai.p, e->ai.o);
-	e->ai.hu[1][3] = c;
-	e->ai.hu[1][4] = t;
-	e->ai.hu[2][3] = t;
-	e->ai.hu[2][4] = c;
-	e->gomoku.map[0][e->ai.y][e->ai.x] = e->ai.o;
-	e->gomoku.map[0][e->ai.y][e->ai.x] = 0;
+	g_e->gomoku.map[0][g_e->ai.y][g_e->ai.x] = g_e->ai.p;
+	c = opportunities_threats(3, 1, g_e->ai.o, g_e->ai.p);
+	c += opportunities_threats(2, 1, g_e->ai.o, g_e->ai.p);
+	c += opportunities_threats(1, 1, g_e->ai.o, g_e->ai.p);
+	t = opportunities_threats(3, 2, g_e->ai.p, g_e->ai.o);
+	t += opportunities_threats(2, 2, g_e->ai.p, g_e->ai.o);
+	t += opportunities_threats(1, 2, g_e->ai.p, g_e->ai.o);
+	g_e->ai.hu[1][3] = c;
+	g_e->ai.hu[1][4] = t;
+	g_e->ai.hu[2][3] = t;
+	g_e->ai.hu[2][4] = c;
+	g_e->gomoku.map[0][g_e->ai.y][g_e->ai.x] = g_e->ai.o;
+	g_e->gomoku.map[0][g_e->ai.y][g_e->ai.x] = 0;
 	return (1);
 }

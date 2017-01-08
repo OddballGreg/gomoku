@@ -14,7 +14,7 @@
 
 /*
 ** Random Line in last else:
-** if (e->ai.hu[3][25] >= 5) ;
+** if (g_e->ai.hu[3][25] >= 5) ;
 */
 
 int		hu_algo(int node)
@@ -22,26 +22,26 @@ int		hu_algo(int node)
 	float	oh;
 
 	oh = 0;
-	if (((COMP_11 && e->ai.hu[3][24] >= e->ai.hu[3][25]) ||
-				e->ai.hu[3][24] >= 5) && node == e->ai.hu[3][0])
+	if (((COMP_11 && g_e->ai.hu[3][24] >= g_e->ai.hu[3][25]) ||
+				g_e->ai.hu[3][24] >= 5) && node == g_e->ai.hu[3][0])
 	{
-		if (!(e->player[e->ai.p].captures + e->ai.hu[3][11] < 5 && COMP_10))
-			e->ai.h1 = e->ai.h + 100;
+		if (!(g_e->player[g_e->ai.p].captures + g_e->ai.hu[3][11] < 5 && COMP_10))
+			g_e->ai.h1 = g_e->ai.h + 100;
 		else
-			e->ai.h1 = -100;
+			g_e->ai.h1 = -100;
 		return (0);
 	}
-	else if (((COMP_12 && e->ai.hu[3][25] > e->ai.hu[3][24]) ||
-				e->ai.hu[3][25] == 4) && node == e->ai.hu[3][0])
+	else if (((COMP_12 && g_e->ai.hu[3][25] > g_e->ai.hu[3][24]) ||
+				g_e->ai.hu[3][25] == 4) && node == g_e->ai.hu[3][0])
 	{
-		if (!(e->player[e->ai.p].captures + e->ai.hu[3][10] == 5 && COMP_14))
-			e->ai.h1 = e->ai.h + 100;
+		if (!(g_e->player[g_e->ai.p].captures + g_e->ai.hu[3][10] == 5 && COMP_14))
+			g_e->ai.h1 = g_e->ai.h + 100;
 		else
-			e->ai.h1 = -100;
+			g_e->ai.h1 = -100;
 		return (0);
 	}
 	else
-		e->ai.h1 += 2 * e->ai.hu[1][1] - 2 * COMP_16;
+		g_e->ai.h1 += 2 * g_e->ai.hu[1][1] - 2 * COMP_16;
 	return (0);
 }
 
@@ -61,24 +61,24 @@ void	max_hu(void)
 	x = 0;
 	while (++x < 27)
 	{
-		if ((x < 5 || (x > 15 && x < 26)) && e->ai.hu[1][x] > e->ai.hu[3][x])
-			e->ai.hu[3][x] = e->ai.hu[1][x];
-		if (x == 5 && ((e->ai.hu[1][24] > e->ai.hu[3][24] && e->ai.hu[1][24] > \
-						e->ai.hu[3][25]) || (e->ai.hu[1][25] > e->ai.hu[3][24] \
-							&& e->ai.hu[1][25] > e->ai.hu[3][25])) && \
-				(COMP_69 || 1) && ((e->ai.hu[3][6] = \
-						e->ai.hu[1][6]) || 1) && ((e->ai.hu[3][7] = \
-							e->ai.hu[1][7]) || 1) && ((e->ai.hu[3][8] = \
-								e->ai.hu[1][8]) || 1) && ((e->ai.hu[3][9] = \
-									e->ai.hu[1][9]) || 1))
+		if ((x < 5 || (x > 15 && x < 26)) && g_e->ai.hu[1][x] > g_e->ai.hu[3][x])
+			g_e->ai.hu[3][x] = g_e->ai.hu[1][x];
+		if (x == 5 && ((g_e->ai.hu[1][24] > g_e->ai.hu[3][24] && g_e->ai.hu[1][24] > \
+						g_e->ai.hu[3][25]) || (g_e->ai.hu[1][25] > g_e->ai.hu[3][24] \
+							&& g_e->ai.hu[1][25] > g_e->ai.hu[3][25])) && \
+				(COMP_69 || 1) && ((g_e->ai.hu[3][6] = \
+						g_e->ai.hu[1][6]) || 1) && ((g_e->ai.hu[3][7] = \
+							g_e->ai.hu[1][7]) || 1) && ((g_e->ai.hu[3][8] = \
+								g_e->ai.hu[1][8]) || 1) && ((g_e->ai.hu[3][9] = \
+									g_e->ai.hu[1][9]) || 1))
 		{
-			e->ai.hu[3][0] = e->ai.hu[1][0];
-			captures_on_max_align((int)e->ai.hu[3][7], (int)e->ai.hu[3][8], 10);
-			N_MAP[(int)e->ai.hu[3][8]][(int)e->ai.hu[3][7]] = e->ai.p;
-			captures_on_max_align((int)e->ai.hu[3][7], (int)e->ai.hu[3][8], 12);
-			N_MAP[(int)e->ai.hu[3][8]][(int)e->ai.hu[3][7]] = e->ai.o;
-			captures_on_max_align((int)e->ai.hu[3][7], (int)e->ai.hu[3][8], 14);
-			N_MAP[(int)e->ai.hu[3][8]][(int)e->ai.hu[3][7]] = 0;
+			g_e->ai.hu[3][0] = g_e->ai.hu[1][0];
+			captures_on_max_align((int)g_e->ai.hu[3][7], (int)g_e->ai.hu[3][8], 10);
+			N_MAP[(int)g_e->ai.hu[3][8]][(int)g_e->ai.hu[3][7]] = g_e->ai.p;
+			captures_on_max_align((int)g_e->ai.hu[3][7], (int)g_e->ai.hu[3][8], 12);
+			N_MAP[(int)g_e->ai.hu[3][8]][(int)g_e->ai.hu[3][7]] = g_e->ai.o;
+			captures_on_max_align((int)g_e->ai.hu[3][7], (int)g_e->ai.hu[3][8], 14);
+			N_MAP[(int)g_e->ai.hu[3][8]][(int)g_e->ai.hu[3][7]] = 0;
 		}
 	}
 }

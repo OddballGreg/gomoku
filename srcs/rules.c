@@ -16,10 +16,10 @@ void	get_rule_maps(void)
 {
 	reset_rule_maps();
 	double_free_threes();
-	possible_captures(1, 2 - (e->gomoku.player_turn == 2),
-			e->gomoku.player_turn);
-	possible_captures(2, e->gomoku.player_turn,
-			2 - (e->gomoku.player_turn == 2));
+	possible_captures(1, 2 - (g_e->gomoku.player_turn == 2),
+			g_e->gomoku.player_turn);
+	possible_captures(2, g_e->gomoku.player_turn,
+			2 - (g_e->gomoku.player_turn == 2));
 }
 
 void	reset_rule_maps(void)
@@ -32,7 +32,7 @@ void	reset_rule_maps(void)
 	while (++y < 19 && (x = -1))
 		while (++x < 19 && !(z = 0))
 			while (++z < 7)
-				e->gomoku.map[z][y][x] = 0;
+				g_e->gomoku.map[z][y][x] = 0;
 }
 
 void	apply_rules(void)
@@ -45,7 +45,7 @@ int		player_wins_check(void)
 	t_pwin	v;
 
 	v.y = -1;
-	v.p = e->gomoku.player_turn;
+	v.p = g_e->gomoku.player_turn;
 	while (++v.y < 19 && (v.x = -1))
 	{
 		while (++v.x < 19)
