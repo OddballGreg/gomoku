@@ -14,23 +14,24 @@
 
 void	init_ai(void)
 {	
-	t_coord initial;
+	e = (t_e *)&env.e;
+	//bzero(&e, sizeof(t_e));//req
+//	bzero(&e->eye, sizeof(t_eye));//RM
+//	bzero(&e->main, sizeof(t_menu));//RM
+//	bzero(&e->pause, sizeof(t_menu));//RM
+//	bzero(&e->player[0], sizeof(t_player));//RM
+//	bzero(&e->player[1], sizeof(t_player));//RM
+//	bzero(&e->player[2], sizeof(t_player));//RM
+//	e->eye.ey = 6;
+//	e->eye.ez = 0.4;
+//	e->gomoku.sub = 0;
+//	e->gomoku.scalex = 0.05;
+//	e->gomoku.scaley = 0.05;
+//	e->gomoku.scalez = 0.05;
+	e->gomoku.cursorx = -1;//req M
+	e->gomoku.cursory = -1;//req M
 
-	int x = -1;
-	int y;
-	while(++x < NTILES)
-	{
-		y = -1;
-		while(++y < NTILES)
-			GAME.board[x][y] = EMPTY;
-	}
 
-
-	// final code will not create ai nodes in init function
-	initial.x = 7;
-	initial.y = 7;
-	
-	prompt_ai(initial);
 }
 
 void    init_wins(void)

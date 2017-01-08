@@ -12,7 +12,7 @@
 
 NAME = gomoku
 
-CFLAGS =	-Wno-deprecated-declarations -Wall -Wextra -Werror -g -g3 -O3
+CFLAGS =	-Wno-deprecated-declarations -g -g3 -O3 # -Wall -Wextra -Werror
 
 #LINUX
 CFLAGS2 = 	-g -g3 -lpanel -lcurses -O3 -mcmodel=large
