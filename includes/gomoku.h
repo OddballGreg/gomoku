@@ -234,6 +234,7 @@
 # define INIT_07 v.b=0;v.c=0.0;v.x1=x;v.y1=y
 # define INIT_08 e->ai.h1=0;x=-1
 # define INIT_09 int x;int y
+# define INIT_10 int x;int y;int p;float c
 
 # define LTRUE_01 {v.x+=v.xd;v.y+=v.yd;}
 

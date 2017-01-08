@@ -58,11 +58,7 @@ float		free_three(int x, int y, int xd, int yd)
 
 void		double_free_threes(void)
 {
-	int				x;
-	int				y;
-	int				p;
-	float			c;
-
+	INIT_10;
 	y = -1;
 	p = e->gomoku.player_turn;
 	while (++y < 19 && (x = -1))
@@ -73,7 +69,6 @@ void		double_free_threes(void)
 			if (!e->gomoku.map[0][y][x])
 			{
 				e->gomoku.map[0][y][x] = p;
-
 				c += free_three(x, y, 0, -1);
 				c += free_three(x, y, 0, 1);
 				c += free_three(x, y, 1, -1);
