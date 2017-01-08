@@ -2,7 +2,7 @@
 
 long	timing(void)
 {
-	struct timeval		time;
+	struct timeval	time;
 
 	gettimeofday(&time, NULL);
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
@@ -10,18 +10,18 @@ long	timing(void)
 
 void	ai(void)
 {
-    long    t;
+	long			t;
 
-    t = timing();
+	t = timing();
 	possible_solutions();
 	e->gomoku.cursorx = e->ai.node % 19 + 19 * !(e->ai.node % 19) - 1;
 	e->gomoku.cursory = 18 - (e->ai.node / 19 - (e->gomoku.cursorx == 18)); 
-    mvwprintw(E_WIN[WIN_STATS], 17, 1, "TIME: %dms", timing() - t);
+	mvwprintw(E_WIN[WIN_STATS], 17, 1, "TIME: %dms", timing() - t);
 }
 
 int		opportunities_threats(int d, int n, int o, int p)
 {
-	int		c;
+	int				c;
 
 	c = 0;
 	e->ai.y + d < 19 && M_POS_01 && M_POS_02 && M_CAP_01;
@@ -37,7 +37,7 @@ int		opportunities_threats(int d, int n, int o, int p)
 
 void	copy(int n, int o)
 {
-	int		x;
+	int				x;
 
 	x = -1;
 	while (++x < 27)
@@ -46,8 +46,8 @@ void	copy(int n, int o)
 
 void	reset_map(void)
 {
-	char	x;
-	char	y;
+	char			x;
+	char			y;
 
 	y = -1;
 	while (++y < 19 && (x = -1))

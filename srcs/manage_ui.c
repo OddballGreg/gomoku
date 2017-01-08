@@ -47,11 +47,11 @@ void	draw_piece(t_coord move)
 	mvwprintw(E_WIN[WIN_STATS], 6, 1, "LAST (%2d; %2d)", move.x, move.y);
 	if (e->gomoku.map[3][move.y - 1][move.x - 1] != 0)
 	{
-		
+
 		return ;
 	}
 	mvwaddch(E_WIN[WIN_BOARD], s_pos.y, s_pos.x, (++E_DEPTH & 0b1) ?
-		P1_PIECE : P2_PIECE);
+			P1_PIECE : P2_PIECE);
 	E_BOARD[move.x][move.y] = (E_DEPTH & 0b1) + 1;
 	e->gomoku.cursorx = move.x - 1;
 	e->gomoku.cursory = move.y - 1;
@@ -62,9 +62,9 @@ void	draw_piece(t_coord move)
 	e->gomoku.player_turn = ((E_DEPTH + 1) & 0b1) + 1;
 	get_rule_maps();
 	if (e->player[1].captures >= 5 || e->player[2].captures >= 5)
-			exit_player_win(2 - (e->gomoku.player_turn == 2));
-    if (player_wins_check())
-        	exit_player_win(e->gomoku.player_turn);
+		exit_player_win(2 - (e->gomoku.player_turn == 2));
+	if (player_wins_check())
+		exit_player_win(e->gomoku.player_turn);
 	reset_map();
 	update_map();
 	mvwprintw(E_WIN[WIN_STATS], 5, 1, "MOVE STAT: OK");
@@ -79,9 +79,9 @@ void	usermove(void)
 	draw_piece(E_W_BPOS);
 	heuristics(-1);
 	ai();
-	e->gomoku.map[0][18 - e->gomoku.cursory][e->gomoku.cursorx] = \
+	e->gomoku.map[0][18 - e->gomoku.cursory][e->gomoku.cursorx] =
 		e->gomoku.player_turn;
-    tmp.x = e->gomoku.cursorx + 1;
+	tmp.x = e->gomoku.cursorx + 1;
 	tmp.y = 18 - e->gomoku.cursory + 1;
 	if (GAMEMODE == 1)
 		draw_piece(tmp);

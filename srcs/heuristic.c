@@ -16,18 +16,18 @@ int		heuristics(int node)
 	x = -1;
 	while (++x < 27)
 		if (!(e->ai.hu[1][x] = 0))
-			 e->ai.hu[2][x] = 0; 	
+			e->ai.hu[2][x] = 0; 	
 
 	e->ai.p = e->gomoku.player_turn;
-    e->ai.o = 2 - (e->gomoku.player_turn == 2);
+	e->ai.o = 2 - (e->gomoku.player_turn == 2);
 	e->ai.x = node % 19 + 19 * !(node % 19) - 1;
 	e->ai.y = node / 19 - (e->ai.x == 18);
 	e->ai.hu[1][0] = node;	
 	e->ai.hu[1][1] = e->gomoku.map[1][e->ai.y][e->ai.x];
 	e->ai.hu[1][2] = e->gomoku.map[2][e->ai.y][e->ai.x];
-    e->ai.hu[1][7] = e->ai.x;
-    e->ai.hu[1][8] = e->ai.y;
-    heuristics1(node);
+	e->ai.hu[1][7] = e->ai.x;
+	e->ai.hu[1][8] = e->ai.y;
+	heuristics1(node);
 	calc_heuristic(node);
 	return (e->ai.n);
 }
@@ -42,9 +42,9 @@ int		minimax(int node, int depth, int maximizing_player)
 
 void	possible_solutions(void)
 {
-	int		x;
-	int		y;
-	int		z;
+	int			x;
+	int			y;
+	int			z;
 
 	z = 0;
 	y = -1;
@@ -56,8 +56,8 @@ void	possible_solutions(void)
 
 void	copy_map(void)
 {
-	char	x;
-	char	y;
+	char		x;
+	char		y;
 
 	y = -1;
 	while (++y < 19 && (x = -1))

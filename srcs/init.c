@@ -30,16 +30,16 @@ void	init_ai(void)
 
 }
 
-void    init_wins(void)
+void	init_wins(void)
 {
 	wmove(env.win.win[WIN_BOARD], 4, 5);
 	update_panels();
 	doupdate();
 }
 
-void    init_curses(void)
+void	init_curses(void)
 {
-    initscr();
+	initscr();
 	start_color();
 	cbreak();
 	noecho();
@@ -50,7 +50,7 @@ void    init_curses(void)
 	E_W_BPOS.x = 1;
 	E_W_BPOS.y = 1;
 	get_boardcr(COLUMNS, ROWS, &(env.win.board_size.x),
-		&(env.win.board_size.y));
+			&(env.win.board_size.y));
 }
 
 void	init_signals(void)

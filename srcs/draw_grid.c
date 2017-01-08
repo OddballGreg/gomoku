@@ -18,7 +18,7 @@ void	draw_grid(WINDOW *win, int columns, int rows)
 	int		pos_y;
 	int		max_x;
 	int		max_y;
-	
+
 	get_boardcr(columns, rows, &max_x, &max_y);
 	pos_x = 1;
 	while (++pos_x < max_x - 2)
