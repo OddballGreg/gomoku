@@ -1,5 +1,4 @@
 #include "../includes/gomoku.h"
-//j.cpp AI STARTS 	//ai algorithms
 
 int		heuristics(int node)
 {
@@ -53,4 +52,15 @@ void	possible_solutions(void)
 		while (++x < 19 && (++z))
 			if (!e->gomoku.map[0][y][x] && !e->gomoku.map[3][y][x])
 				e->ai.node = minimax(z, z, 1);
+}
+
+void	copy_map(void)
+{
+	char	x;
+	char	y;
+
+	y = -1;
+	while (++y < 19 && (x = -1))
+		while (++x < 19)
+			e->gomoku.map[0][y][x] = E_BOARD[x + 1][y + 1];
 }

@@ -86,7 +86,10 @@ void	usermove(void)
 	if (GAMEMODE == 1)
 		draw_piece(tmp);
 	else
+	{
 		mvwprintw(E_WIN[WIN_STATS], 6, 1, "BEST: (%2d; %2d)", tmp.x, tmp.y);
+		copy_map();
+	}
 }
 
 void	manage_ui(void)

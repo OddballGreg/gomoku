@@ -445,11 +445,12 @@ void		clear_all_wins(void);
 void		redraw_all_win(void);
 
 /*
-** heuristic.chars (j.cpp)
+** heuristic.c (j.cpp)
 */
 int			heuristics(int node);
 int			minimax(int node, int depth, int maximizing_player);
 void		possible_solutions(void);
+void		copy_map(void);
 
 /*
 ** heuristic2.c

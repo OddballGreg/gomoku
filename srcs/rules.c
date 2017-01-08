@@ -19,7 +19,7 @@ void	reset_rule_maps(void)
     y = -1;
     while (++y < 19 && (x = -1))
         while (++x < 19 && !(z = 0))
-            while (++z < 7)//1 up to 7 maps
+            while (++z < 7)
                 e->gomoku.map[z][y][x] = 0;
 }
 
