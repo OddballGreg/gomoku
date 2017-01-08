@@ -32,26 +32,23 @@ float		free_three2(int x, int y,int xd, int yd)
 float		free_three(int x, int y, int xd, int yd)
 {
 	static char		a[7];
-	int				c;
-	int				n;
-	int				b;
-	int				o;
+	t_f_three2		v;
 
-	b = -1;
-	c = -1;
+	v.b = -1;
+	v.c = -1;
 	bzero(a, 7);
-	o = 2 - (e->gomoku.player_turn == 2);
+	v.o = 2 - (e->gomoku.player_turn == 2);
 	if (!(x - xd > -1 && x - xd < 19 && y - yd > -1 && y - yd < 19) ||
 			e->gomoku.map[0][y - yd][x - xd])
 		return (free_three2(x, y, xd, yd));
-	a[++c] = e->gomoku.map[0][y][x] + 48 - N_MAP[y][x] == 2);
-	while (++b < 7 && x + xd > -1 && x + xd < 19 && y + yd > -1 && y + yd < 19)
+	a[++v.c] = e->gomoku.map[0][y][x] + 48 - N_MAP[y][x] == 2);
+	while (++v.b < 7 && x + xd > -1 && x + xd < 19 && y + yd > -1 && y + yd < 19)
 	{
 		x += xd;
 		y += yd;
-		if N_MAP[y][x] == o)
+		if N_MAP[y][x] == v.o)
 			return (0);
-		a[++c] = e->gomoku.map[0][y][x] + 48 - N_MAP[y][x] == 2);
+		a[++v.c] = e->gomoku.map[0][y][x] + 48 - N_MAP[y][x] == 2);
 	}
 	if (!strncmp(a, "1110", 4) || !strncmp(a, "10110", 5) ||
 			!strncmp(a, "11010", 5))

@@ -285,6 +285,14 @@ typedef struct	s_f_three
 	int			o;
 }				t_f_three;
 
+typedef struct	s_f_three2
+{
+	int				c;
+	int				n;
+	int				b;
+	int				o;
+}				t_f_three2;
+
 typedef struct	s_pwin
 {
 	int			p;
