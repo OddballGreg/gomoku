@@ -6,7 +6,7 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:11:10 by khansman          #+#    #+#             */
-/*   Updated: 2017/01/07 13:11:12 by khansman         ###   ########.fr       */
+/*   Updated: 2017/01/08 15:44:44 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		is_vline(int pos_x)
 	return (((pos_x - 1) % 4) == 0);
 }
 
-int		is_plus(int pos_x, int	pos_y)
+int		is_plus(int pos_x, int pos_y)
 {
 	if (pos_y == 1)
 		return (0);

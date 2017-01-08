@@ -245,6 +245,22 @@
 # define COMP_52 COMP_51 && e->ai.p == 1 && COMP_15
 # define COMP_53 (e->ai.n = node) && (e->ai.h = e->ai.h1)
 # define COMP_54 e->ai.h < e->ai.h1 && COMP_53
+# define COMP_55 M_CAP_09 += x + 3 < 19
+
+# define COMP_56 !(N_MAP[y][x + 2] = 0) && !(N_MAP[y][x + 1] = 0)
+# define COMP_57 !(N_MAP[y + 2][x] = 0) && !(N_MAP[y + 1][x] = 0)
+# define COMP_58 !(N_MAP[y - 2][x] = 0) && !(N_MAP[y - 1][x] = 0)
+# define COMP_59 !(N_MAP[y + 2][x + 2] = 0) && !(N_MAP[y + 1][x + 1] = 0)
+# define COMP_60 COMP_55 && M_POS_32 && M_POS_33 && M_POS_35 && COMP_59
+# define COMP_61 M_POS_37 && !(N_MAP[y + 2][x - 2] = 0)
+# define COMP_62 COMP_43 && COMP_61 && !(N_MAP[y + 1][x - 1] = 0)
+# define COMP_63 M_POS_40 && !(N_MAP[y - 2][x + 2] = 0)
+# define COMP_64 COMP_55 && y - 3 >= 0 && M_POS_38 && M_POS_39
+# define COMP_65 COMP_64 && COMP_63 && !(N_MAP[y - 1][x + 1] = 0)
+# define COMP_66 M_POS_42 && M_POS_43 && !(N_MAP[y - 2][x - 2] = 0)
+# define COMP_67 COMP_66 && !(N_MAP[y - 1][x - 1] = 0)
+# define COMP_68 COMP_42 !(N_MAP[y][x - 2] = 0)
+# define COMP_69 (e->ai.hu[3][5] = e->ai.hu[1][5])
 
 # define INIT_01 v.c=0;v.t=0;v.fr=0;v.tx=e->ai.x;v.t=e->ai.y
 # define INIT_02 COMP_02;v.x=x1;v.y=y1
@@ -263,9 +279,10 @@
 
 # define INC_CAP (e->gomoku.map[n][y][x] += 1)
 
-# define E_AI_01 e->ai.hu[3][8]][(int)e->ai.hu[3][7]]
-
 # define ASSI_01 (e->ai.n = e->ai.h = y = -1)
+# define ASSI_02 o = 2 - (e->gomoku.player_turn == 2)
+# define ASSI_03 p = e->gomoku.player_turn
+# define ASSI_04 COMP_55 && M_POS_20 && M_POS_21 && M_POS_22 && COMP_56
 
 /*
 ** ----------\

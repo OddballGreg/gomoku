@@ -60,24 +60,14 @@ void	apply_capture(void)
 {
 	INIT_06;
 	INIT_05;
-	o = 2 - (e->gomoku.player_turn == 2);
-	p = e->gomoku.player_turn;
-	M_CAP_09 += x + 3 < 19 && M_POS_20 && M_POS_21 && M_POS_22 &&
-		!(N_MAP[y][x + 2] = 0) && !(N_MAP[y][x + 1] = 0);
-	COMP_42 !(N_MAP[y][x - 2] = 0) && !(N_MAP[y][x - 1] = 0);
-	M_CAP_09 += y + 3 < 19 && M_POS_26 && M_POS_27 && M_POS_28 &&
-		!(N_MAP[y + 2][x] = 0) && !(N_MAP[y + 1][x] = 0);
-	M_CAP_09 += y - 3 >= 0 && M_POS_29 && M_POS_30 && M_POS_31 &&
-		!(N_MAP[y - 2][x] = 0) && !(N_MAP[y - 1][x] = 0);
-	M_CAP_09 += x + 3 < 19 && M_POS_32 && M_POS_33 && M_POS_35 &&
-		!(N_MAP[y + 2][x + 2] = 0) &&
-		!(N_MAP[y + 1][x + 1] = 0);
-	COMP_43 && M_POS_37 && !(N_MAP[y + 2][x - 2] = 0) &&
-		!(N_MAP[y + 1][x - 1] = 0);
-	M_CAP_09 += x + 3 < 19 && y - 3 >= 0 && M_POS_38 && M_POS_39
-		&& M_POS_40 && !(N_MAP[y - 2][x + 2] = 0) &&
-		!(N_MAP[y - 1][x + 1] = 0);
-	M_CAP_09 += (x - 3 >= 0 && y - 3 >= 0 && M_POS_41 &&
-			M_POS_42 && M_POS_43 && !(N_MAP[y - 2][x - 2] = 0) &&
-			!(N_MAP[y - 1][x - 1] = 0));
+	ASSI_02;
+	ASSI_03;
+	ASSI_04;
+	COMP_68 && !(N_MAP[y][x - 1] = 0);
+	M_CAP_09 += y + 3 < 19 && M_POS_26 && M_POS_27 && M_POS_28 && COMP_57;
+	M_CAP_09 += y - 3 >= 0 && M_POS_29 && M_POS_30 && M_POS_31 && COMP_58;
+	COMP_60;
+	COMP_62;
+	COMP_65;
+	M_CAP_09 += (x - 3 >= 0 && y - 3 >= 0 && M_POS_41 && COMP_67);
 }

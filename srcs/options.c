@@ -6,7 +6,7 @@
 /*   By: ghavenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:10:17 by ghavenga          #+#    #+#             */
-/*   Updated: 2017/01/07 13:10:35 by khansman         ###   ########.fr       */
+/*   Updated: 2017/01/08 15:43:15 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		getopts(void)
 {
-	char 	*input;
+	char	*input;
 
 	input = NULL;
 	ft_putendl("Select your gamemode:\n(1) Player vs Comp");

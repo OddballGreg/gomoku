@@ -6,13 +6,13 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 14:49:31 by khansman          #+#    #+#             */
-/*   Updated: 2017/01/08 14:49:32 by khansman         ###   ########.fr       */
+/*   Updated: 2017/01/08 15:41:32 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/gomoku.h"
 
-float		free_three2(int x, int y,int xd, int yd)
+float		free_three2(int x, int y, int xd, int yd)
 {
 	t_f_three		v;
 
@@ -24,20 +24,20 @@ float		free_three2(int x, int y,int xd, int yd)
 		return (0);
 	while (x - xd > -1 && x - xd < 19 && y - yd > -1 && y - yd < 19 &&
 			(N_MAP[y - yd][x - xd] == v.p || COMP_08))
-			{
-				v.c += 1.0;
-				x -= xd;
-				y -= yd;
-			}
+	{
+		v.c += 1.0;
+		x -= xd;
+		y -= yd;
+	}
 	x = v.x1;
 	y = v.y1;
 	while (x + xd > -1 && x + xd < 19 && y + yd > -1 && y + yd < 19 &&
 			(N_MAP[y + yd][x + xd] == v.p || COMP_08))
-			{
-				v.c += 1.0;
-				x += xd;
-				y += yd;
-			}
+	{
+		v.c += 1.0;
+		x += xd;
+		y += yd;
+	}
 	return (((v.c + 1 == 3) * !v.b) * 0.5);
 }
 
@@ -54,7 +54,8 @@ float		free_three(int x, int y, int xd, int yd)
 			e->gomoku.map[0][y - yd][x - xd])
 		return (free_three2(x, y, xd, yd));
 	a[++v.c] = e->gomoku.map[0][y][x] + 48 - (N_MAP[y][x] == 2);
-	while (++v.b < 7 && x + xd > -1 && x + xd < 19 && y + yd > -1 && y + yd < 19)
+	while (++v.b < 7 && x + xd > -1 && x + xd < 19 &&
+			y + yd > -1 && y + yd < 19)
 	{
 		x += xd;
 		y += yd;

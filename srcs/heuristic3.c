@@ -66,7 +66,7 @@ void	max_hu(void)
 		if (x == 5 && ((e->ai.hu[1][24] > e->ai.hu[3][24] && e->ai.hu[1][24] > \
 						e->ai.hu[3][25]) || (e->ai.hu[1][25] > e->ai.hu[3][24] \
 							&& e->ai.hu[1][25] > e->ai.hu[3][25])) && \
-				((e->ai.hu[3][5] = e->ai.hu[1][5]) || 1) && ((e->ai.hu[3][6] = \
+				(COMP_69 || 1) && ((e->ai.hu[3][6] = \
 						e->ai.hu[1][6]) || 1) && ((e->ai.hu[3][7] = \
 							e->ai.hu[1][7]) || 1) && ((e->ai.hu[3][8] = \
 								e->ai.hu[1][8]) || 1) && ((e->ai.hu[3][9] = \
@@ -74,11 +74,11 @@ void	max_hu(void)
 		{
 			e->ai.hu[3][0] = e->ai.hu[1][0];
 			captures_on_max_align((int)e->ai.hu[3][7], (int)e->ai.hu[3][8], 10);
-			e->gomoku.map[0][(int)E_AI_01 = e->ai.p;
+			N_MAP[(int)e->ai.hu[3][8]][(int)e->ai.hu[3][7]] = e->ai.p;
 			captures_on_max_align((int)e->ai.hu[3][7], (int)e->ai.hu[3][8], 12);
-			e->gomoku.map[0][(int)E_AI_01 = e->ai.o;
+			N_MAP[(int)e->ai.hu[3][8]][(int)e->ai.hu[3][7]] = e->ai.o;
 			captures_on_max_align((int)e->ai.hu[3][7], (int)e->ai.hu[3][8], 14);
-			e->gomoku.map[0][(int)E_AI_01 = 0;
+			N_MAP[(int)e->ai.hu[3][8]][(int)e->ai.hu[3][7]] = 0;
 		}
 	}
 }
