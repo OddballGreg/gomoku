@@ -43,6 +43,8 @@ void	draw_stats(void)
 	mvwprintw(E_WIN[WIN_STATS], 3, 1, "TURN: %s", (E_DEPTH & 0b1) ? "P2" :
 			"P1");
 	mvwprintw(E_WIN[WIN_STATS], 4, 1, "MOVE: %d", (E_DEPTH + 1) >> 1);
+	mvwprintw(E_WIN[WIN_STATS], 8, 1, "P1 CAP: %d", e->player[1].captures);
+	mvwprintw(E_WIN[WIN_STATS], 9, 1, "P2 CAP: %d", e->player[2].captures);
 	mvwprintw(E_WIN[WIN_STATS], BOARD_HEI - 2, 1, "MODE: %s",
 			(GAMEMODE == 1) ? "P vs AI" : "P vs P");
 }
