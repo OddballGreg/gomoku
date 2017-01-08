@@ -2,80 +2,66 @@
 
 int     captures_on_max_align(int x1, int y1, int pos)
 {
-    int     p;
-    int     x;
-    int     y;
-    int     xd;
-    int     yd;
-    int     c;
-    int     t;
-    int     tx;
-    int     ty;
-    int     fr;
+    t_max_align     v;
     
-    c = 0;
-    t = 0;
-    fr = 0;
-    tx = e->ai.x;
-    ty = e->ai.y;
-    (e->ai.hu[3][24] >= e->ai.hu[3][25] && (p = e->ai.player_no)) || (p = 2 - (e->ai.player_no == 2));
-    x = x1;
-    y = y1;
-    xd = e->ai.hu[3][5] * (1 + -2 * (e->ai.hu[3][9] == 2));
-    yd = e->ai.hu[3][6] * (1 + -2 * (e->ai.hu[3][9] == 2));
-    if (!(x + xd < 19 && x + xd > -1 && y + yd < 19 && y + yd > -1 && e->gomoku.map[0][y + yd][x + xd] && (p = e->gomoku.map[0][y + yd][x + xd])))
+    v.c = 0;
+    v.t = 0;
+    v.fr = 0;
+    v.tx = e->ai.x;
+    v.ty = e->ai.y;
+    COMP_02;
+    v.x = x1;
+    v.y = y1;
+    v.xd = e->ai.hu[3][5] * (1 + -2 * (e->ai.hu[3][9] == 2));
+    v.yd = e->ai.hu[3][6] * (1 + -2 * (e->ai.hu[3][9] == 2));
+    if (!(COMP_05 > -1 && M_DPOS01 && (v.p = M_DPOS01)))
         return (-1);
-    while (x + xd < 19 && x + xd > -1 && y + yd < 19 && y + yd > -1 && e->gomoku.map[0][y + yd][x + xd] == p)
+    while (COMP_05 > -1 && M_DPOS01 == v.p)
     {
-        x += xd;
-        y += yd;
+        v.x += v.xd;
+        v.y += v.yd;
     }
-    fr += (x + xd < 19 && x + xd > -1 && y + yd < 19 && y + yd > -1 && !e->gomoku.map[0][y + yd][x + xd]);
-    while (x - xd < 19 && x - xd > -1 && y - yd < 19 && y - yd > -1 && e->gomoku.map[0][y - yd][x - xd] == p)
+    v.fr += (COMP_05 > -1 && !M_DPOS01);
+    while (COMP_04 && v.y - v.yd > -1 && COMP_06 == v.p)
     {
-        x -= xd;
-        y -= yd;
-        e->ai.x = x;
-        e->ai.y = y;
-        c = opportunities_threats(3, 1, 2 - (p == 2), p);
-        c += opportunities_threats(2, 1, 2 - (p == 2), p);
-        c += opportunities_threats(1, 1, 2 - (p == 2), p);
-        t = opportunities_threats(3, 2, p, 2 - (p == 2));
-        t += opportunities_threats(2, 2, p, 2 - (p == 2));
-        t += opportunities_threats(1, 2, p, 2 - (p == 2));
+        v.x -= v.xd;
+        v.y -= v.yd;
+        e->ai.x = v.x;
+        e->ai.y = v.y;
+        v.c = opportunities_threats(3, 1, 2 - (v.p == 2), v.p);
+        v.c += opportunities_threats(2, 1, 2 - (v.p == 2), v.p);
+        v.c += opportunities_threats(1, 1, 2 - (v.p == 2), v.p);
+        v.t = opportunities_threats(3, 2, v.p, 2 - (v.p == 2));
+        v.t += opportunities_threats(2, 2, v.p, 2 - (v.p == 2));
+        v.t += opportunities_threats(1, 2, v.p, 2 - (v.p == 2));
     }
-    fr += (x - xd < 19 && x - xd > -1 && y - yd < 19 && y - yd > -1 && !e->gomoku.map[0][y - yd][x - xd]);
-    e->ai.hu[3][pos] = c;
-    e->ai.hu[3][pos + 1] = t;
-    fr == 2 && (e->ai.hu[3][26] = 1);
-    return (0 + (e->ai.x = tx) * 0 + (e->ai.y = ty) * 0);
+    v.fr += (COMP_04 && v.y - v.yd > -1 && !COMP_06);
+    e->ai.hu[3][pos] = v.c;
+    e->ai.hu[3][pos + 1] = v.t;
+    v.fr == 2 && (e->ai.hu[3][26] = 1);
+    return (0 + (e->ai.x = v.tx) * 0 + (e->ai.y = v.ty) * 0);
 }
 
 int     max_aligns(int hu, int xd, int yd)
 {
-    int             c;
-    int             n;
-    int             b;
-	int				node;
-	int				x;
-	int				y;
+    t_max_align2    v;
     
-    b = -1;
-    c = -1;
-	node = 0;
-	x = e->ai.x;
-	y = e->ai.y;
-    while (++b < 7 && x + xd > -1 && x + xd < 19 && y + yd > -1 && y + yd < 19 && e->gomoku.map[0][y + yd][x + xd])
+    v.b = -1;
+    v.c = -1;
+	v.node = 0;
+	v.x = e->ai.x;
+	v.y = e->ai.y;
+    while (++v.b < 7 && COMP_07 && v.y + yd < 19 && M_DPOS02)
 	{
-		x += xd;
-		y += yd;
-		!node && (node = e->gomoku.map[0][y][x]);
-		if (node != e->gomoku.map[0][y][x] && (b = 8))
+		v.x += xd;
+		v.y += yd;
+		!v.node && (v.node = e->gomoku.map[0][v.y][v.x]);
+		if (v.node != e->gomoku.map[0][v.y][v.x] && (v.b = 8))
 			continue;
-		++c;
+		++v.c;
 	}
-	e->ai.hu[1][hu] = ++c * (1 + (-2 * (node != e->ai.player_no)));
-	return (c * (1 + (-2 * (node != e->ai.player_no))));
+	e->ai.hu[1][hu] = ++v.c * (1 + (-2 * (v.node != e->ai.player_no)));
+	return (v.c * (1 + (-2 * (v.node != e->ai.player_no))));
 }
 
 int		get_max_aligned(int x, int y, int z)

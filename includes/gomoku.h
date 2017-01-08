@@ -121,11 +121,82 @@
 
 # define SIG_R(X) (signo == X )
 
+# define N_MAP  (e->gomoku.map[0]
 
 /*
 ** shad ai
 */
 # define HU_MAX 28
+
+/*
+** Other
+*/
+# define M_POS_01 !e->gomoku.map[0][e->ai.y + d][e->ai.x]
+# define M_POS_02 !e->gomoku.map[n][e->ai.y + d][e->ai.x]
+# define M_POS_03 !e->gomoku.map[0][e->ai.y - d][e->ai.x]
+# define M_POS_04 !e->gomoku.map[n][e->ai.y - d][e->ai.x]
+# define M_POS_05 !e->gomoku.map[0][e->ai.y][e->ai.x + d]
+# define M_POS_06 !e->gomoku.map[n][e->ai.y][e->ai.x + d]
+# define M_POS_07 !e->gomoku.map[0][e->ai.y][e->ai.x - d]
+# define M_POS_08 !e->gomoku.map[n][e->ai.y][e->ai.x - d]
+# define M_POS_09 e->ai.y + d < 19
+# define M_POS_10 !e->gomoku.map[0][e->ai.y + d][e->ai.x + d]
+# define M_POS_11 !e->gomoku.map[n][e->ai.y + d][e->ai.x + d]
+# define M_POS_12 e->ai.y + d < 19
+# define M_POS_13 !e->gomoku.map[0][e->ai.y + d][e->ai.x - d]
+# define M_POS_14 !e->gomoku.map[n][e->ai.y + d][e->ai.x - d]
+# define M_POS_15 e->ai.y - d > -1
+# define M_POS_16 !e->gomoku.map[0][e->ai.y - d][e->ai.x + d]
+# define M_POS_17 !e->gomoku.map[n][e->ai.y - d][e->ai.x + d]
+# define M_POS_18 !e->gomoku.map[0][e->ai.y - d][e->ai.x - d]
+# define M_POS_19 !e->gomoku.map[n][e->ai.y - d][e->ai.x - d]
+# define M_POS_20 e->gomoku.map[0][y][x + 1] == o
+# define M_POS_21 e->gomoku.map[0][y][x + 2] == o
+# define M_POS_22 e->gomoku.map[0][y][x + 3] == p
+# define M_POS_23 e->gomoku.map[0][y][x - 1] == o
+# define M_POS_24 e->gomoku.map[0][y][x - 2] == o
+# define M_POS_25 e->gomoku.map[0][y][x - 3] == p
+# define M_POS_26 e->gomoku.map[0][y + 1][x] == o
+# define M_POS_27 e->gomoku.map[0][y + 2][x] == o
+# define M_POS_28 e->gomoku.map[0][y + 3][x] == p
+# define M_POS_29 e->gomoku.map[0][y - 1][x] == o
+# define M_POS_30 e->gomoku.map[0][y - 2][x] == o
+# define M_POS_31 e->gomoku.map[0][y - 3][x] == p
+# define M_POS_32 y + 3 < 19 && e->gomoku.map[0][y + 1][x + 1] == o
+# define M_POS_33 e->gomoku.map[0][y + 2][x + 2] == o
+# define M_POS_34 e->gomoku.map[0][y + 1][x - 1] == o
+# define M_POS_35 e->gomoku.map[0][y + 3][x + 3] == p
+# define M_POS_36 e->gomoku.map[0][y + 2][x - 2] == o
+# define M_POS_37 e->gomoku.map[0][y + 3][x - 3] == p
+# define M_POS_38 e->gomoku.map[0][y - 1][x + 1] == o
+# define M_POS_39 e->gomoku.map[0][y - 2][x + 2] == o
+# define M_POS_40 e->gomoku.map[0][y - 3][x + 3] == p
+# define M_POS_41 e->gomoku.map[0][y - 1][x - 1] == o
+# define M_POS_42 e->gomoku.map[0][y - 2][x - 2] == o
+# define M_POS_43 e->gomoku.map[0][y - 3][x - 3] == p
+# define M_POS_44 (e->gomoku.map[n][y][x] += 1)
+# define M_POS_45 e->gomoku.map[0][y + 3][x + 3] == p
+
+# define M_DPOS01 e->gomoku.map[0][v.y + v.yd][v.x + v.xd]
+# define M_DPOS02 e->gomoku.map[0][v.y + yd][v.x + xd]
+
+# define M_CAP_01 (c += is_capture(e->ai.x, e->ai.y + d, o, p))
+# define M_CAP_02 (c += is_capture(e->ai.x, e->ai.y - d, o, p))
+# define M_CAP_03 (c += is_capture(e->ai.x + d, e->ai.y, o, p))
+# define M_CAP_04 (c += is_capture(e->ai.x - d, e->ai.y, o, p))
+# define M_CAP_05 (c += is_capture(e->ai.x + d, e->ai.y + d, o, p))
+# define M_CAP_06 (c += is_capture(e->ai.x - d, e->ai.y + d, o, p))
+# define M_CAP_07 (c += is_capture(e->ai.x + d, e->ai.y - d, o, p))
+# define M_CAP_08 (c += is_capture(e->ai.x - d, e->ai.y - d, o, p))
+# define M_CAP_09 e->player[p].captures
+
+# define COMP_01  e->ai.hu[3][24] >= e->ai.hu[3][25] && (v.p = e->ai.player_no)
+# define COMP_02  (COMP_01) || (v.p = 2 - (e->ai.player_no == 2))
+# define COMP_03 v.x + v.xd < 19 && v.x + v.xd > -1
+# define COMP_04 v.x - v.xd < 19 && v.x - v.xd > -1 && v.y - v.yd < 19
+# define COMP_05 COMP_03 && v.y + v.yd < 19 && v.y + v.yd
+# define COMP_06 e->gomoku.map[0][v.y - v.yd][v.x - v.xd]
+# define COMP_07 v.x + xd > -1 && v.x + xd < 19 && v.y + yd > -1
 
 /*
 ** ----------\
@@ -138,6 +209,30 @@ typedef struct	s_coord
 	int			x;
 	int			y;
 }				t_coord;
+
+typedef struct	s_max_align
+{
+	int			p;
+    int			x;
+    int			y;
+    int			xd;
+    int			yd;
+    int			c;
+    int			t;
+    int			tx;
+    int			ty;
+    int			fr;
+}				t_max_align;
+
+typedef struct	s_max_align2
+{
+	int			c;
+	int			n;
+	int			b;
+	int			node;
+	int			x;
+	int			y;
+}				t_max_align2;
 
 typedef struct	s_node
 {

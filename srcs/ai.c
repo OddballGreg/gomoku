@@ -24,14 +24,14 @@ int		opportunities_threats(int d, int n, int o, int p)
 	int		c;
 
 	c = 0;
-	e->ai.y + d < 19 && !e->gomoku.map[0][e->ai.y + d][e->ai.x] && !e->gomoku.map[n][e->ai.y + d][e->ai.x] && (c += is_capture(e->ai.x, e->ai.y + d, o, p));
-	e->ai.y - d > -1 && !e->gomoku.map[0][e->ai.y - d][e->ai.x] && !e->gomoku.map[n][e->ai.y - d][e->ai.x] && (c += is_capture(e->ai.x, e->ai.y - d, o, p));
-	e->ai.x + d < 19 && !e->gomoku.map[0][e->ai.y][e->ai.x + d] && !e->gomoku.map[n][e->ai.y][e->ai.x + d] && (c += is_capture(e->ai.x + d, e->ai.y, o, p));
-	e->ai.x - d > -1 && !e->gomoku.map[0][e->ai.y][e->ai.x - d] && !e->gomoku.map[n][e->ai.y][e->ai.x - d] && (c += is_capture(e->ai.x - d, e->ai.y, o, p));
-	e->ai.x + d < 19 && e->ai.y + d < 19 && !e->gomoku.map[0][e->ai.y + d][e->ai.x + d] && !e->gomoku.map[n][e->ai.y + d][e->ai.x + d] && (c += is_capture(e->ai.x + d, e->ai.y + d, o, p));
-	e->ai.x - d > -1 && e->ai.y + d < 19 && !e->gomoku.map[0][e->ai.y + d][e->ai.x - d] && !e->gomoku.map[n][e->ai.y + d][e->ai.x - d] && (c += is_capture(e->ai.x - d, e->ai.y + d, o, p));
-e->ai.x + d < 19 && e->ai.y - d > -1 && !e->gomoku.map[0][e->ai.y - d][e->ai.x + d] && !e->gomoku.map[n][e->ai.y - d][e->ai.x + d] && (c += is_capture(e->ai.x + d, e->ai.y - d, o, p));
-e->ai.x - d > -1 && e->ai.y - d > -1 && !e->gomoku.map[0][e->ai.y - d][e->ai.x - d] && !e->gomoku.map[n][e->ai.y - d][e->ai.x - d] && (c += is_capture(e->ai.x - d, e->ai.y - d, o, p));
+	e->ai.y + d < 19 && M_POS_01 && M_POS_02 && M_CAP_01;
+	M_POS_15 && M_POS_03 && M_POS_04 && M_CAP_02;
+	e->ai.x + d < 19 && M_POS_05 && M_POS_06 && M_CAP_03;
+	e->ai.x - d > -1 && M_POS_07 && M_POS_08 &&M_CAP_04;
+	e->ai.x + d < 19 && M_POS_09 && M_POS_10 && M_POS_11 && M_CAP_05;
+	e->ai.x - d > -1 && M_POS_12 && M_POS_13 && M_POS_14 && M_CAP_06;
+	e->ai.x + d < 19 && M_POS_15 && M_POS_16 && M_POS_17 && M_CAP_07;
+	e->ai.x - d > -1 && M_POS_15 && M_POS_18 && M_POS_19 && M_CAP_08;
 	return (c);
 }
 
