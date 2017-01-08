@@ -15,7 +15,7 @@
 void    exit_prog(void)
 {
     endwin();
-    ft_putstr("\nGoodbye!\n");
+//    ft_putstr("\nGoodbye!\n");
     free_wins();
     exit(0);
 }
@@ -25,4 +25,15 @@ void    error_quit(char *message)
     ft_putstr("Error: ");
     ft_putendl((message) ? message : "An unlabeled error occured");
     exit_prog();
+}
+
+void    exit_player_win(char player)
+{
+    endwin();
+    free_wins();
+    if (player == 1)
+        ft_putendl("Player 2 Won!\n");
+    else
+        ft_putstr("Player 1 Won!\n");
+    exit(0);
 }

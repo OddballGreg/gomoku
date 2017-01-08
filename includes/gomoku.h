@@ -25,6 +25,7 @@
 #  include <string.h>
 # endif
 
+# include <sys/time.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <panel.h>
@@ -296,12 +297,16 @@ typedef struct		s_p_list
 
 void	get_rule_maps(void);//h.cpp
 
+int		heuristics(int node);//j.cpp
+void	ai(void);//k.cpp
 int		heuristics1(int node);//k.cpp
 int		calc_heuristic(int node);//l.cpp
 
 void	reset_rule_maps(void);//g.cpp
 void	reset_map(void);//g.cpp
 void    apply_rules(void);//i.cpp
+int    player_wins_check(void);//i.cpp
+
 /*
 ** draw_grid.c
 */
@@ -317,6 +322,7 @@ void    	draw_win(int x, int colour, WINDOW *win, const char *title);
 */
 void		exit_prog(void);
 void		error_quit(char *message);
+void		exit_player_win(char player);
 
 /*
 ** free.c

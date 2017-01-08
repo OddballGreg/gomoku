@@ -7,19 +7,29 @@
 
 //h.cpp
 
+//mapping algorithms and ai extention algorithms here onwards
+
+//possible 5 in a row
+//capture possibilities
+//double threes
+
 int		is_capture(int x, int y, int o, int p)
 {//would tell how many captures on block
 	int		c;
 
 	c = 0;
-	c += (x + 3 < 19 && e->gomoku.map[0][y][x + 1] == o && e->gomoku.map[0][y][x + 2] == o && e->gomoku.map[0][y][x + 3] == p);// && (c += 1);
-	c += (x - 3 >= 0 && e->gomoku.map[0][y][x - 1] == o && e->gomoku.map[0][y][x - 2] == o && e->gomoku.map[0][y][x - 3] == p);// && (c += 1));
-	c += (y + 3 < 19 && e->gomoku.map[0][y + 1][x] == o && e->gomoku.map[0][y + 2][x] == o && e->gomoku.map[0][y + 3][x] == p);// && (c += 1));
-	c += (y - 3 >= 0 && e->gomoku.map[0][y - 1][x] == o && e->gomoku.map[0][y - 2][x] == o && e->gomoku.map[0][y - 3][x] == p);// && (c += 1));
-	c += (x + 3 < 19 && y + 3 < 19 && e->gomoku.map[0][y + 1][x + 1] == o && e->gomoku.map[0][y + 2][x + 2] == o && e->gomoku.map[0][y + 3][x + 3] == p);// && (c += 1);
-	c += (x - 3 >= 0 && y + 3 < 19 && e->gomoku.map[0][y + 1][x - 1] == o && e->gomoku.map[0][y + 2][x - 2] == o && e->gomoku.map[0][y + 3][x - 3] == p);// && (c += 1);
-	c += (x + 3 < 19 && y - 3 >= 0 && e->gomoku.map[0][y - 1][x + 1] == o && e->gomoku.map[0][y - 2][x + 2] == o && e->gomoku.map[0][y - 3][x + 3] == p);// && (c += 1);
-	c += (x - 3 >= 0 && y - 3 >= 0 && e->gomoku.map[0][y - 1][x - 1] == o && e->gomoku.map[0][y - 2][x - 2] == o && e->gomoku.map[0][y - 3][x - 3] == p);// && (c += 1);	
+	x + 3 < 19 && e->gomoku.map[0][y][x + 1] == o && e->gomoku.map[0][y][x + 2] == o && e->gomoku.map[0][y][x + 3] == p && (c += 1);
+	x - 3 >= 0 && e->gomoku.map[0][y][x - 1] == o && e->gomoku.map[0][y][x - 2] == o && e->gomoku.map[0][y][x - 3] == p && (c += 1);
+    y + 3 < 19 && e->gomoku.map[0][y + 1][x] == o && e->gomoku.map[0][y + 2][x] == o && e->gomoku.map[0][y + 3][x] == p && (c += 1);
+	y - 3 >= 0 && e->gomoku.map[0][y - 1][x] == o && e->gomoku.map[0][y - 2][x] == o && e->gomoku.map[0][y - 3][x] == p && (c += 1);
+
+	x + 3 < 19 && y + 3 < 19 && e->gomoku.map[0][y + 1][x + 1] == o && e->gomoku.map[0][y + 2][x + 2] == o && e->gomoku.map[0][y + 3][x + 3] == p && (c += 1);
+                
+	x - 3 >= 0 && y + 3 < 19 && e->gomoku.map[0][y + 1][x - 1] == o && e->gomoku.map[0][y + 2][x - 2] == o && e->gomoku.map[0][y + 3][x - 3] == p && (c += 1);
+                
+	x + 3 < 19 && y - 3 >= 0 && e->gomoku.map[0][y - 1][x + 1] == o && e->gomoku.map[0][y - 2][x + 2] == o && e->gomoku.map[0][y - 3][x + 3] == p && (c += 1);
+                
+	x - 3 >= 0 && y - 3 >= 0 && e->gomoku.map[0][y - 1][x - 1] == o && e->gomoku.map[0][y - 2][x - 2] == o && e->gomoku.map[0][y - 3][x - 3] == p && (c += 1);	
 	return (c);
 }
 
@@ -27,10 +37,8 @@ void    possible_captures(int n, int o, int p)//n is map number, o is oponent, p
 {//looking at oponents pieces.
     int     x;
     int     y;
-//    t_e     *e;
     
     y = -1;
- //   e = cloud(0, 1);
     while (++y < 18 && (x = -1))
     {
         while (++x < 18)
@@ -68,13 +76,11 @@ float     free_three2(int x, int y,int xd, int yd)
     float   c;
     int     p;
     int     o;
-//    t_e     *e;
     
     b = 0;
     c = 0.0;
     x1 = x;
     y1 = y;
-//    e = cloud(0, 1);
     p = e->gomoku.player_turn;
     o = 2 - (p == 2);
     if (!(x - xd > -1 && x - xd < 19 && y - yd > -1 && y - yd < 19) || e->gomoku.map[0][y - yd][x - xd] != p)
@@ -103,12 +109,10 @@ float     free_three(int x, int y, int xd, int yd)//free three algorithm
     int             n;
     int             b;
     int             o;
-//    t_e             *e;
     
     b = -1;
     c = -1;
     bzero(a, 7);
-//    e = cloud(0, 1);
     o = 2 - (e->gomoku.player_turn == 2);
     //get all values
 	//going to have to add back:
@@ -122,7 +126,7 @@ float     free_three(int x, int y, int xd, int yd)//free three algorithm
         x += xd;
         y += yd;
         if (e->gomoku.map[0][y][x] == o)
-            return (0);//cannot possibly be a free three
+        	return (0);//cannot possibly be a free three
         a[++c] = e->gomoku.map[0][y][x] + 48 - (e->gomoku.map[0][y][x] == 2);
         //printf("%c", e->gomoku.map[0][y][x] + 48);
     }
@@ -138,10 +142,8 @@ void    double_free_threes(void)
     int     y;
     int     p;
     float   c;
-  //  t_e     *e;
 
     y = -1;
- //   e = cloud(0, 1);
     p = e->gomoku.player_turn;
     while (++y < 19 && (x = -1))
     {
@@ -161,27 +163,24 @@ void    double_free_threes(void)
                 c += free_three(x, y, 1, 0);//E      4
                 c += free_three(x, y, -1, 0);//W    4
                 c >= 2 && (e->gomoku.map[3][y][x] = c);
-	            //then place on the correct map the correct value
+                //then place on the correct map the correct value
                 //counter should be capturing the returns and if return value becomes > 1 then
                 //there would be more than one free three if the variable value were to be placed
                 //there hence init this finding in map[]
                 e->gomoku.map[0][y][x] = 0;
             }
-			printw("%d", e->gomoku.player_turn);
         }
     }
 }
 
 void    get_rule_maps(void)
 {//gets the extra maps for users helping(click - + keys to increment help(maps) or 'h')
- //   t_e     *e;
-    
- //   e = cloud(0, 1);
-    reset_rule_maps();
+	reset_rule_maps();
     double_free_threes();
     possible_captures(1, 2 - (e->gomoku.player_turn == 2), e->gomoku.player_turn);//what current player can capture(opportunities)
     possible_captures(2, e->gomoku.player_turn, 2 - (e->gomoku.player_turn == 2));//what oponent can capture(threats)
 }
+
 
 
 
@@ -271,8 +270,20 @@ void	possible_solutions(void)
 //	printf("BEST VALUE: %d\n", e->ai.node);
 }
 
+
+long	timing(void)
+{
+	struct timeval		time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
 void	ai(void)
 {
+    long    t;
+
+    t = timing();
 //    t_e		*e;
 //    auto	begin = std::chrono::high_resolution_clock::now();
     // code to benchmark:
@@ -287,10 +298,12 @@ void	ai(void)
     //003015375 mac latest
 	//003291185
     //003254680
+    //             0.001
     //500000000 is 0.5 seconds
   //  auto end = std::chrono::high_resolution_clock::now();
   //  std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << "ns" << std::endl;  
 	//print_map();
+    mvwprintw(E_WIN[WIN_STATS], 17, 1, "TIME: %dms", timing() - t);
 }
 
 // k.cpp	//ai algorithms(continued)
@@ -540,11 +553,11 @@ int		heuristics1(int node)
 //l.cpp	//heuristics(ai algorithms) continued
 
 void	print_hu(int n)
-{
-    int     tx;
+{//REMOVE
+//    int     tx;
 //	t_e		*e;
 
-    tx = -1;
+//    tx = -1;
  //   e = cloud(0, 1);
 //	e->ai.h < 0 && printf("\t\tDEBUG MODE:\n");
 //	while (++tx < 27)
@@ -582,10 +595,7 @@ void	max_hu(void)
         }
     }
     //    //x y of that node is at max; x y of current node should also be compared.
-    
-    
     //captures_on_max_align(e->ai.hu[3][7], e->ai.hu[3][8]);//if oponent played
-    
     //this may vary as node is placed hence does this need to be tested and compared if oponent placed piece at node (to determine if placement at position is an opportunity or more of a threat to the oponent) and ai piece at node (to determine if it is more likely to win by blocking or by captures) etc ...
 }
 
@@ -657,10 +667,8 @@ void	reset_rule_maps(void)
     char	x;
     char	y;
     char    z;
-//    t_e     *e;
     
     y = -1;
-//    e = cloud(0, 1);
     while (++y < 19 && (x = -1))
         while (++x < 19 && !(z = 0))
             while (++z < 7)//1 up to 7 maps

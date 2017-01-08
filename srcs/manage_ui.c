@@ -42,10 +42,6 @@ void	draw_piece(t_coord move)
 
 	get_boardxy(move.x, move.y, &s_pos.x, &s_pos.y);
 	mvwprintw(E_WIN[WIN_STATS], 6, 1, "LAST (%2d; %2d)", move.x, move.y);
-
-	//e->gomoku.player_turn = 2 - (e->gomoku.player_turn == 2);
-	//get_rule_maps();
-	//e->gomoku.player_turn = 2 - (e->gomoku.player_turn == 2);
 	if (e->gomoku.map[3][move.y - 1][move.x - 1] != 0)
 	{
 		mvwprintw(E_WIN[WIN_STATS], 5, 1, "MOVE STAT: KO");
@@ -56,10 +52,16 @@ void	draw_piece(t_coord move)
 	E_BOARD[move.x][move.y] = (E_DEPTH & 0b1) + 1;
 	e->gomoku.cursorx = move.x - 1;
 	e->gomoku.cursory = move.y - 1;
+
 	e->gomoku.map[0][move.y - 1][move.x - 1] = (E_DEPTH & 0b1) + 1;
 	e->gomoku.player_turn = (E_DEPTH & 0b1) + 1;//right player
 	apply_rules();
 	e->gomoku.player_turn = ((E_DEPTH + 1) & 0b1) + 1;//oposite player of who's placing the piece.
+	get_rule_maps();//FIX
+	if (e->player[1].captures >= 5 || e->player[2].captures >= 5)
+			exit_player_win(2 - (e->gomoku.player_turn == 2));//exit(printf("player %d wins by captures\n", 2 - (e->gomoku.player_turn == 2)));
+    if (player_wins_check())//if 5 or more aligned
+        	exit_player_win(e->gomoku.player_turn);//exit(printf("player %d wins\n", e->gomoku.player_turn));
 	reset_map();//resets YOUR map to my map
 	//		checks if one of the players win
 //		initializes everything necessary for next player	-
@@ -82,24 +84,33 @@ void	init_boarders(void)
 
 void	usermove(void)
 {//algorithm section where ai should be called.
-//	t_coord		tmp;
+	t_coord		tmp;
 
 	if (valid_move(E_W_BPOS) < 1)
 		return ;
 	draw_piece(E_W_BPOS);
 	//Inform AI of users move. Prompt Ai to move returns xy of AI move
 	//if (E_DEPTH < 1)
-		init_boarders();
+	init_boarders();
 	//bzero(&env.game, sizeof(t_game));
 	//bzero(&env.ai, sizeof(t_ai));
 //	tmp = prompt_ai(E_W_BPOS);
-//	tmp.x++;
-//	tmp.y++;
+//	
+	heuristics(-1);
+	ai();
+	e->gomoku.map[0][18 - e->gomoku.cursory][e->gomoku.cursorx] = e->gomoku.player_turn;//which the ai will thus use the cursor and place piece.
+    tmp.x = e->gomoku.cursorx + 1;
+	tmp.y = 18 - e->gomoku.cursory + 1;
+	//
+
+	//apply_rules();//applies rules on e->gomoku.cursorx && e->gomoku.cursory
+    //e->gomoku.player_turn = 2 - (e->gomoku.player_turn == 2);
+//apply_rules
 	//shd algo 
 	//e->gomoku.cursorx = move.x;
 	//e->gomoku.cursory = move.y;//MAYBE 18 - 
 	//reset_map();
-//	draw_piece(tmp);
+	draw_piece(tmp);
 }
 
 void	manage_ui(void)
